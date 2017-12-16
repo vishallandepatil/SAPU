@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Answer_Table;
@@ -154,6 +155,22 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         else
         {
             programDate.setError(null);
+        }
+
+        if (program_name.getSelectedItem().toString().trim().equalsIgnoreCase("कार्यक्रमाचे नाव ")) {
+
+            View selectedView = program_name.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (program_name.getSelectedItemPosition() == 0) {
+                    String errorString = "कार्यक्रमाचे नाव  निवडा";
+                    selectedTextView.setError(errorString);
+
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
         }
 
         return response;

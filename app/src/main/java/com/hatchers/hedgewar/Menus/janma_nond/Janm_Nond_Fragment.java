@@ -1,11 +1,11 @@
 package com.hatchers.hedgewar.Menus.janma_nond;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -15,8 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,14 +28,12 @@ import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 
 public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private EditText mother_name, age, consignment,birthweight,delivery_date,
+    private TextInputEditText mother_name, age, consignment,birthweight,delivery_date,
             registration_month, date_of_periods;
     private CheckBox urine_blood_test;
     private RadioGroup gender_group;
@@ -49,9 +47,8 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
     private Toolbar toolbar;
     Birth_Table birth;
     Context context;
-    private String selected_gender = "";
-
-
+    private String selected_gender = "", bloodUrineTest="";
+    private ProgressDialog progressDialog;
 
     public Janm_Nond_Fragment() {
         // Required empty public constructor
@@ -67,6 +64,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         initToolbar(view);
         initialization(view);
         onClickListners();
+        setGender();
 
         place.setOnItemSelectedListener(this);
 
@@ -89,16 +87,16 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
 
     private void initialization(View view) {
 
-        registration_month = (EditText) view.findViewById(R.id.registration_month);
-        date_of_periods = (EditText)view. findViewById(R.id.date_of_periods);
-        delivery_date = (EditText)view. findViewById(R.id.delivery_date);
+        registration_month = (TextInputEditText) view.findViewById(R.id.registration_month);
+        date_of_periods = (TextInputEditText)view. findViewById(R.id.date_of_periods);
+        delivery_date = (TextInputEditText)view. findViewById(R.id.delivery_date);
 
         backBtn = (ImageButton) view.findViewById(R.id.btn_back);
-        mother_name = (EditText)view. findViewById(R.id.mother_name);
-        age = (EditText)view. findViewById(R.id.age);
-        consignment = (EditText)view. findViewById(R.id.consignment);
+        mother_name = (TextInputEditText)view. findViewById(R.id.mother_name);
+        age = (TextInputEditText)view. findViewById(R.id.age);
+        consignment = (TextInputEditText)view. findViewById(R.id.consignment);
         place = (Spinner)view. findViewById(R.id.place);
-        birthweight=(EditText)view.findViewById(R.id.birthweight);
+        birthweight=(TextInputEditText)view.findViewById(R.id.birthweight);
         urine_blood_test = (CheckBox)view. findViewById(R.id.urine_blood_test);
         save = (Button)view. findViewById(R.id.save);
         gender_group=(RadioGroup)view.findViewById(R.id.gender_group);
@@ -138,6 +136,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                 if(checkValidation())
                 {
                     Birth_Table_Helper.insertBirth(context, birth);
+                    getActivity().onBackPressed();
                 }
             }
         });
@@ -210,6 +209,36 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         dpd.show();
     }
 
+    public void setGender()
+    {
+        gender_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId== R.id.radiobtnmale)
+                {
+                    selected_gender="M";
+                }
+                else if(checkedId == R.id.radiobtnfemale)
+                {
+                    selected_gender="F";
+                }
+            }
+        });
+
+        urine_blood_test.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    bloodUrineTest="Positive";
+                }
+                else
+                {
+                    bloodUrineTest="Negative";
+                }
+            }
+        });
+    }
 
     private boolean checkValidation()
     {
@@ -222,16 +251,6 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         else
         {
             mother_name.setError(null);
-        }
-
-
-        if(urine_blood_test.getText().toString().trim().length()==0) {
-            urine_blood_test.setError("रक्त लघवी तपासणी");
-            response = false;
-        }
-        else
-        {
-            urine_blood_test.setError(null);
         }
 
         if(age.getText().toString().trim().length()==0) {
@@ -287,10 +306,43 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         {
             delivery_date.setError(null);
         }
+        if (gender_group.getCheckedRadioButtonId() == -1)
+        {
+            Toast.makeText(getActivity(),"लिंग निवडा",Toast.LENGTH_SHORT).show();
+            response = false;
+            // no radio buttons are checked
+        }
+        else
+        {
+            // one of the radio buttons is checked
+        }
+        if(!urine_blood_test.isChecked())
+        {
+            urine_blood_test.setError("चाचणी निवडा");
+            response=false;
+        }
+        else
+        {
+           urine_blood_test.setError(null);
+        }
 
+        if (place.getSelectedItem().toString().trim().equalsIgnoreCase("ठिकाण")) {
+
+            View selectedView = place.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (place.getSelectedItemPosition() == 0) {
+                    String errorString = "ठिकाण निवडा";
+                    selectedTextView.setError(errorString);
+
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
         return response;
     }
-
 
     private void setBirthData()
     {
@@ -304,6 +356,9 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         birth.setMonth_of_registrationValue(registration_month.getText().toString());
         birth.setDate_of_period(date_of_periods.getText().toString());
         birth.setDelivery_dateValue(delivery_date.getText().toString());
+        birth.setGenderValue(selected_gender);
+        birth.setBlood_urine_testValue(bloodUrineTest);
+        birth.setPlaceValue(place.getSelectedItem().toString());
     }
 
     @Override
