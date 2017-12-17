@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".user_login.LoginActivity" />
-        <activity android:name=".activity.MenuActivity" />
+        <activity android:name=".activity.MenuActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            />
 
 
     </application>

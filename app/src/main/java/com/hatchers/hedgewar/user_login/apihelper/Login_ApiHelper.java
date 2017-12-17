@@ -14,6 +14,7 @@ import com.hatchers.hedgewar.activity.MenuActivity;
 import com.hatchers.hedgewar.app.MyApplication;
 import com.hatchers.hedgewar.constants.WebServiceUrls;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.Hashtable;
@@ -30,7 +31,9 @@ public class Login_ApiHelper
                 try {
                     JSONObject responce = new JSONObject(response);
                     if (responce.getString("status").equalsIgnoreCase("sucess")) {
-                            new PrefManager(activity).createLogin(new PrefManager(activity).getUserName());
+                        JSONArray result = responce.getJSONArray("result");
+
+                            //new PrefManager(activity).createLogin(new PrefManager(activity).getUserName());
                            // new PrefManager(activity).setRegistration_skipped(false);
                           /*  Intent intent = new Intent(activity, MenuActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);

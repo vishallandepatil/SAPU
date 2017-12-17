@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="माझी माहिती "
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:title="Sync"
+        android:id="@+id/sync"
+        android:icon="@drawable/ic_sync">
+    </item>
+
+    <item
+        android:title="लॉग आऊट "
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout">
+    </item>
+</menu>
