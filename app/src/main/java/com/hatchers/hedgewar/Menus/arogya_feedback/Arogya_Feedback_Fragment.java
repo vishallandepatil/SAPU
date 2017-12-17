@@ -13,6 +13,7 @@ import com.hatchers.hedgewar.R;
 public class Arogya_Feedback_Fragment extends Fragment {
 
     private ImageButton back;
+
     public Arogya_Feedback_Fragment() {
         // Required empty public constructor
     }
@@ -24,15 +25,26 @@ public class Arogya_Feedback_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_arogya__bank, container, false);
 
-        back=(ImageButton)view.findViewById(R.id.btn_back);
+        initializations(view);
 
+        backClickListner();
+
+        return view;
+    }
+
+    private void initializations(View view)
+    {
+        back=(ImageButton)view.findViewById(R.id.btn_back);
+    }
+
+    private void backClickListner()
+    {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
             }
         });
-        return view;
     }
 
 
