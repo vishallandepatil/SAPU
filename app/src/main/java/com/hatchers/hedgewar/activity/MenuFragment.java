@@ -11,9 +11,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.hatchers.hedgewar.Menus.arogya_feedback.Arogya_Feedback_Fragment;
-import com.hatchers.hedgewar.Menus.arogya_tapasni.Arogya_Fragment;
+import com.hatchers.hedgewar.Menus.arogya_tapasni.Arogya_Tapasni_Fragment;
 import com.hatchers.hedgewar.Menus.janma_nond.BirthFragment;
-import com.hatchers.hedgewar.Menus.janma_nond.Janm_Nond_Fragment;
 import com.hatchers.hedgewar.Menus.karyakram.Karyakram_Fragment;
 import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
@@ -70,7 +69,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         {
 
             case R.id.arogya_image:
-                Arogya_Fragment arogyaFragment = new Arogya_Fragment();
+                Arogya_Tapasni_Fragment arogyaFragment = new Arogya_Tapasni_Fragment();
                 fragmentTransaction.replace(R.id.frame_layout,arogyaFragment).addToBackStack(null).commit();
                 break;
 
