@@ -32,7 +32,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
     private int mYear, mMonth, mDay;
     private Button next;
     Answer_Table answer;
-    Context context;
+
 
     private String[] Program_array={"कार्यक्रमाचे नाव ","डोहाळजेवण ","नामकरण ","उष्टावण ","नवदंपती ","सुद्रुढ बालक स्पर्धा ",
                                     "मातांशी संवाद / अन्य कार्यक्रम ","प्रकल्प प्रमुख भेटीत उपस्थिती ","शाळेतील आरोग्य शिक्षण कार्यक्रम ",
@@ -96,7 +96,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                 setAnswerData();
                 if(checkValidation())
                 {
-                   Answer_Table_Helper.insertAnswer(context,answer);
+                   Answer_Table_Helper.insertAnswer(getContext(),answer);
                     getActivity().onBackPressed();
                 }
             }
@@ -189,6 +189,8 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+
+        
     }
 
     @Override
