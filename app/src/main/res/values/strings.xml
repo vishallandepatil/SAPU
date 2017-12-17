@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Hedgewar</string>
+
+
+    <string-array name="menus_name">
+        <item>आरोग्य तपासणी </item>
+        <item>कार्यक्रम व्यवस्थापन</item>
+        <item>नवजात बालक नोंदणी </item>
+    </string-array>
+
+    <string name="arogya_tapasni">आरोग्य बँक तपासणी</string>
+    <string name="karyakram">कार्यक्रम व्यवस्थापन</string>
+    <string name="janma_nond">जन्म नोंद </string>
+    <string name="arogya_feedback">आरोग्य बँक अभिप्राय </string>
+    <string name="sahayta">सहायता </string>
+    <string name="sampark">संपर्क</string>
+
+    <string-array name="delivery_place">
+        <item>घरी</item>
+        <item>दवाखाना</item>
+        <item>खाजगी दवाखाना</item>
+
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
