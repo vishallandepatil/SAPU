@@ -8,16 +8,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hatchers.hedgewar.R;
-import com.hatchers.hedgewar.database.AssetDatabaseHelper;
 import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
 
@@ -45,7 +40,7 @@ public class BirthFragment extends Fragment {
 
 
         birthTables= Birth_Table_Helper.getBirthdataList(getContext());
-        birthAdapter= new BirthAdapter(getContext(),R.layout.list_row,birthTables);
+        birthAdapter= new BirthAdapter(getContext(), R.layout.list_row,birthTables);
 
         listView = (ListView)view.findViewById(R.id.birth_listview);
         listView.setAdapter(birthAdapter);
@@ -78,8 +73,8 @@ public class BirthFragment extends Fragment {
 
         private class ViewHolder
         {
-            EditText mother_name;
-            EditText delivery_date;
+            TextView mother_name;
+            TextView delivery_date;
 
         }
 
@@ -105,8 +100,8 @@ public class BirthFragment extends Fragment {
                 convertView = inflater.inflate(R.layout.list_row, null);
 
                 holder = new ViewHolder();
-                holder.mother_name = (EditText) convertView.findViewById(R.id.mother_name);
-                holder.delivery_date = (EditText) convertView.findViewById(R.id.delivery_date);
+                holder.mother_name = (TextView) convertView.findViewById(R.id.mother_name);
+                holder.delivery_date = (TextView) convertView.findViewById(R.id.delivery_date);
 
                 convertView.setTag(holder);
 

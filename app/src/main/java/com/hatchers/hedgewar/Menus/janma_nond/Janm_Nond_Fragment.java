@@ -127,7 +127,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             }
         });
 
-       place.setOnItemSelectedListener(this);
+        place.setOnItemSelectedListener(this);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override

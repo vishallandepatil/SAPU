@@ -34,6 +34,11 @@ public class Question_Table
         this.CATEGORY_ENGLISH_VALUE = CATEGORY_ENGLISH_VALUE;
     }
 
+    @Override
+    public String toString() {
+        return QUESTION_MARATHI_VALUE;
+    }
+
     public Question_Table() {
 
     }

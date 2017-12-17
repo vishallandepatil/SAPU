@@ -19,11 +19,15 @@ import android.widget.TextView;
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Answer_Table;
 import com.hatchers.hedgewar.database.Answer_Table_Helper;
+import com.hatchers.hedgewar.database.Question_Table;
+import com.hatchers.hedgewar.database.Question_Table_Helper;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
 public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
+
 
     private TextInputEditText programDate,program_holder_name,present_people_count;
     private ImageButton back;
@@ -32,11 +36,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
     private int mYear, mMonth, mDay;
     private Button next;
     Answer_Table answer;
-
-
-    private String[] Program_array={"कार्यक्रमाचे नाव ","डोहाळजेवण ","नामकरण ","उष्टावण ","नवदंपती ","सुद्रुढ बालक स्पर्धा ",
-                                    "मातांशी संवाद / अन्य कार्यक्रम ","प्रकल्प प्रमुख भेटीत उपस्थिती ","शाळेतील आरोग्य शिक्षण कार्यक्रम ",
-                                    "आर. सी. एच. समिती बैठक ","गावात दाखविलेले विडिओ शो ",};
+    private ArrayList<Question_Table> questionTableArrayList;
 
     public Karyakram_Fragment() {
         // Required empty public constructor
@@ -51,16 +51,6 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         initializations(view);
         onclicklisterns();
 
-        program_name.setOnItemSelectedListener(this);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.delivery_place, android.R.layout.simple_spinner_item);
-
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-
-        program_name.setAdapter(adapter);
-
-
         return view;
     }
 
@@ -72,6 +62,15 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         program_holder_name=(TextInputEditText)view.findViewById(R.id.program_holder_name);
         present_people_count=(TextInputEditText)view.findViewById(R.id.present_people_count);
         programDate=(TextInputEditText)view.findViewById(R.id.karyakram_date);
+        questionTableArrayList = Question_Table_Helper.getQuestionList(getContext(),Question_Table.CATEGORY_EVENT);
+
+        program_name.setOnItemSelectedListener(this);
+
+        ArrayAdapter<Question_Table> adapter =new ArrayAdapter<Question_Table>(getActivity(),
+                R.layout.support_simple_spinner_dropdown_item, questionTableArrayList);
+
+        program_name.setAdapter(adapter);
+
     }
 
     private void onclicklisterns()
@@ -157,13 +156,13 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
             programDate.setError(null);
         }
 
-        if (program_name.getSelectedItem().toString().trim().equalsIgnoreCase("कार्यक्रमाचे नाव ")) {
+        if (program_name.getSelectedItem().toString().trim().equalsIgnoreCase("कार्यक्रमाचे नाव")) {
 
             View selectedView = program_name.getSelectedView();
             if (selectedView != null && selectedView instanceof TextView) {
                 TextView selectedTextView = (TextView) selectedView;
                 if (program_name.getSelectedItemPosition() == 0) {
-                    String errorString = "कार्यक्रमाचे नाव  निवडा";
+                    String errorString = "कार्यक्रमाचे नाव निवडा";
                     selectedTextView.setError(errorString);
 
                 } else {
