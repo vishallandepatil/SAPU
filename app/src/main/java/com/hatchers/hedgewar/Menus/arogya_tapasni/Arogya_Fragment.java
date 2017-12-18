@@ -44,7 +44,7 @@ public class Arogya_Fragment extends Fragment {
             public void onClick(View view) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 Question_Fragment  questionFragment = new  Question_Fragment();
-                fragmentTransaction.replace(R.id.frame_layout,questionFragment).commit();
+                fragmentTransaction.replace(R.id.frame_layout,questionFragment).addToBackStack(null).commit();
             }
         });
 

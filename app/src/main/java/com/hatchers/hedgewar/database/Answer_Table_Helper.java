@@ -17,15 +17,34 @@ public class Answer_Table_Helper {
             SQLiteDatabase db = AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
             ContentValues values = new ContentValues();
 
+        try {
             values.put(Answer_Table.ANS_ID, Integer.parseInt(answer_table.getAns_idValue()));
             values.put(Answer_Table.QUESTION_ID, Integer.parseInt(answer_table.getQuestion_idValue()));
+        }
+        catch(Exception e)
+        {
+
+        }
             values.put(Answer_Table.ANSWER_COUNT,answer_table.getAnswer_countValue());
             values.put(Answer_Table.ANS_DATE, answer_table.getAns_dateValue());
-            values.put(Answer_Table.LOCAL_SERVEY_ID, Integer.parseInt(answer_table.getLocal_servey_idValue()));
+
+            try {
+                values.put(Answer_Table.LOCAL_SERVEY_ID, Integer.parseInt(answer_table.getLocal_servey_idValue()));
+            }
+            catch(Exception e)
+            {
+
+            }
             values.put(Answer_Table.PROGRAM_TOPIC, answer_table.getProgram_topicValue());
             values.put(Answer_Table.PROGRAM_HOLDER, answer_table.getProgram_holderValue());
-            values.put(Answer_Table.USER_ID,Integer.parseInt(answer_table.getUser_idValue()));
-            values.put(Answer_Table.VILLAGE_ID,Integer.parseInt(answer_table.getVillage_idValue()));
+            try {
+                values.put(Answer_Table.USER_ID, Integer.parseInt(answer_table.getUser_idValue()));
+                values.put(Answer_Table.VILLAGE_ID, Integer.parseInt(answer_table.getVillage_idValue()));
+            }
+            catch(Exception e)
+            {
+
+            }
             values.put(Answer_Table.CATEGORY, answer_table.getCategoryValue());
             values.put(Answer_Table.CURRENT_DATETIME,answer_table.getCurrent_datetimeValue());
             values.put(Answer_Table.UPLOAD_STATUS,answer_table.getUpload_statusValue());
