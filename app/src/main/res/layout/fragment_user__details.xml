@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:gravity="center"
+    tools:context="com.hatchers.hedgewar.user_login.User_Details_Fragment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="माहिती "
+        android:id="@+id/information"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/information"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:elevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:drawableLeft="@drawable/user"
+                android:drawablePadding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="नाव "
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:id="@+id/name"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/passwordlayour"
+                android:layout_below="@id/name">
+
+                <TextView
+                    android:drawableLeft="@drawable/password"
+                    android:drawablePadding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="पासवर्ड "
+                    android:textSize="20dp"
+                    android:id="@+id/password"/>
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:id="@+id/passwrd_visible"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/eye_show"/>
+
+
+            </FrameLayout>
+
+
+
+            <TextView
+                android:drawableLeft="@drawable/date_of_birth"
+                android:drawablePadding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/passwordlayour"
+                android:padding="10dp"
+                android:text="जन्मदिनांक  "
+                android:textSize="20dp"
+                android:id="@+id/date_of_birth"/>
+
+            <TextView
+                android:drawableLeft="@drawable/mobile_number"
+                android:drawablePadding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date_of_birth"
+                android:padding="10dp"
+                android:text="मोबाइल नंबर  "
+                android:textSize="20dp"
+                android:id="@+id/mobile_number"/>
+
+
+            <TextView
+                android:drawableLeft="@drawable/mobile_number"
+                android:drawablePadding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date_of_birth"
+                android:padding="10dp"
+                android:text="मोबाइल नंबर  "
+                android:textSize="20dp"
+                android:id="@+id/i"/>
+
+            <TextView
+                android:drawableLeft="@drawable/village_name"
+                android:drawablePadding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mobile_number"
+                android:padding="10dp"
+                android:text="गावाचे नाव  "
+                android:textSize="20dp"
+                android:id="@+id/village_name"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
