@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class BirthFragment extends Fragment {
     BirthAdapter birthAdapter;
     ListView listView;
     ArrayList<Birth_Table> birthTables;
+
 
     public BirthFragment() {
         // Required empty public constructor
@@ -53,6 +55,9 @@ public class BirthFragment extends Fragment {
                 fragmentTransaction.replace(R.id.frame_layout,janmNondFragment).addToBackStack(null).commit();
             }
         });
+
+
+        
         return view;
     }
 
@@ -75,6 +80,8 @@ public class BirthFragment extends Fragment {
         {
             TextView mother_name;
             TextView delivery_date;
+            TextView gender;
+            ImageView list_image;
 
         }
 
@@ -102,6 +109,8 @@ public class BirthFragment extends Fragment {
                 holder = new ViewHolder();
                 holder.mother_name = (TextView) convertView.findViewById(R.id.mother_name);
                 holder.delivery_date = (TextView) convertView.findViewById(R.id.delivery_date);
+                holder.gender = (TextView) convertView.findViewById(R.id.gender);
+                holder.list_image=(ImageView)convertView.findViewById(R.id.list_image);
 
                 convertView.setTag(holder);
 
@@ -109,12 +118,11 @@ public class BirthFragment extends Fragment {
             else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
             Birth_Table birthTable=birthTableArrayList.get(position);
-
             holder.mother_name.setText(String.valueOf(birthTable.getName_of_motherValue() + ""));
-            holder.delivery_date.setText(String.valueOf(birthTable.getDelivery_dateValue()+""));
-
+            holder.delivery_date.setText(String.valueOf(birthTable.getDelivery_dateValue()+" "));
+            holder.gender.setText(String.valueOf(birthTable.getGenderValue()+" "));
+            holder.list_image.setImageResource(R.drawable.baby_boy);
             return convertView;
 
 

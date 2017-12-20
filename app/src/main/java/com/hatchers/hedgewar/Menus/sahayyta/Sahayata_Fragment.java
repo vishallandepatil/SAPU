@@ -54,7 +54,7 @@ public class Sahayata_Fragment extends Fragment {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //launchHomeScreen();
+                launchHomeScreen();
             }
         });
 
@@ -68,13 +68,30 @@ public class Sahayata_Fragment extends Fragment {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    //launchHomeScreen();
+                    launchHomeScreen();
                 }
             }
         });
 
 
         return view;
+    }
+
+    private void launchHomeScreen() {
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
     }
 
     private  void initializations(View view)

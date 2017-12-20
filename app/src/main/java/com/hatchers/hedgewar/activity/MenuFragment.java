@@ -3,7 +3,12 @@ package com.hatchers.hedgewar.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -17,11 +22,13 @@ import com.hatchers.hedgewar.Menus.karyakram.Karyakram_Fragment;
 import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
 import com.hatchers.hedgewar.R;
+import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
 
 public class MenuFragment extends Fragment implements View.OnClickListener{
 
     private ImageView arogya,karyakram,birth,bank,help,contact;
+    Toolbar toolbar;
 
 
     public MenuFragment() {
@@ -35,6 +42,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View view= inflater.inflate(R.layout.fragment_menu, container, false);
+
+        initToolbar(view);
+        setHasOptionsMenu(true);
 
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
@@ -57,9 +67,17 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         karyakram.setOnClickListener(this);
         help.setOnClickListener(this);
         contact.setOnClickListener(this);
+
+
         return view;
     }
 
+
+    private void initToolbar(View view)
+    {
+        toolbar = (Toolbar)view.findViewById(R.id.menu_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+    }
     @Override
     public void onClick(View v) {
 
@@ -98,6 +116,35 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 fragmentTransaction.replace(R.id.frame_layout,sampark_fragment).addToBackStack(null).commit();
                 break;
         }
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case R.id.profile:
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                User_Details_Fragment detailsFragment = new User_Details_Fragment();
+                fragmentTransaction.replace(R.id.frame_layout,detailsFragment).commit();
+
+                break;
+
+            case R.id.sync:
+                break;
+
+            case R.id.logout:
+                    System.exit(0);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

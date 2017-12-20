@@ -52,7 +52,7 @@ public class Answer_Table_Helper {
 
             if (db.insert(Answer_Table.ANSWER_TABLE, null, values) > 0)
             {
-                Toast.makeText(context,"Answer data inserted"+answer_table.getQuestion_idValue(),Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Answer data inserted" +answer_table.getQuestion_idValue(),Toast.LENGTH_LONG).show();
                 db.close();
                 return true;
             }

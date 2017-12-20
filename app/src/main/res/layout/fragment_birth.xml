@@ -5,10 +5,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.hatchers.hedgewar.Menus.janma_nond.BirthFragment">
 
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="बालकांची यादी "
+       android:background="@drawable/shape1"
+       android:textSize="25dp"
+       android:textColor="@color/white"
+       android:gravity="center"
+       android:textStyle="bold"/>
+
    <ListView
        android:id="@+id/birth_listview"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+       android:layout_marginTop="70dp"
        android:dividerHeight="1dp"/>
 
    <android.support.design.widget.FloatingActionButton

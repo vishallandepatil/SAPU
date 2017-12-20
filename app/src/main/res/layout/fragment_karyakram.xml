@@ -36,7 +36,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="बालक जन्म नोंदणी "
+                android:text="कार्यक्रम व्यवस्थापन"
                 android:layout_marginLeft="15dp"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
@@ -50,7 +50,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/toolbar_krayakram"
         android:hint="कार्यक्रमाचे नाव "
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/shape"
         android:textColorHint="@color/white"
         android:id="@+id/program_name"
@@ -65,22 +65,22 @@
         android:id="@+id/programholder_name_layout"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape"
         android:layout_below="@id/program_name">
 
 
     <android.support.design.widget.TextInputEditText
+        android:drawableLeft="@drawable/speaker"
+        android:drawablePadding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape"
+        android:singleLine="true"
         android:hint="वक्त्याचे नाव "
-        android:paddingLeft="10dp"
+        android:padding="10dp"
         android:textColorHint="@color/white"
         android:id="@+id/program_holder_name"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="10dp"
         android:layout_below="@+id/karyakram_name"/>
 </android.support.design.widget.TextInputLayout>
 
@@ -92,7 +92,7 @@
         android:id="@+id/present_people_count_layout"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape"
         android:layout_below="@id/programholder_name_layout">
 
@@ -101,13 +101,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="उपस्थित संख्या "
-        android:paddingLeft="10dp"
+        android:padding="10dp"
+        android:inputType="number"
+        android:singleLine="true"
         android:background="@drawable/shape"
+        android:drawablePadding="20dp"
+        android:drawableLeft="@drawable/present_people_count"
         android:textColorHint="@color/white"
         android:id="@+id/present_people_count"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="10dp"
        />
 </android.support.design.widget.TextInputLayout>
 
@@ -118,21 +119,21 @@
         android:id="@+id/date_layout"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape"
         android:layout_below="@id/present_people_count_layout">
 
 
     <android.support.design.widget.TextInputEditText
         android:drawableLeft="@drawable/calendar"
+        android:drawablePadding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="दिनांक"
+        android:padding="10dp"
+        android:background="@android:color/transparent"
         android:layout_gravity="center"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
         android:paddingLeft="10dp"
-        android:background="#9091AF"
         android:textColorHint="@color/white"
         android:focusable="false"
         android:id="@+id/karyakram_date"
@@ -146,10 +147,10 @@
         android:text="पुढे जा "
         android:id="@+id/next"
         android:textSize="20dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="45dp"
         android:layout_below="@+id/date_layout"
         android:textColor="@color/white"
         android:background="@drawable/shape"/>

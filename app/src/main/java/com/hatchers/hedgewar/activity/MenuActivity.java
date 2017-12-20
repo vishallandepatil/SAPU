@@ -27,29 +27,5 @@ public class MenuActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout,menuFragment).commit();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.profile:
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                User_Details_Fragment detailsFragment = new User_Details_Fragment();
-                fragmentTransaction.replace(R.id.frame_layout,detailsFragment).commit();
-
-                break;
-
-            case R.id.sync:
-                break;
-
-            case R.id.logout:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
