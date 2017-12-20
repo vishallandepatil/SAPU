@@ -12,7 +12,7 @@
         app:title="Hedgewar Survey"
         app:titleTextColor="@color/white"
         android:background="#2AB79A"
-        android:id="@+id/toolbar">
+        android:id="@+id/menu_toolbar">
 
     </android.support.v7.widget.Toolbar>
 
@@ -22,7 +22,7 @@
         android:layout_gravity="center"
         app:cardCornerRadius="4dp"
         android:id="@+id/cardview_image"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/menu_toolbar">
 
         <ImageView
             android:layout_width="match_parent"

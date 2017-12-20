@@ -8,7 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -17,10 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/arrogya_tapasani"
+            android:background="@drawable/shape1"
             android:text="आरोग्य तपासणी"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="0dp"
             android:gravity="center_horizontal"/>
 
         <LinearLayout

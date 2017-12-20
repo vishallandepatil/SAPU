@@ -18,6 +18,8 @@ import com.hatchers.hedgewar.database.Birth_Table_Helper;
 
 import java.util.ArrayList;
 
+import static com.hatchers.hedgewar.R.id.gender_group;
+
 public class BirthFragment extends Fragment {
 
 
@@ -25,6 +27,7 @@ public class BirthFragment extends Fragment {
     BirthAdapter birthAdapter;
     ListView listView;
     ArrayList<Birth_Table> birthTables;
+
 
     public BirthFragment() {
         // Required empty public constructor
