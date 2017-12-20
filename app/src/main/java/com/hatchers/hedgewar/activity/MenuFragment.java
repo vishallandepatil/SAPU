@@ -1,5 +1,7 @@
 package com.hatchers.hedgewar.activity;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -22,7 +24,10 @@ import com.hatchers.hedgewar.Menus.karyakram.Karyakram_Fragment;
 import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
 import com.hatchers.hedgewar.R;
+import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
+
+import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
 
 
 public class MenuFragment extends Fragment implements View.OnClickListener{
@@ -138,10 +143,16 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.sync:
+                ProgressDialog progressDialog=new ProgressDialog(getActivity());
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
+                addBirthToServer(getActivity(),progressDialog);
+
+
                 break;
 
             case R.id.logout:
-                    System.exit(0);
+
                 break;
         }
         return super.onOptionsItemSelected(item);

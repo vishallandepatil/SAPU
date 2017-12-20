@@ -6,13 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.activity.MenuActivity;
 import com.hatchers.hedgewar.user_login.apihelper.Login_ApiHelper;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity
+{
 
     private Button login;
     private EditText edtName,edtPassword;
@@ -40,22 +42,28 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setUserInfo();
-               // Login_ApiHelper.userLoginApi(LoginActivity.this);
-                Intent intent=new Intent(LoginActivity.this,MenuActivity.class);
-                startActivity(intent);
-                finish();
+                if(setUserInfo()) {
+                    Login_ApiHelper.userLoginApi(LoginActivity.this);
+                }
 
-                
+
             }
         });
     }
 
-    private void setUserInfo()
+    private boolean setUserInfo()
     {
-        prefManager.setUserName(edtName.getText().toString());
-        prefManager.setPassword(edtPassword.getText().toString());
-
+        if(edtName.getText().toString().equalsIgnoreCase("")||edtPassword.getText().toString().equalsIgnoreCase(""))
+        {
+            Toast.makeText(getApplicationContext(),"Invalid User Name or password",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else
+        {
+            prefManager.setUserName(edtName.getText().toString());
+            prefManager.setPassword(edtPassword.getText().toString());
+        return true;
+        }
     }
 
 

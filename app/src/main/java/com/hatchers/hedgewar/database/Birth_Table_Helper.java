@@ -119,13 +119,14 @@ public class Birth_Table_Helper {
     {
     SQLiteDatabase db =  AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
         // Cursor cursor = db.rawQuery("SELECT * FROM " + Message_Table.TABLE_MESSAGE, null);
-    Cursor cursor = db.rawQuery("SELECT * FROM "+Birth_Table.BIRTH_TABLE,null);
+    Cursor cursor = db.rawQuery("SELECT * FROM "+Birth_Table.BIRTH_TABLE+" WHERE "+Birth_Table.UPLOAD_STATUS+"='0' LIMIT 1",null);
     try
     {
-            Birth_Table birth = new Birth_Table();
             cursor.moveToFirst();
             while (cursor.isAfterLast() == false)
             {
+                Birth_Table birth = new Birth_Table();
+
                 birth.setBirth_idValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_ID)));
                 birth.setName_of_motherValue(cursor.getString(cursor.getColumnIndex(Birth_Table.NAME_OF_MOTHER)));
                 birth.setAgeValue(cursor.getString(cursor.getColumnIndex(Birth_Table.AGE)));
@@ -140,6 +141,7 @@ public class Birth_Table_Helper {
                 birth.setVillage_idValue(cursor.getString(cursor.getColumnIndex(Birth_Table.VILLAGE_ID)));
                 birth.setUserIdValue(cursor.getString(cursor.getColumnIndex(Birth_Table.USER_ID)));
                 birth.setUploadStatusValue(cursor.getString(cursor.getColumnIndex(Birth_Table.UPLOAD_STATUS)));
+                cursor.moveToNext();
 
                 return  birth;
             }

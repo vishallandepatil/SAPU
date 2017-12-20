@@ -25,24 +25,44 @@ public class Login_ApiHelper
 {
     public static boolean userLoginApi(final Activity activity)
     {
-        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlUserRegistration, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlUserLogin, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(String response)
+            {
                 try {
                     JSONObject responce = new JSONObject(response);
-                    if (responce.getString("status").equalsIgnoreCase("sucess")) {
-                        JSONArray result = responce.getJSONArray("result");
+                    if (responce.getString("status").equalsIgnoreCase("Success"))
+                    {
+                        if(responce.getString("message").equalsIgnoreCase("Login successfully")) {
+                            JSONArray result = responce.getJSONArray("result");
+                            JSONObject jsonObject = result.getJSONObject(0);
+                            PrefManager prefManager = new PrefManager(activity);
+                            prefManager.setUserName(jsonObject.getString("user_name"));
+                            prefManager.setUserId(jsonObject.getString("id"));
+                            prefManager.setVillageName(jsonObject.getString("village_name"));
+                            prefManager.setVillageId(jsonObject.getString("vilage_id"));
+                            prefManager.setTqId(jsonObject.getString("tq_id"));
+                            prefManager.setMobile(jsonObject.getString("mobile"));
+                            prefManager.setBirthday(jsonObject.getString("dob"));
+                            prefManager.setPassword(jsonObject.getString("password"));
 
-                            //new PrefManager(activity).createLogin(new PrefManager(activity).getUserName());
-                           // new PrefManager(activity).setRegistration_skipped(false);
-                          /*  Intent intent = new Intent(activity, MenuActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+                            prefManager.createLogin(jsonObject.getString("mobile"));
+
+                            // new PrefManager(activity).setRegistration_skipped(false);
+                            Intent intent = new Intent(activity, MenuActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             activity.startActivity(intent);
-                            activity.finish();*/
+                            activity.finish();
+                        }
+                        else
+                        {
+                            Toast.makeText(activity,"Invalid Login...", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                     else
                     {
-                          Toast.makeText(activity,"Failed Try again..", Toast.LENGTH_SHORT).show();
+                          Toast.makeText(activity,"Invalid Login...", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -53,7 +73,7 @@ public class Login_ApiHelper
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                //   Toast.makeText(activity,error.toString(),Toast.LENGTH_SHORT).show();
+                   Toast.makeText(activity,error.toString(),Toast.LENGTH_SHORT).show();
 
                }
         }) {
@@ -62,25 +82,14 @@ public class Login_ApiHelper
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new Hashtable<String, String>();
-                //http://hatchers.in/calender/registration.php?
-                // name=vishal&
-                // mobileno=99999999&
-                // birthdate=20/12/2016&
-                // gender=M&
-                // city=gangapur2&
-                // appname=shivaji
 
-                params.put("username", new PrefManager(activity).getUserName());
+                params.put("mobile", new PrefManager(activity).getUserName());
                 params.put("password", new PrefManager(activity).getPassword());
-                params.put("appname", "Hedgewar");
                 //returning parameters
                 return params;
             }
 
         };
-
-        // Adding request to request queue
-
         MyApplication.getInstance().addToRequestQueue(strReq);
         return true;
 
