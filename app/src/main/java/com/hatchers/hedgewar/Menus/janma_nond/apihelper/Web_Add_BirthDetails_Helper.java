@@ -24,6 +24,8 @@ import org.json.JSONObject;
 import java.util.Hashtable;
 import java.util.Map;
 
+import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
+
 /**
  * Created by Ashwin on 20-Dec-17.
  */
@@ -35,7 +37,7 @@ public class Web_Add_BirthDetails_Helper
          final Birth_Table birth_table =Birth_Table_Helper.getBirthdata(activity);
         if(birth_table==null)
         {
-            progressDialog.dismiss();
+            inserAnswers(activity, progressDialog);
             return false;
         }
 

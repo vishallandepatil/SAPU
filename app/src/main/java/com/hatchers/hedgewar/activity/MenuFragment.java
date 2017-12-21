@@ -28,6 +28,7 @@ import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
 import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
+import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
 
 
 public class MenuFragment extends Fragment implements View.OnClickListener{

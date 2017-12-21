@@ -148,14 +148,10 @@ public class Arogya_Feedback_Fragment extends Fragment
     private void changeQuestion()
     {
         if (mIfCounter > 0) {
+            EditText et = (EditText) view;
+            String a = et.getText().toString();
 
             try {
-                EditText et = (EditText) view;
-                String a = et.getText().toString();
-                if(a.equalsIgnoreCase(""))
-                {
-                    a="0";
-                }
                 String b = question.getQUESTION_ID_VALUE();
                 String c = question.getTYPE_VALUE();
 
@@ -177,7 +173,14 @@ public class Arogya_Feedback_Fragment extends Fragment
                 ///insert all ans in ans table
                 for(Answer_Table ans : answerTableArrayList)
                 {
-                    Answer_Table_Helper.insertAnswer(getActivity(),ans);
+                    if(a.equalsIgnoreCase(""))
+                    {
+                        //a="0";
+                    }
+                    else
+                    {
+                        Answer_Table_Helper.insertAnswer(getActivity(), ans);
+                    }
                 }
             }
 

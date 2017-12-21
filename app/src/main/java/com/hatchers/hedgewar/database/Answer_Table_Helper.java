@@ -112,13 +112,14 @@ public class Answer_Table_Helper {
     {
         SQLiteDatabase db =  AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
         // Cursor cursor = db.rawQuery("SELECT * FROM " + Message_Table.TABLE_MESSAGE, null);
-        Cursor cursor = db.rawQuery("SELECT * FROM "+Answer_Table.ANSWER_TABLE,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Answer_Table.ANSWER_TABLE+" WHERE "+Answer_Table.UPLOAD_STATUS+"='0' LIMIT 1",null);
         try
         {
-           Answer_Table answer = new Answer_Table();
             cursor.moveToFirst();
             while (cursor.isAfterLast() == false)
             {
+                Answer_Table answer = new Answer_Table();
+
                 answer.setAns_idValue(cursor.getString(cursor.getColumnIndex(Answer_Table.ANS_ID)));
                 answer.setQuestion_idValue(cursor.getString(cursor.getColumnIndex(Answer_Table.QUESTION_ID)));
                 answer.setAnswer_countValue(cursor.getString(cursor.getColumnIndex(Answer_Table.ANSWER_COUNT)));
@@ -131,7 +132,7 @@ public class Answer_Table_Helper {
                 answer.setUser_idValue(cursor.getString(cursor.getColumnIndex(Answer_Table.USER_ID)));
                 answer.setVillage_idValue(cursor.getString(cursor.getColumnIndex(Answer_Table.VILLAGE_ID)));
                 answer.setCategoryValue(cursor.getString(cursor.getColumnIndex(Answer_Table.CATEGORY)));
-
+                cursor.moveToNext();
                 return  answer;
             }
             return null;
