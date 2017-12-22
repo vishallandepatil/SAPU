@@ -55,6 +55,9 @@ public class BirthFragment extends Fragment {
                 fragmentTransaction.replace(R.id.frame_layout,janmNondFragment).addToBackStack(null).commit();
             }
         });
+
+
+        
         return view;
     }
 
