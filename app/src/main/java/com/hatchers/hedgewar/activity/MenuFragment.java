@@ -141,6 +141,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.logout:
+                    System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);

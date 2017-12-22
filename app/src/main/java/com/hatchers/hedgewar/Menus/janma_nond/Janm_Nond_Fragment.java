@@ -216,11 +216,11 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId== R.id.radiobtnmale)
                 {
-                    selected_gender="M";
+                    selected_gender="Male";
                 }
                 else if(checkedId == R.id.radiobtnfemale)
                 {
-                    selected_gender="F";
+                    selected_gender="Female";
                 }
             }
         });

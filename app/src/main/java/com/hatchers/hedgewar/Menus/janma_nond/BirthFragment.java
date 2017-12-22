@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,8 +18,6 @@ import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
 
 import java.util.ArrayList;
-
-import static com.hatchers.hedgewar.R.id.gender_group;
 
 public class BirthFragment extends Fragment {
 
@@ -78,6 +77,8 @@ public class BirthFragment extends Fragment {
         {
             TextView mother_name;
             TextView delivery_date;
+            TextView gender;
+            ImageView list_image;
 
         }
 
@@ -105,6 +106,8 @@ public class BirthFragment extends Fragment {
                 holder = new ViewHolder();
                 holder.mother_name = (TextView) convertView.findViewById(R.id.mother_name);
                 holder.delivery_date = (TextView) convertView.findViewById(R.id.delivery_date);
+                holder.gender = (TextView) convertView.findViewById(R.id.gender);
+                holder.list_image=(ImageView)convertView.findViewById(R.id.list_image);
 
                 convertView.setTag(holder);
 
@@ -112,12 +115,11 @@ public class BirthFragment extends Fragment {
             else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
             Birth_Table birthTable=birthTableArrayList.get(position);
-
             holder.mother_name.setText(String.valueOf(birthTable.getName_of_motherValue() + ""));
-            holder.delivery_date.setText(String.valueOf(birthTable.getDelivery_dateValue()+""));
-
+            holder.delivery_date.setText(String.valueOf(birthTable.getDelivery_dateValue()+" "));
+            holder.gender.setText(String.valueOf(birthTable.getGenderValue()+" "));
+            holder.list_image.setImageResource(R.drawable.baby_boy);
             return convertView;
 
 
