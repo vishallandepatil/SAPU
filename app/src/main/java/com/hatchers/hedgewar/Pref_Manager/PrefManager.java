@@ -105,7 +105,7 @@ public class PrefManager {
     }
 
     public void setTqId(String tqId) {
-        editor.putString(VILLAGE_ID, tqId);
+        editor.putString(TQ_ID, tqId);
         editor.commit();
     }
 

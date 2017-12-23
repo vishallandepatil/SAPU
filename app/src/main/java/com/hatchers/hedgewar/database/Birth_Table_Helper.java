@@ -6,12 +6,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Birth_Table_Helper {
 
     public static boolean insertBirth(Context context, Birth_Table birthTable)
     {
+
         try {
                 SQLiteDatabase db = AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
                 ContentValues values = new ContentValues();
@@ -33,10 +36,10 @@ public class Birth_Table_Helper {
                {
 
                }
-                   values.put(Birth_Table.PLACE, birthTable.getPlaceValue());
+                values.put(Birth_Table.PLACE, birthTable.getPlaceValue());
                 values.put(Birth_Table.GENDER, birthTable.getGenderValue());
                 values.put(Birth_Table.DATE_OF_PERIOD, birthTable.getDate_of_period());
-                values.put(Birth_Table.DELIVERY_DATE, birthTable.getDelivery_dateValue());
+            values.put(Birth_Table.DELIVERY_DATE, birthTable.getDelivery_dateValue());
             try {
                 values.put(Birth_Table.VILLAGE_ID, Integer.parseInt(birthTable.getVillage_idValue()));
             }
@@ -156,10 +159,14 @@ public class Birth_Table_Helper {
 
     public static ArrayList<Birth_Table> getBirthdataList(Context context)
     {
+
         ArrayList<Birth_Table> birthTableArrayList = new ArrayList<Birth_Table>();
         SQLiteDatabase db =  AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
         // Cursor cursor = db.rawQuery("SELECT * FROM " + Message_Table.TABLE_MESSAGE, null);
-        Cursor cursor = db.rawQuery("SELECT * FROM "+Birth_Table.BIRTH_TABLE,null);
+
+        String sort = " ORDER BY " + Birth_Table.DELIVERY_DATE + " DESC";
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Birth_Table.BIRTH_TABLE +sort ,null);
         try
         {
             cursor.moveToFirst();

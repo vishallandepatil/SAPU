@@ -1,5 +1,6 @@
 package com.hatchers.hedgewar.user_login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +44,10 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(setUserInfo()) {
-                    Login_ApiHelper.userLoginApi(LoginActivity.this);
+                    ProgressDialog progressDialog =new ProgressDialog(LoginActivity.this);
+                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDialog.show();
+                    Login_ApiHelper.userLoginApi(LoginActivity.this,progressDialog);
                 }
 
 

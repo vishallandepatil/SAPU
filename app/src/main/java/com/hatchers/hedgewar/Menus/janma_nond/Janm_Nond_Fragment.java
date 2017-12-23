@@ -172,6 +172,9 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
 
             }
         },year,month,day);
+        final Calendar calender1 = Calendar.getInstance();
+        calender1.set(2016, Calendar.JANUARY, 1);
+        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
         dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
@@ -192,6 +195,9 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
 
             }
         },year,month,day);
+        final Calendar calender1 = Calendar.getInstance();
+        calender1.set(2016, Calendar.JANUARY, 1);
+        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
         dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
@@ -212,6 +218,9 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
 
             }
         },year,month,day);
+        final Calendar calender1 = Calendar.getInstance();
+        calender1.set(2016, Calendar.JANUARY, 1);
+        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
         dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
@@ -223,11 +232,11 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId== R.id.radiobtnmale)
                 {
-                    selected_gender="Male";
+                    selected_gender="M";
                 }
                 else if(checkedId == R.id.radiobtnfemale)
                 {
-                    selected_gender="Female";
+                    selected_gender="F";
                 }
             }
         });
@@ -237,11 +246,11 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
-                    bloodUrineTest="Positive";
+                    bloodUrineTest="Y";
                 }
                 else
                 {
-                    bloodUrineTest="Negative";
+                    bloodUrineTest="N";
                 }
             }
         });

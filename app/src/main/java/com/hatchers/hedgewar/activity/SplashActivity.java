@@ -40,16 +40,16 @@ public class SplashActivity extends AppCompatActivity {
     public void check()
     {
         prefManager = new PrefManager(this);
-        if (!prefManager.isLoggedIn()) {
+        if (prefManager.isLoggedIn()) {
 
-            Intent intent=new Intent(SplashActivity.this,LoginActivity.class);
+            Intent intent=new Intent(SplashActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
 
         }
         else
         {
-            Intent intent=new Intent(SplashActivity.this, MenuActivity.class);
+            Intent intent=new Intent(SplashActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
         }

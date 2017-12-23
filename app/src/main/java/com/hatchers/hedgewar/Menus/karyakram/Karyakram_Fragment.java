@@ -36,6 +36,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
     private int mYear, mMonth, mDay;
     private Button next;
     Answer_Table answer;
+    Question_Table question_table;
     private ArrayList<Question_Table> questionTableArrayList;
 
     public Karyakram_Fragment() {
@@ -106,7 +107,6 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
     public void displayDatepicker()
     {
         final Calendar calender = Calendar.getInstance();
-        calender.set(1980, Calendar.JANUARY, 1);
         mYear = calender.get(Calendar.YEAR);
         mMonth = calender.get(Calendar.MONTH);
         mDay = calender.get(Calendar.DAY_OF_MONTH);
@@ -119,6 +119,9 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
 
             }
         }, mYear, mMonth, mDay);
+        final Calendar calender1 = Calendar.getInstance();
+        calender1.set(2016, Calendar.JANUARY, 1);
+        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
         dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
@@ -129,14 +132,14 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
     {
         boolean response=true;
 
-        if(program_holder_name.getText().toString().trim().length()==0) {
+        /*if(program_holder_name.getText().toString().trim().length()==0) {
             program_holder_name.setError("वक्त्याचे नाव टाका");
             response = false;
         }
         else
         {
             program_holder_name.setError(null);
-        }
+        }*/
 
         if(present_people_count.getText().toString().trim().length()==0) {
             present_people_count.setError("उपस्थित संख्या टाका");
@@ -156,7 +159,6 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
             programDate.setError(null);
         }
 
-        if (program_name.getSelectedItem().toString().trim().equalsIgnoreCase("कार्यक्रमाचे नाव")) {
 
             View selectedView = program_name.getSelectedView();
             if (selectedView != null && selectedView instanceof TextView) {
@@ -168,9 +170,11 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                 } else {
                     selectedTextView.setError(null);
                 }
+
+                response = false;
             }
-            response = false;
-        }
+
+
 
         return response;
     }
@@ -183,13 +187,16 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         answer.setProgram_topicValue(program_name.getSelectedItem().toString());
         answer.setAnswer_countValue(present_people_count.getText().toString());
         answer.setAns_dateValue(programDate.getText().toString());
+        answer.setQuestion_idValue(question_table.getQUESTION_ID_VALUE());
 
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
-        
+         question_table=questionTableArrayList.get(position);
+
+
     }
 
     @Override

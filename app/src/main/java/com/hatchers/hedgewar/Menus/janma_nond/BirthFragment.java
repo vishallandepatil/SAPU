@@ -1,6 +1,7 @@
 package com.hatchers.hedgewar.Menus.janma_nond;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,7 @@ public class BirthFragment extends Fragment {
     private FloatingActionButton fab;
     BirthAdapter birthAdapter;
     ListView listView;
+    TextView select_year;
     ArrayList<Birth_Table> birthTables;
 
 
@@ -37,6 +39,7 @@ public class BirthFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_birth, container, false);
+        select_year=(TextView)view.findViewById(R.id.select_year);
 
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
@@ -57,7 +60,6 @@ public class BirthFragment extends Fragment {
         });
 
 
-        
         return view;
     }
 
@@ -121,11 +123,26 @@ public class BirthFragment extends Fragment {
             Birth_Table birthTable=birthTableArrayList.get(position);
             holder.mother_name.setText(String.valueOf(birthTable.getName_of_motherValue() + ""));
             holder.delivery_date.setText(String.valueOf(birthTable.getDelivery_dateValue()+" "));
-            holder.gender.setText(String.valueOf(birthTable.getGenderValue()+" "));
-            holder.list_image.setImageResource(R.drawable.baby_boy);
+            holder.gender.setText(String.valueOf(birthTable.getUploadStatusValue()+" "));
+
+            if(birthTable.getGenderValue().equalsIgnoreCase("M")) {
+                holder.list_image.setImageResource(R.drawable.baby_boy);
+            }
+            else
+            {
+                holder.list_image.setImageResource(R.drawable.baby_girl);
+            }
+
+
+            if(position %2 == 1)
+            {
+                convertView.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
+            else
+            {
+                convertView.setBackgroundColor(Color.parseColor("#79139e9d"));
+            }
             return convertView;
-
-
         }
     }
 

@@ -16,6 +16,7 @@
     <string name="sampark">संपर्क</string>
 
     <string-array name="delivery_place">
+        <item>ठिकाण</item>
         <item>घरी</item>
         <item>दवाखाना</item>
         <item>खाजगी दवाखाना</item>

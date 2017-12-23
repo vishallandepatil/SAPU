@@ -1,6 +1,7 @@
 package com.hatchers.hedgewar.user_login.apihelper;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ import java.util.Map;
 
 public class Login_ApiHelper
 {
-    public static boolean userLoginApi(final Activity activity)
+    public static boolean userLoginApi(final Activity activity, final ProgressDialog progressDialog)
     {
         StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlUserLogin, new Response.Listener<String>() {
             @Override
@@ -47,7 +48,7 @@ public class Login_ApiHelper
                             prefManager.setPassword(jsonObject.getString("password"));
 
                             prefManager.createLogin(jsonObject.getString("mobile"));
-
+                            progressDialog.dismiss();
                             // new PrefManager(activity).setRegistration_skipped(false);
                             Intent intent = new Intent(activity, MenuActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -56,15 +57,18 @@ public class Login_ApiHelper
                         }
                         else
                         {
+                            progressDialog.dismiss();
                             Toast.makeText(activity,"Invalid Login...", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                     else
                     {
-                          Toast.makeText(activity,"Invalid Login...", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                        Toast.makeText(activity,"Invalid Login...", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
+                    progressDialog.dismiss();
                     e.printStackTrace();
                 }
             }
@@ -73,7 +77,8 @@ public class Login_ApiHelper
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                   Toast.makeText(activity,error.toString(),Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                Toast.makeText(activity,error.toString(),Toast.LENGTH_SHORT).show();
 
                }
         }) {
@@ -85,6 +90,7 @@ public class Login_ApiHelper
 
                 params.put("mobile", new PrefManager(activity).getUserName());
                 params.put("password", new PrefManager(activity).getPassword());
+                params.put("format","json");
                 //returning parameters
                 return params;
             }

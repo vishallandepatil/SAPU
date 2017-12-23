@@ -112,6 +112,9 @@ public class Arogya_Feedback_Fragment extends Fragment
 
             }
         },year,month,day);
+        final Calendar calender1 = Calendar.getInstance();
+        calender1.set(2016, Calendar.JANUARY, 1);
+        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
         dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
@@ -140,9 +143,27 @@ public class Arogya_Feedback_Fragment extends Fragment
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changeQuestion();
+                if(checkValidation()) {
+                    changeQuestion();
+                }
             }
         });
+    }
+
+
+
+    private boolean checkValidation()
+    {
+        boolean response = true;
+
+        if(feedbackDateTxt.getText().toString().trim().length()==0) {
+            feedbackDateTxt.setError("तारीख टाका");
+            response = false;
+        }
+        else {
+            feedbackDateTxt.setError(null);
+            }
+        return response;
     }
 
     private void changeQuestion()

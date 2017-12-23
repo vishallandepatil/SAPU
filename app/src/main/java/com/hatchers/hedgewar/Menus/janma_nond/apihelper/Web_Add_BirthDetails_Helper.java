@@ -21,6 +21,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -112,17 +114,53 @@ public class Web_Add_BirthDetails_Helper
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new Hashtable<String, String>();
-
+                SimpleDateFormat formatterin = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat formatterout = new SimpleDateFormat("yyyy-MM-dd");
                 params.put("name_of_mother", birth_table.getName_of_motherValue());
                 params.put("age", birth_table.getAgeValue());
                 params.put("delivery_count", birth_table.getdelivery_countValue());
-                params.put("month_of_registration", birth_table.getMonth_of_registrationValue());
+                                try {
+
+
+                    Date strDate= formatterin.parse(birth_table.getMonth_of_registrationValue());
+                    params.put("month_of_registration", formatterout.format(strDate));
+
+                }
+                catch (Exception e)
+                {
+
+                }
+
                 params.put("blood_urine_test", birth_table.getBlood_urine_testValue());
-                params.put("delivery_date", birth_table.getDelivery_dateValue());
+
+               try {
+
+
+                   Date strDate= formatterin.parse(birth_table.getDelivery_dateValue());
+                   params.put("delivery_date", formatterout.format(strDate));
+
+               }
+               catch (Exception e)
+               {
+
+               }
                 params.put("place", birth_table.getPlaceValue());
                 params.put("gender", birth_table.getGenderValue());
                 params.put("birth_weight", birth_table.getBirth_weightValue());
-                params.put("date_of_period", birth_table.getDate_of_period());
+
+                try {
+
+
+                    Date strDate= formatterin.parse(birth_table.getDate_of_period());
+                    params.put("date_of_period", formatterout.format(strDate));
+
+                }
+                catch (Exception e)
+                {
+
+                }
+
+
                 params.put("user_id", new PrefManager(activity).getUserId());
                 params.put("village_id", new PrefManager(activity).getVillageId());
                 params.put("mobile", new PrefManager(activity).getMobile());

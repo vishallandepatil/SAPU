@@ -85,7 +85,7 @@
 
         <RelativeLayout
              android:layout_width="match_parent"
-             android:layout_height="match_parent">
+             android:layout_height="wrap_content">
 
 
             <android.support.design.widget.TextInputLayout
@@ -94,7 +94,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:id="@+id/mothername_layout">
 
                 <android.support.design.widget.TextInputEditText
@@ -107,7 +107,6 @@
                     android:inputType="text"
                     android:padding="10dp"
                     android:singleLine="true"
-                    android:textColorHint="@color/white"
                     android:hint="गरोदर मातेचे नाव "
                     android:textSize="18dp"
                     android:layout_gravity="center"/>
@@ -121,7 +120,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/mothername_layout"
                 android:weightSum="2">
 
@@ -134,7 +133,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="नोंदणीचा महिना "
-            android:textColorHint="@color/white"
             android:focusable="false"
             android:textSize="18dp"
             android:layout_weight="1"
@@ -150,7 +148,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/registration_month_layout">
 
             <android.support.design.widget.TextInputEditText
@@ -161,7 +159,6 @@
                 android:layout_height="wrap_content"
                 android:hint="पाळीची तारीख "
                 android:background="@android:color/transparent"
-                android:textColorHint="@color/white"
                 android:layout_gravity="center"
                 android:focusable="false"
                 android:textSize="18dp"
@@ -177,7 +174,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/date_of_periods_layout">
 
                 <android.support.design.widget.TextInputEditText
@@ -188,7 +185,6 @@
                     android:layout_height="wrap_content"
                     android:hint="बाळंतपणाची तारीख"
                     android:background="@android:color/transparent"
-                    android:textColorHint="@color/white"
                     android:layout_gravity="center"
                     android:focusable="false"
                     android:textSize="18dp"
@@ -205,23 +201,24 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/delivery_date_layout"
                 android:weightSum="2">
 
                 <ImageView
                      android:layout_width="25dp"
                      android:layout_height="40dp"
-                     android:layout_marginLeft="10dp"
+                     android:layout_marginLeft="8dp"
                      android:layout_gravity="center"
                      android:src="@drawable/place_image"/>
 
                <Spinner
                    android:id="@+id/place"
+                   android:layout_marginLeft="15dp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_gravity="center"
-                   android:layout_weight="1" />
+                   android:layout_weight="1"/>
 
             </LinearLayout>
 
@@ -232,7 +229,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/place_layout">
 
               <android.support.design.widget.TextInputEditText
@@ -246,11 +243,9 @@
                   android:id="@+id/age"
                   android:hint="वय"
                   android:singleLine="true"
-                  android:textColorHint="@color/white"
                   android:textSize="18dp"
                   android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
-
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -259,7 +254,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/age_layout">
 
                 <android.support.design.widget.TextInputEditText
@@ -273,7 +268,6 @@
                     android:id="@+id/consignment"
                     android:hint="खेप "
                     android:singleLine="true"
-                    android:textColorHint="@color/white"
                     android:textSize="18dp"
                     android:inputType="number"/>
           </android.support.design.widget.TextInputLayout>
@@ -285,7 +279,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/consignment_layout"
               >
 
@@ -313,7 +307,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/birthweight_layout">
 
              <CheckBox
@@ -321,13 +315,12 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:layout_marginLeft="6dp"
-                 android:buttonTint="#fff"
+                 android:buttonTint="#000"
                  android:id="@+id/urine_blood_test"
                  android:text="रक्त लघवी तपासणी "
                  android:padding="12dp"
                  android:textSize="18dp"
-                 android:layout_gravity="center"
-                 android:textColor="@color/white"/>
+                 android:layout_gravity="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -337,7 +330,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape3"
                 android:layout_below="@id/urine_blood_test_layout">
 
                 <RadioGroup
@@ -345,27 +338,25 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/gender_group"
                     android:textSize="18dp"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginLeft="6.5dp"
                     android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white">
+                    android:layout_gravity="center">
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="मुलगा "
-                        android:buttonTint="#fff"
-                        android:textSize="20dp"
-                        android:textColor="@color/white"
+                        android:buttonTint="#000"
+                        android:textSize="18dp"
                         android:id="@+id/radiobtnmale" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" मुलगी "
-                        android:buttonTint="#fff"
-                        android:textSize="20dp"
-                        android:textColor="@color/white"
+                        android:text="मुलगी "
+                        android:buttonTint="#000"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp"
                         android:id="@+id/radiobtnfemale" />
                     </RadioGroup>
             </LinearLayout>
@@ -379,12 +370,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
                 android:text="सेव"
-                android:padding="10dp"
+                android:padding="8dp"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:id="@+id/save"
                 android:textSize="18dp"/>
 
-</RelativeLayout>
+        </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

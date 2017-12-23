@@ -10,7 +10,7 @@
     </item>
 
     <item
-        android:title="Sync"
+        android:title="अहवाल पाठवा "
         android:id="@+id/sync"
         android:icon="@drawable/ic_sync">
     </item>
