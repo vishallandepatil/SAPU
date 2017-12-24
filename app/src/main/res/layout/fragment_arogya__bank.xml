@@ -44,20 +44,23 @@
 
     </android.support.v7.widget.Toolbar>
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="top|center"
-    android:layout_marginTop="70dp"
-   android:text="आरोग्य बँक अभिप्राय "
-    android:id="@+id/title"
-    android:textSize="25dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:layout_marginTop="70dp"
+        android:text="आरोग्य बँक अभिप्राय "
+        android:id="@+id/title"
+        android:textSize="25dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:id="@+id/linear1"
         android:weightSum="3"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_below="@+id/title">
 
         <TextView
@@ -65,7 +68,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:paddingLeft="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_weight="0.45"
             android:layout_gravity="center"
             android:id="@+id/feedback_dateText"
@@ -76,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/calendar_black"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:layout_weight="0.15"
             android:layout_gravity="center"
             android:id="@+id/feedback_dateImage"/>
@@ -84,7 +87,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/shape2"
             android:hint="तपासणीची तारीख"
             android:clickable="false"

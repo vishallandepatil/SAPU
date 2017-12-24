@@ -2,6 +2,7 @@ package com.hatchers.hedgewar.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -23,8 +24,10 @@ import com.hatchers.hedgewar.Menus.janma_nond.BirthFragment;
 import com.hatchers.hedgewar.Menus.karyakram.Karyakram_Fragment;
 import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
+import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Birth_Table;
+import com.hatchers.hedgewar.user_login.LoginActivity;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
 import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
@@ -35,13 +38,11 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
 
     private ImageView arogya,karyakram,birth,bank,help,contact;
     Toolbar toolbar;
-
+    PrefManager prefManager;
 
     public MenuFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +84,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
     {
         toolbar = (Toolbar)view.findViewById(R.id.menu_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        prefManager=new PrefManager(getActivity());
     }
     @Override
     public void onClick(View v) {
@@ -139,8 +141,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             case R.id.profile:
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 User_Details_Fragment detailsFragment = new User_Details_Fragment();
-                fragmentTransaction.replace(R.id.frame_layout,detailsFragment).commit();
-
+                fragmentTransaction.replace(R.id.frame_layout,detailsFragment).addToBackStack(null).commit();
                 break;
 
             case R.id.sync:
@@ -148,13 +149,14 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.show();
                 addBirthToServer(getActivity(),progressDialog);
-
-
                 break;
 
             case R.id.logout:
-
-                break;
+                    prefManager.setLogOut();
+                    Intent i= new Intent(getActivity(), LoginActivity.class);
+                    startActivity(i);
+                    getActivity().finish();
+                    break;
         }
         return super.onOptionsItemSelected(item);
     }

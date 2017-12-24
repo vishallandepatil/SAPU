@@ -1,16 +1,22 @@
 package com.hatchers.hedgewar.Menus.janma_nond;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.hatchers.hedgewar.R;
@@ -18,6 +24,7 @@ import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class BirthFragment extends Fragment {
 
@@ -25,6 +32,8 @@ public class BirthFragment extends Fragment {
     private FloatingActionButton fab;
     BirthAdapter birthAdapter;
     ListView listView;
+    Spinner select_year;
+
     ArrayList<Birth_Table> birthTables;
 
 
@@ -37,6 +46,7 @@ public class BirthFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_birth, container, false);
+        select_year=(Spinner) view.findViewById(R.id.select_year);
 
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
@@ -57,7 +67,14 @@ public class BirthFragment extends Fragment {
         });
 
 
-        
+        ArrayList<String> years = new ArrayList<String>();
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = 2011; i <= thisYear; i++) {
+            years.add(Integer.toString(i));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, years);
+        select_year.setAdapter(adapter);
+
         return view;
     }
 
@@ -121,11 +138,26 @@ public class BirthFragment extends Fragment {
             Birth_Table birthTable=birthTableArrayList.get(position);
             holder.mother_name.setText(String.valueOf(birthTable.getName_of_motherValue() + ""));
             holder.delivery_date.setText(String.valueOf(birthTable.getDelivery_dateValue()+" "));
-            holder.gender.setText(String.valueOf(birthTable.getGenderValue()+" "));
-            holder.list_image.setImageResource(R.drawable.baby_boy);
+            holder.gender.setText(String.valueOf(birthTable.getUploadStatusValue()+" "));
+
+            if(birthTable.getGenderValue().equalsIgnoreCase("M")) {
+                holder.list_image.setImageResource(R.drawable.baby_boy);
+            }
+            else
+            {
+                holder.list_image.setImageResource(R.drawable.baby_girl);
+            }
+
+
+            if(position %2 == 1)
+            {
+                convertView.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
+            else
+            {
+                convertView.setBackgroundColor(Color.parseColor("#79139e9d"));
+            }
             return convertView;
-
-
         }
     }
 

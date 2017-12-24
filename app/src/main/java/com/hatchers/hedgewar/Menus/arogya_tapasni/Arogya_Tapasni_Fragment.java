@@ -117,6 +117,9 @@ public class Arogya_Tapasni_Fragment extends Fragment
 
             }
         },year,month,day);
+        final Calendar calender1 = Calendar.getInstance();
+        calender1.set(2016, Calendar.JANUARY, 1);
+        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
         dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }

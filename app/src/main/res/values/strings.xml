@@ -16,6 +16,7 @@
     <string name="sampark">संपर्क</string>
 
     <string-array name="delivery_place">
+        <item>ठिकाण</item>
         <item>घरी</item>
         <item>दवाखाना</item>
         <item>खाजगी दवाखाना</item>
@@ -38,8 +39,13 @@
     <string name="slide_5_title">संपर्क</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hedgewar_address">डॉ. हेडगेवार रुग्णालय\nगारखेडा ,औरंगाबाद - 431005</string>
-    <string name="hedgewar_contact">+91(240)2339866,2331195\n+91(240)2341849</string>
+    <string name="hedgewar_address">https://www.google.co.in/maps/place/Dr.+Hedgewar+Rugnalaya/@19.8688892,75.3479277,17z/data=!4m5!3m4!1s0x3bdba28464eee089:0x657bb13ef3cfb849!8m2!3d19.8693141!4d75.3482425?hl=en</string>
+    <string name="hedgewar_contact1">(0240)2339866</string>
+    <string name="hedgewar_contact2">(0240)2331195</string>
+    <string name="hedgewar_contact3">(0240)2341849</string>
+
+
+    <!--+91(240)2339866,2331195\n+91(240)2341849-->
 
 
 </resources>
