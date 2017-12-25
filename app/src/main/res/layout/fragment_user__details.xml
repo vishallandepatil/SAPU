@@ -37,14 +37,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="नाव "
-                android:padding="10dp"
+                android:background="#E4EEFA"
+                android:padding="20dp"
                 android:textSize="20dp"
                 android:id="@+id/name"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/passwordlayour"
+                android:id="@+id/passwordlayout"
                 android:layout_below="@id/name">
 
                 <TextView
@@ -52,7 +53,7 @@
                     android:drawablePadding="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="20dp"
                     android:text="पासवर्ड "
                     android:textSize="20dp"
                     android:id="@+id/password"/>
@@ -63,10 +64,8 @@
                     android:padding="10dp"
                     android:id="@+id/passwrd_visible"
                     android:layout_gravity="right|center"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="25dp"
                     android:src="@drawable/eye_show"/>
-
-
             </FrameLayout>
 
 
@@ -76,34 +75,25 @@
                 android:drawablePadding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/passwordlayour"
-                android:padding="10dp"
+                android:layout_below="@id/passwordlayout"
+                android:padding="20dp"
+                android:background="#E4EEFA"
                 android:text="जन्मदिनांक  "
                 android:textSize="20dp"
                 android:id="@+id/date_of_birth"/>
 
+
+
             <TextView
                 android:drawableLeft="@drawable/mobile_number"
                 android:drawablePadding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date_of_birth"
-                android:padding="10dp"
+                android:padding="20dp"
                 android:text="मोबाइल नंबर  "
                 android:textSize="20dp"
                 android:id="@+id/mobile_number"/>
-
-
-            <TextView
-                android:drawableLeft="@drawable/mobile_number"
-                android:drawablePadding="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/date_of_birth"
-                android:padding="10dp"
-                android:text="मोबाइल नंबर  "
-                android:textSize="20dp"
-                android:id="@+id/i"/>
 
             <TextView
                 android:drawableLeft="@drawable/village_name"
@@ -111,7 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mobile_number"
-                android:padding="10dp"
+                android:background="#E4EEFA"
+                android:padding="20dp"
                 android:text="गावाचे नाव  "
                 android:textSize="20dp"
                 android:id="@+id/village_name"/>

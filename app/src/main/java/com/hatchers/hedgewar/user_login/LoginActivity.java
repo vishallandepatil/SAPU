@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity
                 if(setUserInfo()) {
                     ProgressDialog progressDialog =new ProgressDialog(LoginActivity.this);
                     progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDialog.setMessage("Login");
                     progressDialog.show();
                     Login_ApiHelper.userLoginApi(LoginActivity.this,progressDialog);
                 }

@@ -44,8 +44,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         // Required empty public constructor
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -143,7 +141,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             case R.id.profile:
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 User_Details_Fragment detailsFragment = new User_Details_Fragment();
-                fragmentTransaction.replace(R.id.frame_layout,detailsFragment).commit();
+                fragmentTransaction.replace(R.id.frame_layout,detailsFragment).addToBackStack(null).commit();
                 break;
 
             case R.id.sync:

@@ -96,7 +96,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                 setAnswerData();
                 if(checkValidation())
                 {
-                   Answer_Table_Helper.insertAnswer(getContext(),answer);
+                    Answer_Table_Helper.insertAnswer(getContext(),answer);
                     getActivity().onBackPressed();
                 }
             }
@@ -192,11 +192,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
          question_table=questionTableArrayList.get(position);
-
-
     }
 
     @Override
