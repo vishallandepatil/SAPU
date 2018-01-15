@@ -25,6 +25,8 @@ import com.hatchers.hedgewar.database.Question_Table_Helper;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -96,7 +98,34 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                 setAnswerData();
                 if(checkValidation())
                 {
-                    Answer_Table_Helper.insertAnswer(getContext(),answer);
+                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText(" थांबा  ");
+                    sweetAlertDialog.show();
+
+                    if(Answer_Table_Helper.insertAnswer(getContext(),answer))
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText(" माहिती जतन करा  ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(" माहिती जतन झाली नाही  ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
                     getActivity().onBackPressed();
                 }
             }

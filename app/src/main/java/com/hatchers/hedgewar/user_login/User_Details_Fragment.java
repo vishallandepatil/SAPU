@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
 
 
@@ -33,7 +34,6 @@ public class User_Details_Fragment extends Fragment {
         initialization(view);
 
         passwdClick();
-
         return view;
     }
 
@@ -61,4 +61,7 @@ public class User_Details_Fragment extends Fragment {
             }
         });
     }
+
+
+
 }

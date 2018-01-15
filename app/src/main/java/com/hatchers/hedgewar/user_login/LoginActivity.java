@@ -14,6 +14,8 @@ import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.activity.MenuActivity;
 import com.hatchers.hedgewar.user_login.apihelper.Login_ApiHelper;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class LoginActivity extends AppCompatActivity
 {
 
@@ -44,11 +46,34 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(setUserInfo()) {
-                    ProgressDialog progressDialog =new ProgressDialog(LoginActivity.this);
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                    progressDialog.setMessage("Login");
-                    progressDialog.show();
-                    Login_ApiHelper.userLoginApi(LoginActivity.this,progressDialog);
+                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText("Please wait");
+                    sweetAlertDialog.show();
+
+                    if(Login_ApiHelper.userLoginApi(LoginActivity.this,sweetAlertDialog))
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("Login Successful");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText("Login Failed ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
                 }
 
 

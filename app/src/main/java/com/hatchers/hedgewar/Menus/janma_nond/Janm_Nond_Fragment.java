@@ -31,6 +31,8 @@ import com.hatchers.hedgewar.database.Birth_Table_Helper;
 
 import java.util.Calendar;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -50,6 +52,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
     Context context;
     private String selected_gender = "", bloodUrineTest="";
     private ProgressDialog progressDialog;
+
 
     public Janm_Nond_Fragment() {
         // Required empty public constructor
@@ -136,12 +139,33 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                 setBirthData();
                 if(checkValidation())
                 {
+                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText(" थांबा  ");
+                    sweetAlertDialog.show();
                     if(Birth_Table_Helper.insertBirth(getActivity(),birth))
                     {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली  ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
                         getActivity().onBackPressed();
                     }
                     else
                     {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली नाही  ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
 
                     }
                 }

@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class Arogya_Feedback_Fragment extends Fragment
 {
@@ -144,6 +146,10 @@ public class Arogya_Feedback_Fragment extends Fragment
             @Override
             public void onClick(View view) {
                 if(checkValidation()) {
+                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText(" थांबा  ");
+                    sweetAlertDialog.show();
+
                     changeQuestion();
                 }
             }
@@ -201,6 +207,7 @@ public class Arogya_Feedback_Fragment extends Fragment
                     else
                     {
                         Answer_Table_Helper.insertAnswer(getActivity(), ans);
+
                     }
                 }
             }

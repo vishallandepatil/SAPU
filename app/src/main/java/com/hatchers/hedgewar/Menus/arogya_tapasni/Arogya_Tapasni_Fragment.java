@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class Arogya_Tapasni_Fragment extends Fragment
 {
     private TextView uniqueIdTxt;
@@ -148,6 +150,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
             public void onClick(View view) {
                 if(checkValidation())
                 {
+
                     changeQuestion();
                 }
             }

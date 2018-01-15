@@ -30,6 +30,8 @@ import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.user_login.LoginActivity;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
 import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
 
@@ -105,7 +107,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.janma_nond_image:
-               BirthFragment birthFragment= new BirthFragment();
+                BirthFragment birthFragment= new BirthFragment();
                 fragmentTransaction.replace(R.id.frame_layout,birthFragment).addToBackStack(null).commit();
                 break;
 
@@ -145,10 +147,35 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.sync:
-                ProgressDialog progressDialog=new ProgressDialog(getActivity());
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                progressDialog.show();
-                addBirthToServer(getActivity(),progressDialog);
+                SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                        .setTitleText("Please wait");
+                sweetAlertDialog.show();
+
+                if(addBirthToServer(getActivity(),sweetAlertDialog))
+                {
+                    sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                    sweetAlertDialog.setTitleText("अहवाल पाठवा ");
+                    sweetAlertDialog.setConfirmText("Ok");
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            sweetAlertDialog.dismissWithAnimation();
+                        }
+                    });
+                }
+                else
+                {
+
+                    sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                    sweetAlertDialog.setTitleText("अहवाल पाठवा ");
+                    sweetAlertDialog.setConfirmText("Ok");
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            sweetAlertDialog.dismissWithAnimation();
+                        }
+                    });
+                }
                 break;
 
             case R.id.logout:
