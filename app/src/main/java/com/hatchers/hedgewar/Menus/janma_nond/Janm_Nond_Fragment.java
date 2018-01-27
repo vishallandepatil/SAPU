@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,7 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper;
+
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
@@ -47,7 +49,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
     private TextView datePickerTxt;
     private Button save;
     private ImageButton backBtn;
-    private Toolbar toolbar;
+    private Toolbar janmaNondToolbar;
     Birth_Table birth;
     Context context;
     private String selected_gender = "", bloodUrineTest="";
@@ -85,11 +87,18 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
 
     private void initToolbar(View view)
     {
-        toolbar = (Toolbar)view.findViewById(R.id.janmaNond_toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        janmaNondToolbar = (Toolbar)view.findViewById(R.id.janmaNond_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(janmaNondToolbar);
     }
 
     private void initialization(View view) {
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = getActivity().getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
 
         registration_month = (TextInputEditText) view.findViewById(R.id.registration_month);
         date_of_periods = (TextInputEditText)view. findViewById(R.id.date_of_periods);
@@ -145,7 +154,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                     if(Birth_Table_Helper.insertBirth(getActivity(),birth))
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली  ");
+                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली");
                         sweetAlertDialog.setConfirmText("Ok");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override

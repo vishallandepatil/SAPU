@@ -1,73 +1,66 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerVertical="true"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorGray"
     tools:context="com.hatchers.hedgewar.user_login.User_Details_Fragment">
 
 
-    <TextView
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="माहिती "
-        android:id="@+id/information"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textStyle="bold"/>
+        android:layout_height="54dp"
+        app:contentInsetStart="4dp"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:title="आपली माहिती"
+        app:titleTextColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
+        android:id="@+id/userDetailsToolbar">
 
 
-    <android.support.v7.widget.CardView
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/information"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:elevation="5dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_account_circle_black_24dp"/>
 
 
             <TextView
-                android:drawableLeft="@drawable/user"
-                android:drawablePadding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="नाव "
-                android:background="#E4EEFA"
-                android:padding="20dp"
                 android:textSize="20dp"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center|bottom"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="20dp"
                 android:id="@+id/name_Txt"/>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/passwordlayout"
-                android:layout_below="@id/name_Txt">
+    </FrameLayout>
 
-                <TextView
-                    android:drawableLeft="@drawable/password"
-                    android:drawablePadding="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="पासवर्ड "
-                    android:textSize="20dp"
-                    android:id="@+id/password"/>
+    <android.support.v7.widget.CardView
+        app:cardElevation="1dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:padding="10dp"
-                    android:id="@+id/passwrd_visible"
-                    android:layout_gravity="right|center"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/eye_show"/>
-            </FrameLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
             <TextView
@@ -75,12 +68,19 @@
                 android:drawablePadding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/passwordlayout"
-                android:padding="20dp"
-                android:background="#E4EEFA"
+                android:padding="15dp"
                 android:text="जन्मदिनांक  "
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:id="@+id/date_of_birth"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="60dp"
+                android:background="@color/colorDarkgray"/>
 
 
 
@@ -89,25 +89,32 @@
                 android:drawablePadding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/date_of_birth"
-                android:padding="20dp"
+                android:padding="16dp"
                 android:text="मोबाइल नंबर  "
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:id="@+id/mobile_number"/>
 
-            <TextView
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="60dp"
+                android:background="@color/colorDarkgray"/>
+
+
+
+        <TextView
                 android:drawableLeft="@drawable/village_name"
                 android:drawablePadding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mobile_number"
-                android:background="#E4EEFA"
                 android:padding="20dp"
                 android:text="गावाचे नाव  "
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:id="@+id/village_name"/>
-
-        </RelativeLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
-</RelativeLayout>
+</LinearLayout>

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +20,9 @@ import com.hatchers.hedgewar.R;
 
 public class User_Details_Fragment extends Fragment {
 
-    private ImageView visiblPasswd;
-    private TextView passwdTxt;
-
+    private TextView name,dateOfBirthday,mobileNumber,villageName;
+    private Toolbar userDetailsToolbar;
+    private PrefManager perfManager;
     public User_Details_Fragment() {
         // Required empty public constructor
     }
@@ -32,18 +35,31 @@ public class User_Details_Fragment extends Fragment {
        View view= inflater.inflate(R.layout.fragment_user__details, container, false);
 
         initialization(view);
+        setUserDetails();
 
-        passwdClick();
+        userDetailsToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+        //passwdClick();
         return view;
     }
 
     private void initialization(View view)
     {
-        passwdTxt=(TextView)view.findViewById(R.id.password);
-        visiblPasswd=(ImageView)view.findViewById(R.id.passwrd_visible);
+        perfManager=new PrefManager(getActivity());
+        ((AppCompatActivity)getActivity()).setSupportActionBar(userDetailsToolbar);
+        userDetailsToolbar=(Toolbar) view.findViewById(R.id.userDetailsToolbar);
+
+        name=(TextView)view.findViewById(R.id.name_Txt);
+        dateOfBirthday=(TextView)view.findViewById(R.id.date_of_birth);
+        mobileNumber=(TextView)view.findViewById(R.id.mobile_number);
+        villageName=(TextView)view.findViewById(R.id.village_name);
     }
 
-    private void passwdClick()
+   /* private void passwdClick()
     {
         visiblPasswd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +77,14 @@ public class User_Details_Fragment extends Fragment {
             }
         });
     }
+*/
 
-
+    private void setUserDetails()
+    {
+        name.setText(String.valueOf("  " + perfManager.getUserName()));
+        mobileNumber.setText(String.valueOf("  " + perfManager.getMobile()));
+        villageName.setText(String.valueOf("  " + perfManager.getVillageName()));
+        dateOfBirthday.setText(String.valueOf("  " + "NA"));
+    }
 
 }

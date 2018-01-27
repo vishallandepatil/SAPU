@@ -3,10 +3,13 @@ package com.hatchers.hedgewar.Menus.arogya_feedback;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -30,7 +33,6 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Arogya_Feedback_Fragment extends Fragment
 {
-    private ImageButton back;
     private TextView quesnNumbetTxt, quesnTxt,feedbackDateTxt;
     private ArrayList<Question_Table> questionTableArrayList;
     private Button nextBtn;
@@ -40,6 +42,7 @@ public class Arogya_Feedback_Fragment extends Fragment
     private Question_Table question;
     private DatePickerDialog dpd;
     private int year,day,month;
+    private Toolbar arogyaToolbar;
     private ArrayList<Answer_Table> answerTableArrayList;
 
 
@@ -64,12 +67,20 @@ public class Arogya_Feedback_Fragment extends Fragment
 
     private void initializations(View view)
     {
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = getActivity().getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
+
+        arogyaToolbar=(Toolbar)view.findViewById(R.id.arogya_toolbar);
         ansLayout = (LinearLayout)view.findViewById(R.id.anslayuot);
         nextBtn = (Button) view.findViewById(R.id.next_btn);
         quesnNumbetTxt = (TextView)view.findViewById(R.id.quesn_no);
         quesnTxt=(TextView)view.findViewById(R.id.quesn);
         feedbackDateTxt = (TextView)view.findViewById(R.id.feedback_date);
-        back=(ImageButton)view.findViewById(R.id.btn_back);
         questionTableArrayList = Question_Table_Helper.getQuestionList(getActivity(),Question_Table.CATEGORY_FEEDBACK);
 
         answerTableArrayList = new ArrayList<Answer_Table>();
@@ -83,7 +94,7 @@ public class Arogya_Feedback_Fragment extends Fragment
 
     private void clickListner()
     {
-        back.setOnClickListener(new View.OnClickListener() {
+        arogyaToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
@@ -146,17 +157,12 @@ public class Arogya_Feedback_Fragment extends Fragment
             @Override
             public void onClick(View view) {
                 if(checkValidation()) {
-                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                            .setTitleText(" थांबा  ");
-                    sweetAlertDialog.show();
 
                     changeQuestion();
                 }
             }
         });
     }
-
-
 
     private boolean checkValidation()
     {
@@ -230,7 +236,7 @@ public class Arogya_Feedback_Fragment extends Fragment
                             view = et;
                             //et.setInputType;
                             et.setLayoutParams(lparams);
-                            et.setInputType(InputType.TYPE_CLASS_NUMBER);
+                            et.setInputType(InputType.TYPE_CLASS_TEXT);
 
                             ansLayout.removeAllViews();
                             ansLayout.addView(et, 0);

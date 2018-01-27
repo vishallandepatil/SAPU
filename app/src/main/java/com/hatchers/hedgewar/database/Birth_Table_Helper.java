@@ -63,7 +63,7 @@ public class Birth_Table_Helper {
 
             if (db.insert(Birth_Table.BIRTH_TABLE, null, values) > 0)
                 {
-                    Toast.makeText(context,"Birth data inserted",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context,"Birth data inserted",Toast.LENGTH_LONG).show();
                     db.close();
                     return true;
                 }

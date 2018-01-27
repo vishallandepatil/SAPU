@@ -1,7 +1,5 @@
 package com.hatchers.hedgewar.activity;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,20 +24,18 @@ import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
-import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.user_login.LoginActivity;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
-import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
 
 
 public class MenuFragment extends Fragment implements View.OnClickListener{
 
     private ImageView arogya,karyakram,birth,bank,help,contact;
-    Toolbar toolbar;
+    Toolbar menu_toolbar;
     PrefManager prefManager;
 
     public MenuFragment() {
@@ -60,8 +56,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             Window window = getActivity().getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.menus_status_color));
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
         }
+
         arogya=(ImageView)view.findViewById(R.id.arogya_image);
         karyakram=(ImageView)view.findViewById(R.id.karyakram_image);
         birth=(ImageView)view.findViewById(R.id.janma_nond_image);
@@ -78,14 +75,15 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         contact.setOnClickListener(this);
 
 
+
         return view;
     }
 
 
     private void initToolbar(View view)
     {
-        toolbar = (Toolbar)view.findViewById(R.id.menu_toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        menu_toolbar = (Toolbar)view.findViewById(R.id.menu_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(menu_toolbar);
         prefManager=new PrefManager(getActivity());
     }
     @Override
@@ -128,7 +126,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu,menu);
@@ -148,13 +145,13 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
 
             case R.id.sync:
                 SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("Please wait");
+                        .setTitleText("कृपया थांबा");
                 sweetAlertDialog.show();
 
                 if(addBirthToServer(getActivity(),sweetAlertDialog))
                 {
                     sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                    sweetAlertDialog.setTitleText("अहवाल पाठवा ");
+                    sweetAlertDialog.setTitleText("माहिती समक्रमित झाली ");
                     sweetAlertDialog.setConfirmText("Ok");
                     sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
@@ -167,7 +164,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 {
 
                     sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                    sweetAlertDialog.setTitleText("अहवाल पाठवा ");
+                    sweetAlertDialog.setTitleText("माहिती समक्रमित नाही झाली");
                     sweetAlertDialog.setConfirmText("Ok");
                     sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override

@@ -1,17 +1,16 @@
 package com.hatchers.hedgewar.user_login;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
-import com.hatchers.hedgewar.activity.MenuActivity;
 import com.hatchers.hedgewar.user_login.apihelper.Login_ApiHelper;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -34,6 +33,14 @@ public class LoginActivity extends AppCompatActivity
 
     private void initialization()
     {
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window =getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
+
         prefManager = new PrefManager(this);
         edtName = (EditText)findViewById(R.id.username);
         edtPassword = (EditText)findViewById(R.id.password);
@@ -95,6 +102,4 @@ public class LoginActivity extends AppCompatActivity
         return true;
         }
     }
-
-
 }

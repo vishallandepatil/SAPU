@@ -1,30 +1,30 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context="com.hatchers.hedgewar.Menus.arogya_tapasni.Arogya_Tapasni_Fragment">
 
-    <RelativeLayout
+
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="54dp"
+        app:title="आरोग्य तपासणी "
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:id="@+id/arogya_toolbar">
+
+    </android.support.v7.widget.Toolbar>
+
 
         <LinearLayout
+            android:layout_below="@id/arogya_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/datelayout">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/arrogya_tapasani"
-            android:background="@drawable/shape1"
-            android:text="आरोग्य तपासणी"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginTop="0dp"
-            android:gravity="center_horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,6 +33,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
             android:weightSum="3"
             android:layout_below="@+id/arrogya_tapasani">
 
@@ -66,7 +67,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/shape2"
                 android:hint="तपासणीची तारीख"
                 android:clickable="false"
                 android:layout_gravity="center"
@@ -101,15 +101,15 @@
        android:textSize="18dp"
        android:text="Unique Id:"
         android:layout_gravity="center"
-        android:layout_weight="0.50"
+        android:layout_weight="1"
         android:layout_marginLeft="10dp"
        android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/shape2"
+            android:textSize="16dp"
             android:layout_gravity="center"
             android:id="@+id/unique_id"/>
 
@@ -200,5 +200,5 @@
         android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"/>
 
+
 </RelativeLayout>
-</ScrollView>

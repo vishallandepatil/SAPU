@@ -9,6 +9,8 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -96,6 +98,13 @@ public class Sahayata_Fragment extends Fragment {
 
     private  void initializations(View view)
     {
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = getActivity().getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
+
         viewPager = (ViewPager)view.findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout)view. findViewById(R.id.layoutDots);
         btnSkip = (Button)view. findViewById(R.id.btn_skip);
@@ -122,6 +131,7 @@ public class Sahayata_Fragment extends Fragment {
                 btnSkip.setVisibility(View.VISIBLE);
             }
         }
+
 
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {

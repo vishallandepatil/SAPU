@@ -18,34 +18,24 @@
     <string-array name="delivery_place">
         <item>ठिकाण</item>
         <item>घरी</item>
-        <item>दवाखाना</item>
+        <item>सरकारी दवाखाना</item>
         <item>खाजगी दवाखाना</item>
 
 
     </string-array>
 
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">DONE</string>
+    <string name="next">पुढे</string>
+    <string name="skip">वगळा</string>
+    <string name="start">समाप्त</string>
 
     <string name="slide_1_title">आरोग्य बँक तपासणी</string>
     <string name="slide_1_desc">इथे आपण आरोग्य बँकेतर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>
     <string name="slide_2_title">कार्यक्रम व्यवस्थापन</string>
     <string name="slide_2_desc">इथे आपण आरोग्य बँकेतर्फे आयोजित केलेल्या कार्यक्रमाची माहिती जतन करू शकता .तसेच त्यामध्ये कार्यक्रमाचे नाव ,वक्त्याचे नाव ,उपस्थित संख्या आणि दिनांक जतन  करू शकता.</string>
     <string name="slide_3_title">जन्म नोंद</string>
-    <string name="slide_3_desc">इथे आपण  नजजात बालकांची जन्म नोंद जतन करू शकता. आणि जन्म नोंद केलेल्या बालकांची यादी पाहू शकता .</string>
+    <string name="slide_3_desc">इथे आपण  नजजात बालकांची जन्म नोंद जतन करू शकता. आणि जन्म नोंद केलेल्या बालकांची यादी पाहू शकता.</string>
     <string name="slide_4_title">आरोग्य बँक अभिप्राय</string>
-    <string name="slide_4_desc">इथे आपण आरोग्य बँके अंतर्गत केलेल्या कार्यांबद्दल आपला अभिप्राय नोंद करू शकता .</string>
+    <string name="slide_4_desc">इथे आपण आरोग्य बँके अंतर्गत केलेल्या कार्यांबद्दल आपला अभिप्राय नोंद करू शकता.</string>
     <string name="slide_5_title">संपर्क</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hedgewar_address">https://www.google.co.in/maps/place/Dr.+Hedgewar+Rugnalaya/@19.8688892,75.3479277,17z/data=!4m5!3m4!1s0x3bdba28464eee089:0x657bb13ef3cfb849!8m2!3d19.8693141!4d75.3482425?hl=en</string>
-    <string name="hedgewar_contact1">(0240)2339866</string>
-    <string name="hedgewar_contact2">(0240)2331195</string>
-    <string name="hedgewar_contact3">(0240)2341849</string>
-
-
-    <!--+91(240)2339866,2331195\n+91(240)2341849-->
-
 
 </resources>
