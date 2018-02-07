@@ -2,8 +2,10 @@ package com.hatchers.hedgewar.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -24,10 +26,16 @@ import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
+import com.hatchers.hedgewar.activity.slideradapter.SliderAdapter;
 import com.hatchers.hedgewar.user_login.LoginActivity;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import me.relex.circleindicator.CircleIndicator;
 
 import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
 
@@ -37,6 +45,15 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
     private ImageView arogya,karyakram,birth,bank,help,contact;
     Toolbar menu_toolbar;
     PrefManager prefManager;
+
+    private static ViewPager mPager;
+    private static int currentPage = 0;
+    private static final Integer[] images= {R.mipmap.hedgewar_image,R.mipmap.hedgewar_image,R.mipmap.hedgewar_image};
+
+    private ArrayList<Integer> imagesArray = new ArrayList<Integer>();
+
+
+
 
     public MenuFragment() {
         // Required empty public constructor
@@ -66,7 +83,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         help=(ImageView)view.findViewById(R.id.sahayta_image);
         contact=(ImageView)view.findViewById(R.id.sampark_image);
 
-
         arogya.setOnClickListener(this);
         birth.setOnClickListener(this);
         bank.setOnClickListener(this);
@@ -74,8 +90,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         help.setOnClickListener(this);
         contact.setOnClickListener(this);
 
-
-
+        init(view);
         return view;
     }
 
@@ -86,6 +101,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         ((AppCompatActivity)getActivity()).setSupportActionBar(menu_toolbar);
         prefManager=new PrefManager(getActivity());
     }
+
     @Override
     public void onClick(View v) {
 
@@ -183,6 +199,35 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                     break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void init(View view) {
+        for(int i=0;i<images.length;i++)
+            imagesArray.add(images[i]);
+
+        mPager = (ViewPager)view.findViewById(R.id.pager);
+        mPager.setAdapter(new SliderAdapter(getActivity(),imagesArray));
+        CircleIndicator indicator = (CircleIndicator)view.findViewById(R.id.indicator);
+        indicator.setViewPager(mPager);
+
+        // Auto start of viewpager
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == images.length) {
+                    currentPage = 0;
+                }
+                mPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 2500, 2500);
     }
 }
 

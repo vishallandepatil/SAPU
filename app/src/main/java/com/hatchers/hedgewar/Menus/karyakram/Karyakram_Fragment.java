@@ -26,6 +26,7 @@ import com.hatchers.hedgewar.database.Answer_Table_Helper;
 import com.hatchers.hedgewar.database.Question_Table;
 import com.hatchers.hedgewar.database.Question_Table_Helper;
 
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -159,7 +160,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear = monthOfYear + 1;
                 programDate.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
-
+                programDate.setError(null);
             }
         }, mYear, mMonth, mDay);
         final Calendar calender1 = Calendar.getInstance();
@@ -181,7 +182,6 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         {
             program_holder_name.setError(null);
         }
-
         if(present_people_count.getText().toString().trim().length()==0) {
             present_people_count.setError("उपस्थित संख्या टाका");
             response = false;

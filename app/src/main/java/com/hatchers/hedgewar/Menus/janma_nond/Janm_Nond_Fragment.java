@@ -202,13 +202,13 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear=monthOfYear+1;
                 date_of_periods.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
+                date_of_periods.setError(null);
             }
         },year,month,day);
-        final Calendar calender1 = Calendar.getInstance();
-        calender1.set(2016, Calendar.JANUARY, 1);
-        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
-        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+        //final Calendar calender1 = Calendar.getInstance();
+        //calender1.set(2016, Calendar.JANUARY, 1);
+       // dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
+        //dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
 
@@ -225,13 +225,13 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear=monthOfYear+1;
                 delivery_date.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
+                delivery_date.setError(null);
             }
         },year,month,day);
-        final Calendar calender1 = Calendar.getInstance();
-        calender1.set(2016, Calendar.JANUARY, 1);
-        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
-        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+       // final Calendar calender1 = Calendar.getInstance();
+        //calender1.set(2016, Calendar.JANUARY, 1);
+        //dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
+        //dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
 
@@ -248,13 +248,13 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear=monthOfYear+1;
                 registration_month.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
+                registration_month.setError(null);
             }
         },year,month,day);
-        final Calendar calender1 = Calendar.getInstance();
-        calender1.set(2016, Calendar.JANUARY, 1);
-        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
-        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+        //final Calendar calender1 = Calendar.getInstance();
+        //calender1.set(2016, Calendar.JANUARY, 1);
+        //dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
+        //dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
 

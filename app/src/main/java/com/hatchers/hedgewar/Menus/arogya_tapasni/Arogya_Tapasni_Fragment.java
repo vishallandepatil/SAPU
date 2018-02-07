@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Answer_Table;
@@ -132,7 +133,7 @@ public class Arogya_Tapasni_Fragment extends Fragment {
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear = monthOfYear + 1;
                 tapasani_date.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
-
+                tapasani_date.setError(null);
             }
         }, year, month, day);
         final Calendar calender1 = Calendar.getInstance();
@@ -196,48 +197,55 @@ public class Arogya_Tapasni_Fragment extends Fragment {
             {
 
                 ///insert all ans in ans table
-               /* for (Answer_Table ans : answers) {
+
+                /*for (Answer_Table ans : answers)
+                {
                     if (a.equalsIgnoreCase("")) {
                         // a="0";
-                    } else {
+                    }
+                    else
+                    {
+                        Answer_Table_Helper.insertAnswer(getActivity(), ans);
+                    }
 
-                            Answer_Table_Helper.insertAnswer(getActivity(), ans);
 
-                        }
                 }*/
-               sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+
+
+              sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                         .setTitleText("कृपया थांबा");
                 sweetAlertDialog.setCancelable(false);
                 sweetAlertDialog.show();
 
                 int i=0;
-              for (i =0;i<=answers.size();i++)
+              for (i =0;i<answers.size();i++)
               {
                   Answer_Table answerTable =answers.get(i);
                   if (a.equalsIgnoreCase("")) {
                       // a="0";
-                  } else {
+                  }
+                  else {
                       Answer_Table_Helper.insertAnswer(getActivity(), answerTable);
+                  }
+
+                  if(i++ == answers.size() - 1)
+                  {
+                      sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                      sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
+                      sweetAlertDialog.setConfirmText("Ok");
+                      sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                          @Override
+                          public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                              sweetAlertDialog.dismissWithAnimation();
+                              getActivity().onBackPressed();
+
+                          }
+                      });
+
                   }
               }
 
-              if(i == answers.size())
-              {
-
-                  sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                  sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
-                  sweetAlertDialog.setConfirmText("Ok");
-                  sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                      @Override
-                      public void onClick(SweetAlertDialog sweetAlertDialog) {
-
-                          sweetAlertDialog.dismissWithAnimation();
-                          getActivity().onBackPressed();
-
-                      }
-                  });
-
-              }
 
             }
 
@@ -285,6 +293,7 @@ public class Arogya_Tapasni_Fragment extends Fragment {
                 } else {
                     nextBtn.setText("थांबा");
                     mIfCounter++;
+                    //nextBtn.setClickable(false);
 
                 }
             }

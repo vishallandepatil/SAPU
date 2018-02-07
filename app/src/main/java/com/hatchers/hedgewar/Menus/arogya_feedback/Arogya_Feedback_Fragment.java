@@ -1,15 +1,19 @@
 package com.hatchers.hedgewar.Menus.arogya_feedback;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -44,6 +48,7 @@ public class Arogya_Feedback_Fragment extends Fragment
     private int year,day,month;
     private Toolbar arogyaToolbar;
     private ArrayList<Answer_Table> answerTableArrayList;
+    private SweetAlertDialog sweetAlertDialog;
 
 
     public Arogya_Feedback_Fragment() {
@@ -122,7 +127,7 @@ public class Arogya_Feedback_Fragment extends Fragment
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear=monthOfYear+1;
                 feedbackDateTxt.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
+                feedbackDateTxt.setError(null);
             }
         },year,month,day);
         final Calendar calender1 = Calendar.getInstance();
@@ -181,7 +186,7 @@ public class Arogya_Feedback_Fragment extends Fragment
     private void changeQuestion()
     {
         if (mIfCounter > 0) {
-            EditText et = (EditText) view;
+            final EditText et = (EditText) view;
             String a = et.getText().toString();
 
             try {
@@ -202,8 +207,33 @@ public class Arogya_Feedback_Fragment extends Fragment
 
             }
 
+
+            et.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    hideSoftKeyboard(et);
+                }
+            });
+
             if (mIfCounter == questionTableArrayList.size()) {
                 ///insert all ans in ans table
+
+                sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                        .setTitleText("कृपया थांबा");
+                sweetAlertDialog.setCancelable(false);
+                sweetAlertDialog.show();
+
+                int i=0;
                 for(Answer_Table ans : answerTableArrayList)
                 {
                     if(a.equalsIgnoreCase(""))
@@ -213,6 +243,24 @@ public class Arogya_Feedback_Fragment extends Fragment
                     else
                     {
                         Answer_Table_Helper.insertAnswer(getActivity(), ans);
+
+                    }
+
+
+                    if(i++ == answerTableArrayList.size() - 1)
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("आरोग्य अभिप्राय समाप्त");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                sweetAlertDialog.dismissWithAnimation();
+                                getActivity().onBackPressed();
+
+                            }
+                        });
 
                     }
                 }
@@ -264,10 +312,20 @@ public class Arogya_Feedback_Fragment extends Fragment
                     {
                         nextBtn.setText("थांबा ");
                         mIfCounter++;
+
                     }
                 }
             }
 
+        }
+    }
+
+
+    public void hideSoftKeyboard(View view)
+    {
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 

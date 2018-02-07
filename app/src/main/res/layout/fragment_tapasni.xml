@@ -69,6 +69,7 @@
                 android:layout_marginLeft="10dp"
                 android:hint="तपासणीची तारीख"
                 android:clickable="false"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_weight="0.45"
                 android:id="@+id/tapasani_date"

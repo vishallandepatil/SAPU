@@ -32,18 +32,31 @@
                 android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
+        android:background="@color/menu_background"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_gravity="center"
-        app:cardCornerRadius="4dp"
+        android:padding="5dp"
         android:id="@+id/cardview_image">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/card_image"
             android:src="@mipmap/hedgewar_image"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:visibility="gone"/>
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"/>
 
     </android.support.v7.widget.CardView>
 

@@ -98,6 +98,7 @@
                 android:id="@+id/mothername_layout">
 
                 <android.support.design.widget.TextInputEditText
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:drawablePadding="20dp"
                     android:drawableLeft="@drawable/consignment"
                     android:layout_width="match_parent"
@@ -302,8 +303,8 @@
                     android:hint="बाळाचे जन्मवजन Kg "
                     android:singleLine="true"
                     android:textSize="18dp"
-                    android:maxLength="1"
-                    android:inputType="number"/>
+                    android:maxLength="6"
+                    android:inputType="numberDecimal"/>
 
 
             </android.support.design.widget.TextInputLayout>
