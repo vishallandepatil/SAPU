@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +18,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.hatchers.hedgewar.Menus.arogya_feedback.Arogya_Feedback_Fragment;
 import com.hatchers.hedgewar.Menus.arogya_tapasni.Arogya_Tapasni_Fragment;
 import com.hatchers.hedgewar.Menus.janma_nond.BirthFragment;
@@ -26,34 +34,28 @@ import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
-import com.hatchers.hedgewar.activity.slideradapter.SliderAdapter;
+
 import com.hatchers.hedgewar.user_login.LoginActivity;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.HashMap;
+
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import me.relex.circleindicator.CircleIndicator;
+
 
 import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
 
 
-public class MenuFragment extends Fragment implements View.OnClickListener{
+public class MenuFragment extends Fragment implements View.OnClickListener,BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     private ImageView arogya,karyakram,birth,bank,help,contact;
     Toolbar menu_toolbar;
     PrefManager prefManager;
 
-    private static ViewPager mPager;
-    private static int currentPage = 0;
-    private static final Integer[] images= {R.mipmap.hedgewar_image,R.mipmap.hedgewar_image,R.mipmap.hedgewar_image};
-
-    private ArrayList<Integer> imagesArray = new ArrayList<Integer>();
-
-
-
+    SliderLayout sliderLayout;
+    HashMap<String,Integer> Hash_file_maps ;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -76,6 +78,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
         }
 
+        Hash_file_maps = new HashMap<String,Integer>();
+
+        sliderLayout = (SliderLayout)view.findViewById(R.id.slider);
+
         arogya=(ImageView)view.findViewById(R.id.arogya_image);
         karyakram=(ImageView)view.findViewById(R.id.karyakram_image);
         birth=(ImageView)view.findViewById(R.id.janma_nond_image);
@@ -90,7 +96,30 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         help.setOnClickListener(this);
         contact.setOnClickListener(this);
 
-        init(view);
+
+        Hash_file_maps.put("Hedgewar", R.mipmap.hedgewar_image);
+        Hash_file_maps.put("Hedgewar", R.mipmap.hedgewar_image);
+        Hash_file_maps.put("Hedgewar", R.mipmap.hedgewar_image);
+
+
+        for(String name : Hash_file_maps.keySet()){
+
+            TextSliderView textSliderView = new TextSliderView(getActivity());
+            textSliderView
+                    .description(name)
+                    .image(Hash_file_maps.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this);
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle()
+                    .putString("extra",name);
+            sliderLayout.addSlider(textSliderView);
+        }
+        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        sliderLayout.setCustomAnimation(new DescriptionAnimation());
+        sliderLayout.setDuration(3000);
+        sliderLayout.addOnPageChangeListener(this);
         return view;
     }
 
@@ -202,32 +231,32 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
     }
 
 
-    private void init(View view) {
-        for(int i=0;i<images.length;i++)
-            imagesArray.add(images[i]);
+    @Override
+    public void onStop() {
 
-        mPager = (ViewPager)view.findViewById(R.id.pager);
-        mPager.setAdapter(new SliderAdapter(getActivity(),imagesArray));
-        CircleIndicator indicator = (CircleIndicator)view.findViewById(R.id.indicator);
-        indicator.setViewPager(mPager);
+        sliderLayout.stopAutoCycle();
 
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == images.length) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 2500, 2500);
+        super.onStop();
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
+       // Toast.makeText(getActivity(),slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        //Log.d("Slider Demo", "Page Changed: " + position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }
 
