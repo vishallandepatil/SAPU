@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,12 +26,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper;
+
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
 
 import java.util.Calendar;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -45,11 +49,12 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
     private TextView datePickerTxt;
     private Button save;
     private ImageButton backBtn;
-    private Toolbar toolbar;
+    private Toolbar janmaNondToolbar;
     Birth_Table birth;
     Context context;
     private String selected_gender = "", bloodUrineTest="";
     private ProgressDialog progressDialog;
+
 
     public Janm_Nond_Fragment() {
         // Required empty public constructor
@@ -82,11 +87,18 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
 
     private void initToolbar(View view)
     {
-        toolbar = (Toolbar)view.findViewById(R.id.janmaNond_toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        janmaNondToolbar = (Toolbar)view.findViewById(R.id.janmaNond_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(janmaNondToolbar);
     }
 
     private void initialization(View view) {
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = getActivity().getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
 
         registration_month = (TextInputEditText) view.findViewById(R.id.registration_month);
         date_of_periods = (TextInputEditText)view. findViewById(R.id.date_of_periods);
@@ -136,12 +148,33 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                 setBirthData();
                 if(checkValidation())
                 {
+                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText(" थांबा  ");
+                    sweetAlertDialog.show();
                     if(Birth_Table_Helper.insertBirth(getActivity(),birth))
                     {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
                         getActivity().onBackPressed();
                     }
                     else
                     {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली नाही  ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
 
                     }
                 }
@@ -169,13 +202,13 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear=monthOfYear+1;
                 date_of_periods.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
+                date_of_periods.setError(null);
             }
         },year,month,day);
-        final Calendar calender1 = Calendar.getInstance();
-        calender1.set(2016, Calendar.JANUARY, 1);
-        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
-        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+        //final Calendar calender1 = Calendar.getInstance();
+        //calender1.set(2016, Calendar.JANUARY, 1);
+       // dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
+        //dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
 
@@ -192,13 +225,13 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear=monthOfYear+1;
                 delivery_date.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
+                delivery_date.setError(null);
             }
         },year,month,day);
-        final Calendar calender1 = Calendar.getInstance();
-        calender1.set(2016, Calendar.JANUARY, 1);
-        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
-        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+       // final Calendar calender1 = Calendar.getInstance();
+        //calender1.set(2016, Calendar.JANUARY, 1);
+        //dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
+        //dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
 
@@ -215,13 +248,13 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear=monthOfYear+1;
                 registration_month.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
+                registration_month.setError(null);
             }
         },year,month,day);
-        final Calendar calender1 = Calendar.getInstance();
-        calender1.set(2016, Calendar.JANUARY, 1);
-        dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
-        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+        //final Calendar calender1 = Calendar.getInstance();
+        //calender1.set(2016, Calendar.JANUARY, 1);
+        //dpd.getDatePicker().setMinDate(calender1.getTimeInMillis());
+        //dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
     }
 

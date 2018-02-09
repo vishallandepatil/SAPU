@@ -26,6 +26,8 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
 
 /**
@@ -34,12 +36,12 @@ import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
 
 public class Web_Add_BirthDetails_Helper
 {
-    public static boolean addBirthToServer(final Activity activity, final ProgressDialog progressDialog)
+    public static boolean addBirthToServer(final Activity activity, final SweetAlertDialog sweetAlertDialog)
     {
          final Birth_Table birth_table =Birth_Table_Helper.getBirthdata(activity);
         if(birth_table==null)
         {
-            inserAnswers(activity, progressDialog);
+            inserAnswers(activity, sweetAlertDialog);
             return false;
         }
 
@@ -74,28 +76,28 @@ public class Web_Add_BirthDetails_Helper
                             if(Birth_Table_Helper.updateBirth(activity,birth_table))
                             {
                                 Toast.makeText(activity,"Data saved...", Toast.LENGTH_SHORT).show();
-                                addBirthToServer( activity,progressDialog);
+                                addBirthToServer( activity,sweetAlertDialog);
 
                             }
                             else
                             {
-                                progressDialog.dismiss();
+                                sweetAlertDialog.dismissWithAnimation();
                                 Toast.makeText(activity,"Local Data update failed...", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else
                         {
-                            progressDialog.dismiss();
+                            sweetAlertDialog.dismissWithAnimation();
                             Toast.makeText(activity,"Data not saved...", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else
                     {
-                        progressDialog.dismiss();
+                        sweetAlertDialog.dismissWithAnimation();
                         Toast.makeText(activity,"Data not saved...", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    progressDialog.dismiss();
+                    sweetAlertDialog.dismissWithAnimation();
                     e.printStackTrace();
                 }
             }
@@ -104,7 +106,7 @@ public class Web_Add_BirthDetails_Helper
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+                sweetAlertDialog.dismissWithAnimation();
                 Toast.makeText(activity,error.toString(),Toast.LENGTH_SHORT).show();
 
             }

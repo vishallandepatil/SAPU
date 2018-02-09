@@ -22,18 +22,20 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by Ashwin on 20-Dec-17.
  */
 
 public class Web_AnswerHelper
 {
-    public static boolean inserAnswers(final Activity activity, final ProgressDialog progressDialog)
+    public static boolean inserAnswers(final Activity activity, final SweetAlertDialog sweetAlertDialog)
     {
         final Answer_Table answer_table =Answer_Table_Helper.getAnswerdata(activity);
         if(answer_table==null)
         {
-            progressDialog.dismiss();
+            sweetAlertDialog.dismissWithAnimation();
             return false;
         }
 
@@ -67,28 +69,28 @@ public class Web_AnswerHelper
                             if(Answer_Table_Helper.updateAnswer(activity,answer_table))
                             {
                                 Toast.makeText(activity,"Data saved...", Toast.LENGTH_SHORT).show();
-                                inserAnswers( activity,progressDialog);
+                                inserAnswers( activity,sweetAlertDialog);
 
                             }
                             else
                             {
-                                progressDialog.dismiss();
+                                sweetAlertDialog.dismissWithAnimation();
                                 Toast.makeText(activity,"Local Data update failed...", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else
                         {
-                            progressDialog.dismiss();
+                            sweetAlertDialog.dismissWithAnimation();
                             Toast.makeText(activity,"Data not saved...", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else
                     {
-                        progressDialog.dismiss();
+                        sweetAlertDialog.dismissWithAnimation();
                         Toast.makeText(activity,"Data not saved...", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    progressDialog.dismiss();
+                    sweetAlertDialog.dismissWithAnimation();
                     e.printStackTrace();
                 }
             }
@@ -97,7 +99,7 @@ public class Web_AnswerHelper
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+                sweetAlertDialog.dismissWithAnimation();
                 Toast.makeText(activity,error.toString(),Toast.LENGTH_SHORT).show();
 
             }

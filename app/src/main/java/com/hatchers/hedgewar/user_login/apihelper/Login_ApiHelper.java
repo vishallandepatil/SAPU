@@ -21,10 +21,12 @@ import org.json.JSONObject;
 import java.util.Hashtable;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class Login_ApiHelper
 {
-    public static boolean userLoginApi(final Activity activity, final ProgressDialog progressDialog)
+    public static boolean userLoginApi(final Activity activity, final SweetAlertDialog sweetAlertDialog)
     {
         StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlUserLogin, new Response.Listener<String>() {
             @Override
@@ -48,7 +50,7 @@ public class Login_ApiHelper
                             prefManager.setPassword(jsonObject.getString("password"));
 
                             prefManager.createLogin(jsonObject.getString("mobile"));
-                            progressDialog.dismiss();
+                            sweetAlertDialog.dismissWithAnimation();
                             // new PrefManager(activity).setRegistration_skipped(false);
                             Intent intent = new Intent(activity, MenuActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -57,18 +59,18 @@ public class Login_ApiHelper
                         }
                         else
                         {
-                            progressDialog.dismiss();
+                            sweetAlertDialog.dismissWithAnimation();
                             Toast.makeText(activity,"Invalid Login...", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                     else
                     {
-                        progressDialog.dismiss();
+                        sweetAlertDialog.dismissWithAnimation();
                         Toast.makeText(activity,"Invalid Login...", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    progressDialog.dismiss();
+                    sweetAlertDialog.dismissWithAnimation();
                     e.printStackTrace();
                 }
             }
@@ -77,7 +79,7 @@ public class Login_ApiHelper
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+                sweetAlertDialog.dismissWithAnimation();
                 Toast.makeText(activity,error.toString(),Toast.LENGTH_SHORT).show();
 
                }

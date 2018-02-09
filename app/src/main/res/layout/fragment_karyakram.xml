@@ -9,38 +9,14 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        app:titleTextColor="@color/white"
+        app:titleTextColor="@color/colorWhite"
+        app:title="कार्यक्रम व्यवस्थापन"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
         android:background="@color/colorPrimary"
         android:id="@+id/toolbar_krayakram">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:src="@drawable/back_arrow"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:id="@+id/btn_back"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/toolbar_title"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:text="कार्यक्रम व्यवस्थापन"
-                android:layout_marginLeft="15dp"
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
-
-        </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
 <LinearLayout
@@ -102,6 +78,7 @@
 
 
     <android.support.design.widget.TextInputEditText
+        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:drawableLeft="@drawable/speaker"
         android:drawablePadding="20dp"
         android:layout_width="match_parent"
@@ -109,6 +86,8 @@
         android:singleLine="true"
         android:hint="वक्त्याचे नाव "
         android:padding="10dp"
+        android:inputType="textCapWords"
+        android:imeOptions="actionNext"
         android:id="@+id/program_holder_name"
         android:layout_below="@+id/karyakram_name"/>
 </android.support.design.widget.TextInputLayout>
@@ -132,6 +111,7 @@
         android:padding="10dp"
         android:inputType="number"
         android:singleLine="true"
+        android:imeOptions="actionDone"
         android:drawablePadding="20dp"
         android:drawableLeft="@drawable/present_people_count"
         android:id="@+id/present_people_count"
@@ -169,8 +149,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="पुढे जा "
-        android:id="@+id/next"
+        android:text="जतन करा "
+        android:id="@+id/save"
         android:textSize="20dp"
         android:layout_marginRight="100dp"
         android:layout_marginLeft="100dp"

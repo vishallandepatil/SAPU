@@ -1,18 +1,19 @@
 package com.hatchers.hedgewar.user_login;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
-import com.hatchers.hedgewar.activity.MenuActivity;
 import com.hatchers.hedgewar.user_login.apihelper.Login_ApiHelper;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class LoginActivity extends AppCompatActivity
 {
@@ -32,6 +33,14 @@ public class LoginActivity extends AppCompatActivity
 
     private void initialization()
     {
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window =getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
+
         prefManager = new PrefManager(this);
         edtName = (EditText)findViewById(R.id.username);
         edtPassword = (EditText)findViewById(R.id.password);
@@ -44,11 +53,34 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(setUserInfo()) {
-                    ProgressDialog progressDialog =new ProgressDialog(LoginActivity.this);
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                    progressDialog.setMessage("Login");
-                    progressDialog.show();
-                    Login_ApiHelper.userLoginApi(LoginActivity.this,progressDialog);
+                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText("Please wait");
+                    sweetAlertDialog.show();
+
+                    if(Login_ApiHelper.userLoginApi(LoginActivity.this,sweetAlertDialog))
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("Login Successful");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText("Login Failed ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
                 }
 
 
@@ -70,6 +102,4 @@ public class LoginActivity extends AppCompatActivity
         return true;
         }
     }
-
-
 }

@@ -1,13 +1,17 @@
 package com.hatchers.hedgewar.Menus.karyakram;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,27 +26,30 @@ import com.hatchers.hedgewar.database.Answer_Table_Helper;
 import com.hatchers.hedgewar.database.Question_Table;
 import com.hatchers.hedgewar.database.Question_Table_Helper;
 
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
 
     private TextInputEditText programDate,program_holder_name,present_people_count;
-    private ImageButton back;
     private DatePickerDialog dpd;
     private Spinner program_name;
     private int mYear, mMonth, mDay;
-    private Button next;
+    private Button save;
     Answer_Table answer;
     Question_Table question_table;
     private ArrayList<Question_Table> questionTableArrayList;
+    private Toolbar toolbarKrayakram;
 
     public Karyakram_Fragment() {
         // Required empty public constructor
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,8 +64,16 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
 
     private void initializations(View view)
     {
-        back=(ImageButton)view.findViewById(R.id.btn_back);
-        next=(Button) view.findViewById(R.id.next);
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = getActivity().getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
+
+        toolbarKrayakram=(Toolbar)view.findViewById(R.id.toolbar_krayakram);
+        save=(Button) view.findViewById(R.id.save);
         program_name=(Spinner) view.findViewById(R.id.program_name);
         program_holder_name=(TextInputEditText)view.findViewById(R.id.program_holder_name);
         present_people_count=(TextInputEditText)view.findViewById(R.id.present_people_count);
@@ -74,6 +89,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
 
     }
 
+
     private void onclicklisterns()
     {
         programDate.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +98,8 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                 displayDatepicker();
             }
         });
-        back.setOnClickListener(new View.OnClickListener() {
+
+        toolbarKrayakram.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
@@ -90,13 +107,40 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         });
 
 
-        next.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setAnswerData();
                 if(checkValidation())
                 {
-                    Answer_Table_Helper.insertAnswer(getContext(),answer);
+                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText(" थांबा  ");
+                    sweetAlertDialog.show();
+
+                    if(Answer_Table_Helper.insertAnswer(getContext(),answer))
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText(" माहिती जतन झाली");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(" माहिती जतन झाली नाही  ");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
                     getActivity().onBackPressed();
                 }
             }
@@ -116,7 +160,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear = monthOfYear + 1;
                 programDate.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
-
+                programDate.setError(null);
             }
         }, mYear, mMonth, mDay);
         final Calendar calender1 = Calendar.getInstance();
@@ -126,21 +170,18 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         dpd.show();
     }
 
-
-
     private boolean checkValidation()
     {
         boolean response=true;
 
-        /*if(program_holder_name.getText().toString().trim().length()==0) {
+        if(program_holder_name.getText().toString().trim().length()==0) {
             program_holder_name.setError("वक्त्याचे नाव टाका");
             response = false;
         }
         else
         {
             program_holder_name.setError(null);
-        }*/
-
+        }
         if(present_people_count.getText().toString().trim().length()==0) {
             present_people_count.setError("उपस्थित संख्या टाका");
             response = false;
@@ -159,8 +200,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
             programDate.setError(null);
         }
 
-
-            View selectedView = program_name.getSelectedView();
+        View selectedView = program_name.getSelectedView();
             if (selectedView != null && selectedView instanceof TextView) {
                 TextView selectedTextView = (TextView) selectedView;
                 if (program_name.getSelectedItemPosition() == 0) {
@@ -168,14 +208,9 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                     selectedTextView.setError(errorString);
 
                 } else {
-                    selectedTextView.setError(null);
+                    selectedTextView.setError("कार्यक्रमाचे नाव निवडा");
                 }
-
-                response = false;
             }
-
-
-
         return response;
     }
 
@@ -190,6 +225,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         answer.setQuestion_idValue(question_table.getQUESTION_ID_VALUE());
 
     }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
          question_table=questionTableArrayList.get(position);

@@ -7,61 +7,26 @@
     tools:context="com.hatchers.hedgewar.Menus.arogya_feedback.Arogya_Feedback_Fragment">
 
     <android.support.v7.widget.Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="54dp"
-    app:title="आरोग्य बँक कार्यकर्ता अभिप्राय "
-    app:titleTextColor="@color/white"
-    android:background="@color/colorPrimary"
-    android:id="@+id/toolbar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:src="@drawable/back_arrow"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:id="@+id/btn_back"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/toolbar_title"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:text="आरोग्य बँक कार्यकर्ता अभिप्राय  "
-                android:layout_marginLeft="15dp"
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
-
-        </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        app:title="आरोग्य बँक अभिप्राय "
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:id="@+id/arogya_toolbar">
 
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top|center"
-        android:layout_marginTop="70dp"
-        android:text="आरोग्य बँक अभिप्राय "
-        android:id="@+id/title"
-        android:textSize="25dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:id="@+id/linear1"
         android:weightSum="3"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_below="@+id/title">
+        android:layout_below="@+id/arogya_toolbar">
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,10 +53,10 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/shape2"
             android:hint="तपासणीची तारीख"
             android:clickable="false"
             android:padding="5dp"
+            android:gravity="center"
             android:layout_gravity="center"
             android:layout_weight="0.45"
             android:id="@+id/feedback_date"

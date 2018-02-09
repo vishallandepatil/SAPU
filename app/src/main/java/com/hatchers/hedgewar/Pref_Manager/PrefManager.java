@@ -48,8 +48,9 @@ public class PrefManager {
     }
 
 
-    public boolean setLogOut() {
-        return sharedpreferences.getBoolean(KEY_IS_LOGGED_IN, false);
+    public void setLogOut() {
+        editor.putBoolean(KEY_IS_LOGGED_IN, false);
+        editor.commit();
     }
 
     public void clearSession() {

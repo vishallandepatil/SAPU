@@ -1,19 +1,21 @@
 package com.hatchers.hedgewar.Menus.janma_nond;
 
-import android.app.DatePickerDialog;
+
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -22,6 +24,8 @@ import android.widget.TextView;
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,6 +37,7 @@ public class BirthFragment extends Fragment {
     BirthAdapter birthAdapter;
     ListView listView;
     Spinner select_year;
+    private Toolbar birthfragmentToolbar;
 
     ArrayList<Birth_Table> birthTables;
 
@@ -41,13 +46,23 @@ public class BirthFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_birth, container, false);
-        select_year=(Spinner) view.findViewById(R.id.select_year);
 
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = getActivity().getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
+        }
+
+
+        birthfragmentToolbar=(Toolbar)view.findViewById(R.id.birthfragment_toolbar);
+        select_year=(Spinner) view.findViewById(R.id.select_year);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
 
@@ -66,6 +81,12 @@ public class BirthFragment extends Fragment {
             }
         });
 
+        birthfragmentToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
         ArrayList<String> years = new ArrayList<String>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -95,9 +116,7 @@ public class BirthFragment extends Fragment {
 
         private class ViewHolder
         {
-            TextView mother_name;
-            TextView delivery_date;
-            TextView gender;
+            TextView mother_name,delivery_date,gender,place;
             ImageView list_image;
 
         }
@@ -128,6 +147,7 @@ public class BirthFragment extends Fragment {
                 holder.delivery_date = (TextView) convertView.findViewById(R.id.delivery_date);
                 holder.gender = (TextView) convertView.findViewById(R.id.gender);
                 holder.list_image=(ImageView)convertView.findViewById(R.id.list_image);
+                holder.place=(TextView) convertView.findViewById(R.id.place);
 
                 convertView.setTag(holder);
 
@@ -136,15 +156,17 @@ public class BirthFragment extends Fragment {
                 holder = (ViewHolder) convertView.getTag();
             }
             Birth_Table birthTable=birthTableArrayList.get(position);
-            holder.mother_name.setText(String.valueOf(birthTable.getName_of_motherValue() + ""));
-            holder.delivery_date.setText(String.valueOf(birthTable.getDelivery_dateValue()+" "));
-            holder.gender.setText(String.valueOf(birthTable.getUploadStatusValue()+" "));
+            holder.mother_name.setText("मातेचे नाव: "+String.valueOf(birthTable.getName_of_motherValue() + ""));
+            holder.delivery_date.setText("बाळंतपणाची तारीख: "+String.valueOf(birthTable.getDelivery_dateValue()+" "));
+            holder.place.setText("ठिकाण: "+String.valueOf(birthTable.getPlaceValue()+" "));
 
             if(birthTable.getGenderValue().equalsIgnoreCase("M")) {
+                holder.gender.setText("लिंग: मुलगा");
                 holder.list_image.setImageResource(R.drawable.baby_boy);
             }
             else
             {
+                holder.gender.setText("लिंग: मुलगी");
                 holder.list_image.setImageResource(R.drawable.baby_girl);
             }
 

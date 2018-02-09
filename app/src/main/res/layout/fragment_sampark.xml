@@ -7,47 +7,16 @@
     tools:context="com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment">
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/sampark_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:titleTextColor="#395D75"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:layout_collapseMode="pin"
-        android:background="@color/colorPrimary"
-        app:contentInsetStartWithNavigation="0dp"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+   <android.support.v7.widget.Toolbar
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/sampark_toolbar"
+       app:title="संपर्क"
+       app:titleTextColor="@color/white"
+       android:background="@color/colorPrimary"
+       app:navigationIcon="@drawable/ic_arrow_back_white_24dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:src="@drawable/back_arrow"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:id="@+id/btn_back"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/toolbar_title"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:text="हेडगेवार रुग्णालय संपर्क "
-                android:layout_marginLeft="15dp"
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
-
-        </LinearLayout>
-
-    </android.support.v7.widget.Toolbar>
+   </android.support.v7.widget.Toolbar>
 
 
     <ScrollView
@@ -59,130 +28,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:id="@+id/image_linear"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/image_person"
-                    android:src="@drawable/contact_image"/>
-            </LinearLayout>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/image_linear"
-        android:id="@+id/card1"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:elevation="5dp">
+            android:orientation="vertical">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:drawableLeft="@drawable/address"
-            android:paddingLeft="15dp"
-                android:drawablePadding="20dp"
-            android:layout_centerHorizontal="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/address"
-            android:background="@color/colorPrimary"
-            android:text="हेडगेवार पत्ता"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="25dp"/>
-
-
-    <TextView
-        android:paddingLeft="20dp"
-        android:drawablePadding="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/contact"
-        android:background="@color/colorPrimary"
-        android:layout_below="@id/address"
-        android:layout_marginTop="25dp"
-        android:text="संपर्क क्रमांक"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="25dp"/>
-
-
-        <TextView
-            android:drawableLeft="@drawable/contact1"
-            android:layout_width="match_parent"
-            android:id="@+id/contact1"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/contact"
-            android:layout_marginTop="20dp"
-            android:padding="15dp"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:drawablePadding="20dp"
-            android:text="@string/hedgewar_contact1"/>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_below="@id/contact1"
-                android:layout_marginTop="20dp"
-                android:id="@+id/view1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="2dp"
-                android:background="#FF8D8F8F"/>
-
-
-            <TextView
-                android:drawableLeft="@drawable/contact1"
-                android:layout_width="match_parent"
-                android:id="@+id/contact2"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view1"
-                android:layout_marginTop="20dp"
-                android:padding="15dp"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:drawablePadding="20dp"
-                android:text="@string/hedgewar_contact2"/>
-
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_below="@id/contact2"
-                android:layout_marginTop="20dp"
-                android:id="@+id/view2"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="2dp"
-                android:background="#FF8D8F8F"/>
-
-            <TextView
-                android:drawableLeft="@drawable/contact1"
-                android:layout_width="match_parent"
-                android:id="@+id/contact3"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view2"
-                android:layout_marginTop="20dp"
-                android:padding="15dp"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:drawablePadding="20dp"
-                android:text="@string/hedgewar_contact3"/>
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
 
         </LinearLayout>
     </ScrollView>

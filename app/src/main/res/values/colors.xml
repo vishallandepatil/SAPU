@@ -7,13 +7,11 @@
     <color name="login_color">#C86B98</color>
     <color name="white">#ffffff</color>
     <color name="menu_background">#3271d4c0</color>
-    <color name="menus_status_color">#248471</color>
-    <!--   <color name="color_primary">#15b1b0</color>
-       <color name="color_primary_dark">#0d6867</color>
-       <color name="color_accent">#be0e1a</color>
-    -->
-
-
+    <color name="status_color">#248471</color>
+    <color name="all_status_color">#187c7c</color>
+    <color name="colorGray">#F4F4F4</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorDarkgray">#dddddd</color>
     <!-- dots active colors -->
     <color name="dot_light_screen1">#ffffff</color>
     <color name="dot_light_screen2">#ffffff</color>

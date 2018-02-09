@@ -31,6 +31,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void run() {
+
                 check();
             }
         }, SPLASH_TIME_OUT);
