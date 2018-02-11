@@ -3,7 +3,6 @@ package com.hatchers.hedgewar.Menus.karyakram;
 import android.app.DatePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +31,7 @@ import java.util.Calendar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+
 public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
 
@@ -49,7 +49,6 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         // Required empty public constructor
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

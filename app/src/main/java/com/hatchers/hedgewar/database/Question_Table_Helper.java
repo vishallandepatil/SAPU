@@ -114,6 +114,8 @@ public class Question_Table_Helper
     public static ArrayList<Question_Table> getQuestionList(Context context,String category)
     {
         ArrayList<Question_Table> question_tableArrayList = new ArrayList<Question_Table>();
+        Question_Table questionTable1 = new Question_Table("-1","","कार्यक्रमाचे नाव निवडा","","","","","");
+        question_tableArrayList.add(questionTable1);
         SQLiteDatabase db =  AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
         // Cursor cursor = db.rawQuery("SELECT * FROM " + Message_Table.TABLE_MESSAGE, null);
         Cursor cursor = db.rawQuery("SELECT * FROM "+Question_Table.QUESTION_TABLE +" WHERE "+Question_Table.CATEGORY_ENGLISH +" = '"+category+"'",null);
@@ -131,7 +133,6 @@ public class Question_Table_Helper
                 questionTable.setCATEGORY_MARATHI_VALUE(cursor.getString(cursor.getColumnIndex(Question_Table.CATEGORY_MARATHI)));
                 questionTable.setCATEGORY_ENGLISH_VALUE(cursor.getString(cursor.getColumnIndex(Question_Table.CATEGORY_ENGLISH)));
                 questionTable.setUPLOAD_STATUS_VALUE(cursor.getString(cursor.getColumnIndex(Question_Table.UPLOAD_STATUS)));
-
                 question_tableArrayList.add(questionTable);
                 cursor.moveToNext();
             }

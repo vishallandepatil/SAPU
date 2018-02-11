@@ -37,6 +37,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Arogya_Feedback_Fragment extends Fragment
 {
+    private ImageButton back;
     private TextView quesnNumbetTxt, quesnTxt,feedbackDateTxt;
     private ArrayList<Question_Table> questionTableArrayList;
     private Button nextBtn;
@@ -86,6 +87,7 @@ public class Arogya_Feedback_Fragment extends Fragment
         quesnNumbetTxt = (TextView)view.findViewById(R.id.quesn_no);
         quesnTxt=(TextView)view.findViewById(R.id.quesn);
         feedbackDateTxt = (TextView)view.findViewById(R.id.feedback_date);
+        back=(ImageButton)view.findViewById(R.id.btn_back);
         questionTableArrayList = Question_Table_Helper.getQuestionList(getActivity(),Question_Table.CATEGORY_FEEDBACK);
 
         answerTableArrayList = new ArrayList<Answer_Table>();
@@ -99,7 +101,7 @@ public class Arogya_Feedback_Fragment extends Fragment
 
     private void clickListner()
     {
-        arogyaToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
@@ -128,6 +130,7 @@ public class Arogya_Feedback_Fragment extends Fragment
                 monthOfYear=monthOfYear+1;
                 feedbackDateTxt.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
                 feedbackDateTxt.setError(null);
+
             }
         },year,month,day);
         final Calendar calender1 = Calendar.getInstance();
@@ -162,12 +165,13 @@ public class Arogya_Feedback_Fragment extends Fragment
             @Override
             public void onClick(View view) {
                 if(checkValidation()) {
-
                     changeQuestion();
                 }
             }
         });
     }
+
+
 
     private boolean checkValidation()
     {
@@ -225,24 +229,24 @@ public class Arogya_Feedback_Fragment extends Fragment
                 }
             });
 
-            if (mIfCounter == questionTableArrayList.size()) {
-                ///insert all ans in ans table
-
-                sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("कृपया थांबा");
-                sweetAlertDialog.setCancelable(false);
-                sweetAlertDialog.show();
-
+            if (mIfCounter == questionTableArrayList.size())
+            {
+                final SweetAlertDialog dilog= new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+                dilog.setTitleText("प्रतीक्षा करा ...")
+                        .setContentText("सर्व डेटावर प्रक्रिया होत आहे!")
+                        .show();
                 int i=0;
-                for(Answer_Table ans : answerTableArrayList)
+                for(Answer_Table ans:answerTableArrayList)
                 {
-                    if(a.equalsIgnoreCase(""))
+                    if(ans.getAnswer_countValue().equalsIgnoreCase(""))
                     {
-                        //a="0";
+                        ans.setAnswer_countValue("0");
                     }
-                    else
+
+                    if(Answer_Table_Helper.insertAnswer(getActivity(),ans))
                     {
-                        Answer_Table_Helper.insertAnswer(getActivity(), ans);
+                        i++;
+                        dilog.setContentText("सर्व डेटावर प्रक्रिया होत आहे!("+i+"/"+mIfCounter+")");
 
                     }
 

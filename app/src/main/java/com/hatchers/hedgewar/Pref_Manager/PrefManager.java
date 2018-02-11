@@ -37,7 +37,6 @@ public class PrefManager {
     public void createLogin(String mobile) {
         editor.putString(MOBILE, mobile);
         //editor.putString(PASSWORD, password);
-
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
         editor.commit();
     }
