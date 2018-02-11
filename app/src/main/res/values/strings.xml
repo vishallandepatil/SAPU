@@ -14,11 +14,13 @@
     <string name="arogya_feedback">आरोग्य बँक अभिप्राय </string>
     <string name="sahayta">सहायता </string>
     <string name="sampark">संपर्क</string>
+    <string name="name_work">कार्यक्रमाचे नाव</string>
+
 
     <string-array name="delivery_place">
         <item>ठिकाण</item>
         <item>घरी</item>
-        <item>सरकारी दवाखाना</item>
+        <item>दवाखाना</item>
         <item>खाजगी दवाखाना</item>
 
 
@@ -26,7 +28,7 @@
 
     <string name="next">पुढे</string>
     <string name="skip">वगळा</string>
-    <string name="start">समाप्त</string>
+    <string name="start">थांबा </string>
 
     <string name="slide_1_title">आरोग्य बँक तपासणी</string>
     <string name="slide_1_desc">इथे आपण आरोग्य बँकेतर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>

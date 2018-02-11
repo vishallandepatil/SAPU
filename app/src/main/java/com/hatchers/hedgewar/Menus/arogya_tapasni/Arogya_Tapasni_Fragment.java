@@ -30,7 +30,8 @@ import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class Arogya_Tapasni_Fragment extends Fragment {
+public class Arogya_Tapasni_Fragment extends Fragment
+{
     private TextView uniqueIdTxt;
     private ArrayList<Question_Table> questionTableArrayList;
     private Button nextBtn;
