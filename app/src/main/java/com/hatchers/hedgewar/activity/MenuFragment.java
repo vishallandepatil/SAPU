@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,8 +18,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -53,9 +58,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
     private ImageView arogya,karyakram,birth,bank,help,contact;
     Toolbar menu_toolbar;
     PrefManager prefManager;
+    private ViewFlipper simpleViewFlipper;
 
-    SliderLayout sliderLayout;
-    HashMap<String,Integer> Hash_file_maps ;
+    int[] images = {R.mipmap.slider1, R.mipmap.slider2, R.mipmap.slider3, R.mipmap.slider4, R.mipmap.slider5,R.mipmap.slider6};
+
+    // SliderLayout sliderLayout;
+    //HashMap<String,Integer> Hash_file_maps ;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -78,9 +86,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
             window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
         }
 
-        Hash_file_maps = new HashMap<String,Integer>();
+        //Hash_file_maps = new HashMap<String,Integer>();
 
-        sliderLayout = (SliderLayout)view.findViewById(R.id.slider);
+        //sliderLayout = (SliderLayout)view.findViewById(R.id.slider);
 
         arogya=(ImageView)view.findViewById(R.id.arogya_image);
         karyakram=(ImageView)view.findViewById(R.id.karyakram_image);
@@ -96,10 +104,37 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
         help.setOnClickListener(this);
         contact.setOnClickListener(this);
 
+        simpleViewFlipper = (ViewFlipper)view.findViewById(R.id.simpleViewFlipper);
 
-        Hash_file_maps.put("Hedgewar", R.mipmap.hedgewar_image);
-        Hash_file_maps.put("Hedgewar", R.mipmap.hedgewar_image);
-        Hash_file_maps.put("Hedgewar", R.mipmap.hedgewar_image);
+
+        // loop for creating ImageView's
+        for (int i = 0; i < images.length; i++) {
+            // create the object of ImageView
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setImageResource(images[i]); // set image in ImageView
+            simpleViewFlipper.addView(imageView); // add the created ImageView in ViewFlipper
+
+
+        }
+        // Declare in and out animations and load them using AnimationUtils class
+        Animation out = AnimationUtils.loadAnimation(getActivity(), android.R.anim.slide_out_right);
+        Animation in = AnimationUtils.loadAnimation(getActivity(), android.R.anim.slide_in_left);
+        // set the animation type's to ViewFlipper
+        simpleViewFlipper.setInAnimation(in);
+        simpleViewFlipper.setOutAnimation(out);
+        // set interval time for flipping between views
+        simpleViewFlipper.setFlipInterval(3000);
+        // set auto start for flipping between views
+        simpleViewFlipper.setAutoStart(true);
+
+
+       /* Hash_file_maps.put("नैसर्गिक संसाधन व्यवस्थापन व सहकार्य", R.mipmap.slider1);
+        Hash_file_maps.put("पूर्व प्राथमिक शिक्षण", R.mipmap.slider2);
+        Hash_file_maps.put("सार्वजनिक आरोग्य", R.mipmap.slider3);
+        Hash_file_maps.put("महिला जनजागृती", R.mipmap.slider4);
+        Hash_file_maps.put("कौशल्य विकास", R.mipmap.slider5);
+        Hash_file_maps.put("महिला सशक्तीकरण", R.mipmap.slider6);
 
 
         for(String name : Hash_file_maps.keySet()){
@@ -119,7 +154,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
         sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         sliderLayout.setCustomAnimation(new DescriptionAnimation());
         sliderLayout.setDuration(3000);
-        sliderLayout.addOnPageChangeListener(this);
+        sliderLayout.addOnPageChangeListener(this);*/
         return view;
     }
 
@@ -234,7 +269,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
     @Override
     public void onStop() {
 
-        sliderLayout.stopAutoCycle();
+        //sliderLayout.stopAutoCycle();
 
         super.onStop();
     }
