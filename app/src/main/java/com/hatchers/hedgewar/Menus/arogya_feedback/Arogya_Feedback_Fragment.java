@@ -17,7 +17,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,7 +36,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Arogya_Feedback_Fragment extends Fragment
 {
-    private ImageButton back;
+
     private TextView quesnNumbetTxt, quesnTxt,feedbackDateTxt;
     private ArrayList<Question_Table> questionTableArrayList;
     private Button nextBtn;
@@ -47,7 +46,7 @@ public class Arogya_Feedback_Fragment extends Fragment
     private Question_Table question;
     private DatePickerDialog dpd;
     private int year,day,month;
-    private Toolbar arogyaToolbar;
+    private Toolbar arogyaFeedbackToolbar;
     private ArrayList<Answer_Table> answerTableArrayList;
     private SweetAlertDialog sweetAlertDialog;
 
@@ -60,7 +59,7 @@ public class Arogya_Feedback_Fragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_arogya__bank, container, false);
+        View view= inflater.inflate(R.layout.fragment_arogya_feedback, container, false);
 
         initializations(view);
 
@@ -81,13 +80,12 @@ public class Arogya_Feedback_Fragment extends Fragment
             window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
         }
 
-        arogyaToolbar=(Toolbar)view.findViewById(R.id.arogya_toolbar);
+        arogyaFeedbackToolbar=(Toolbar)view.findViewById(R.id.arogya_feedback_toolbar);
         ansLayout = (LinearLayout)view.findViewById(R.id.anslayuot);
         nextBtn = (Button) view.findViewById(R.id.next_btn);
         quesnNumbetTxt = (TextView)view.findViewById(R.id.quesn_no);
         quesnTxt=(TextView)view.findViewById(R.id.quesn);
         feedbackDateTxt = (TextView)view.findViewById(R.id.feedback_date);
-        back=(ImageButton)view.findViewById(R.id.btn_back);
         questionTableArrayList = Question_Table_Helper.getQuestionList(getActivity(),Question_Table.CATEGORY_FEEDBACK);
 
         answerTableArrayList = new ArrayList<Answer_Table>();
@@ -101,7 +99,7 @@ public class Arogya_Feedback_Fragment extends Fragment
 
     private void clickListner()
     {
-        back.setOnClickListener(new View.OnClickListener() {
+        arogyaFeedbackToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();

@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.hatchers.hedgewar.R;
 
@@ -19,6 +21,8 @@ import com.hatchers.hedgewar.R;
 public class Sampark_Fragment extends Fragment {
 
     private Toolbar samparkToolbar;
+    private TextView txtCallUs,txtSendMail;
+    private LinearLayout callUsLayout;
 
     public Sampark_Fragment() {
         // Required empty public constructor
@@ -34,7 +38,7 @@ public class Sampark_Fragment extends Fragment {
 
         initializations(view);
         initToolbar(view);
-        onclicklisteners();
+        onclickListeners();
 
 
         return view;
@@ -44,6 +48,7 @@ public class Sampark_Fragment extends Fragment {
     {
         samparkToolbar = (Toolbar)view.findViewById(R.id.sampark_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(samparkToolbar);
+
     }
 
     private void initializations(View view)
@@ -56,17 +61,29 @@ public class Sampark_Fragment extends Fragment {
             window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
         }
 
-
+        txtCallUs=(TextView)view.findViewById(R.id.txt_call_us);
+        txtSendMail=(TextView)view.findViewById(R.id.txt_send_email);
+        callUsLayout=(LinearLayout)view.findViewById(R.id.call_us_layout);
 
     }
 
-    private void  onclicklisteners()
+    private void  onclickListeners()
     {
 
         samparkToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
+            }
+        });
+
+        callUsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:2402339866"));
+                callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(callIntent );
             }
         });
 

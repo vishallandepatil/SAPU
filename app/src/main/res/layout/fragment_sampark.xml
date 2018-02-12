@@ -35,7 +35,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/hospital"/>
+                android:src="@drawable/appicon"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,14 +44,14 @@
                 android:gravity="center"
                 android:textColor="#000"
                 android:layout_marginTop="15dp"
-                android:text="We are always ready help you ?"
+                android:text="आम्ही नेहमी आपली मदत करण्यास तयार आहोत!"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Our Services hour is "
-                android:layout_marginTop="8dp"
+                android:text="आमची सेवा"
+                android:layout_marginTop="10dp"
                 android:textSize="15dp"
                 android:textColor="#000"
                 android:layout_gravity="center"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Monday - Friday (9 pm - 4 pm)"
+                android:text="सोमवार - शुक्रवार (9 - दुपारी 4)"
                 android:layout_gravity="center"
                 android:gravity="center"/>
 
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Saturday - Sunday (12 pm - 4 pm)"
+                android:text="शनिवार - रविवार (दुपारी 12 - संध्याकाळी 4)"
                 android:layout_gravity="center"
                 android:gravity="center"/>
 
@@ -86,12 +86,15 @@
 
 
                 <LinearLayout
+                    android:id="@+id/call_us_layout"
+                    android:clickable="true"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
 
 
                 <ImageView
@@ -107,16 +110,18 @@
                     android:textColor="#000000"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
+                    android:textSize="18dp"
                     android:layout_gravity="center"
-                    android:id="@+id/call_us"
+                    android:id="@+id/txt_call_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Call Us"/>
+                    android:text="संपर्क साधा"/>
 
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:layout_weight="1"
@@ -140,7 +145,7 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:id="@+id/send_email"
+                    android:id="@+id/txt_send_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Send Email"/>

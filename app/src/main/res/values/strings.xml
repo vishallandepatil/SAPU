@@ -40,4 +40,11 @@
     <string name="slide_4_desc">इथे आपण आरोग्य बँके अंतर्गत केलेल्या कार्यांबद्दल आपला अभिप्राय नोंद करू शकता.</string>
     <string name="slide_5_title">संपर्क</string>
 
+    <string name="slider1_title">नैसर्गिक संसाधन व्यवस्थापन व सहकार्य</string>
+    <string name="slider2_title">पूर्व प्राथमिक शिक्षण</string>
+    <string name="slider3_title">सार्वजनिक आरोग्य</string>
+    <string name="slider4_title">महिला जनजागृती</string>
+    <string name="slider5_title">कौशल्य विकास</string>
+    <string name="slider6_title">महिला सशक्तीकरण</string>
+
 </resources>
