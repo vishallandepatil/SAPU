@@ -36,8 +36,10 @@ public class BirthFragment extends Fragment {
     ListView listView;
     Spinner select_year;
     private Toolbar birthfragmentToolbar;
+    private TextView txtNoList;
+    private ImageView imageNoList;
 
-    ArrayList<Birth_Table> birthTables;
+    ArrayList<Birth_Table> birthTableArrayList;
 
 
     public BirthFragment() {
@@ -61,10 +63,12 @@ public class BirthFragment extends Fragment {
         birthfragmentToolbar=(Toolbar)view.findViewById(R.id.birthfragment_toolbar);
         select_year=(Spinner) view.findViewById(R.id.select_year);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        txtNoList=(TextView)view.findViewById(R.id.txt_no_list);
+        imageNoList=(ImageView)view.findViewById(R.id.image_no_list);
 
 
-        birthTables= Birth_Table_Helper.getBirthdataList(getContext());
-        birthAdapter= new BirthAdapter(getContext(), R.layout.list_row,birthTables);
+        birthTableArrayList= Birth_Table_Helper.getBirthdataList(getContext());
+        birthAdapter= new BirthAdapter(getContext(), R.layout.list_row,birthTableArrayList);
 
         listView = (ListView)view.findViewById(R.id.birth_listview);
         listView.setAdapter(birthAdapter);
@@ -93,6 +97,21 @@ public class BirthFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, years);
         select_year.setAdapter(adapter);
 
+
+        if(birthTableArrayList.size() <=0)
+        {
+            listView.setVisibility(View.GONE);
+            imageNoList.setImageResource(R.mipmap.no_list_image);
+            imageNoList.setVisibility(View.VISIBLE);
+            txtNoList.setVisibility(View.VISIBLE);
+
+        }
+        else
+        {
+            listView.setVisibility(View.VISIBLE);
+            imageNoList.setVisibility(View.GONE);
+            txtNoList.setVisibility(View.GONE);
+        }
         return view;
     }
 

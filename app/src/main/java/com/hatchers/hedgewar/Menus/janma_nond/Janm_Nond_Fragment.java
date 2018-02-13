@@ -156,20 +156,21 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                         sweetAlertDialog.setTitleText(" जन्म नोंद झाली");
-                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmText("ठीक आहे ");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
+                                getActivity().onBackPressed();
                             }
                         });
-                        getActivity().onBackPressed();
+
                     }
                     else
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
                         sweetAlertDialog.setTitleText(" जन्म नोंद झाली नाही  ");
-                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmText("ठीक आहे ");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -281,10 +282,12 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                 if(isChecked)
                 {
                     bloodUrineTest="Y";
+                    urine_blood_test.setError(null);
                 }
                 else
                 {
                     bloodUrineTest="N";
+                    urine_blood_test.setError(null);
                 }
             }
         });
@@ -384,7 +387,6 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                 if (place.getSelectedItemPosition() == 0) {
                     String errorString = "ठिकाण निवडा";
                     selectedTextView.setError(errorString);
-
                 } else {
                     selectedTextView.setError(null);
                 }
