@@ -54,14 +54,14 @@ public class LoginActivity extends AppCompatActivity
             public void onClick(View view) {
                 if(setUserInfo()) {
                     SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.PROGRESS_TYPE)
-                            .setTitleText("Please wait");
+                            .setTitleText("कृपया थांबा");
                     sweetAlertDialog.show();
 
                     if(Login_ApiHelper.userLoginApi(LoginActivity.this,sweetAlertDialog))
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText("Login Successful");
-                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setTitleText("लॉगइन यशस्वी");
+                        sweetAlertDialog.setConfirmText("ठीक आहे");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -72,8 +72,8 @@ public class LoginActivity extends AppCompatActivity
                     else
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        sweetAlertDialog.setTitleText("Login Failed ");
-                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setTitleText("लॉगइन अयशस्वी");
+                        sweetAlertDialog.setConfirmText("ठीक आहे");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity
     {
         if(edtName.getText().toString().equalsIgnoreCase("")||edtPassword.getText().toString().equalsIgnoreCase(""))
         {
-            Toast.makeText(getApplicationContext(),"Invalid User Name or password",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"यझरनेम किंवा पासवर्ड तपासा",Toast.LENGTH_LONG).show();
             return false;
         }
         else

@@ -197,25 +197,54 @@ public class Arogya_Tapasni_Fragment extends Fragment
             if (mIfCounter == questionTableArrayList.size())
             {
 
+                final SweetAlertDialog sweetAlertDialog= new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+                sweetAlertDialog.setTitleText("प्रतीक्षा करा ...")
+                        .setContentText("सर्व डेटावर प्रक्रिया होत आहे!")
+                        .show();
+                int i=0;
+
                 ///insert all ans in ans table
 
-                /*for (Answer_Table ans : answers)
+                for (Answer_Table ans : answers)
                 {
-                    if (a.equalsIgnoreCase("")) {
+                    //if (a.equalsIgnoreCase("")) {
                         // a="0";
-                    }
-                    else
+                    //}
+                    if( ans.getAnswer_countValue().equalsIgnoreCase(""))
                     {
-                        Answer_Table_Helper.insertAnswer(getActivity(), ans);
+                        ans.setAnswer_countValue("0");
+                    }
+                    if(Answer_Table_Helper.insertAnswer(getActivity(), ans))
+                    {
+                        i++;
+                        sweetAlertDialog.setContentText("सर्व डेटावर प्रक्रिया होत आहे!("+i+"/"+mIfCounter+")");
+
+
                     }
 
+                    if(i++ == answers.size() - 1)
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
+                        sweetAlertDialog.setConfirmText("ठीक आहे ");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                }*/
+                                sweetAlertDialog.dismissWithAnimation();
+                                getActivity().onBackPressed();
+
+                            }
+                        });
+
+                    }
+
+                }
 
 
-              sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+             /* sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                         .setTitleText("कृपया थांबा");
-                sweetAlertDialog.setCancelable(false);
+                //sweetAlertDialog.setCancelable(false);
                 sweetAlertDialog.show();
 
                 int i=0;
@@ -233,7 +262,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
                   {
                       sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                       sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
-                      sweetAlertDialog.setConfirmText("Ok");
+                      sweetAlertDialog.setConfirmText("ठीक आहे");
                       sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                           @Override
                           public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -246,7 +275,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
 
                   }
               }
-
+*/
 
             }
 

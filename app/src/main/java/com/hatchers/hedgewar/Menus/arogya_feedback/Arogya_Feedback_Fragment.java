@@ -169,8 +169,6 @@ public class Arogya_Feedback_Fragment extends Fragment
         });
     }
 
-
-
     private boolean checkValidation()
     {
         boolean response = true;
@@ -229,8 +227,8 @@ public class Arogya_Feedback_Fragment extends Fragment
 
             if (mIfCounter == questionTableArrayList.size())
             {
-                final SweetAlertDialog dilog= new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
-                dilog.setTitleText("प्रतीक्षा करा ...")
+                final SweetAlertDialog sweetAlertDialog= new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+                sweetAlertDialog.setTitleText("प्रतीक्षा करा ...")
                         .setContentText("सर्व डेटावर प्रक्रिया होत आहे!")
                         .show();
                 int i=0;
@@ -244,7 +242,7 @@ public class Arogya_Feedback_Fragment extends Fragment
                     if(Answer_Table_Helper.insertAnswer(getActivity(),ans))
                     {
                         i++;
-                        dilog.setContentText("सर्व डेटावर प्रक्रिया होत आहे!("+i+"/"+mIfCounter+")");
+                        sweetAlertDialog.setContentText("सर्व डेटावर प्रक्रिया होत आहे!("+i+"/"+mIfCounter+")");
 
                     }
 
@@ -253,7 +251,7 @@ public class Arogya_Feedback_Fragment extends Fragment
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                         sweetAlertDialog.setTitleText("आरोग्य अभिप्राय समाप्त");
-                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmText("ठीक आहे");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -321,7 +319,6 @@ public class Arogya_Feedback_Fragment extends Fragment
 
         }
     }
-
 
     public void hideSoftKeyboard(View view)
     {

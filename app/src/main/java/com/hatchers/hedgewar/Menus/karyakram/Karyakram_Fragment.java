@@ -113,18 +113,19 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                 if(checkValidation())
                 {
                     SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                            .setTitleText(" थांबा  ");
+                            .setTitleText("कृपया थांबा");
                     sweetAlertDialog.show();
 
                     if(Answer_Table_Helper.insertAnswer(getContext(),answer))
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                         sweetAlertDialog.setTitleText(" माहिती जतन झाली");
-                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmText("ठीक आहे");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
+                                getActivity().onBackPressed();
                             }
                         });
                     }
@@ -132,7 +133,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
                         sweetAlertDialog.setTitleText(" माहिती जतन झाली नाही  ");
-                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmText("ठीक आहे");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -140,7 +141,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                             }
                         });
                     }
-                    getActivity().onBackPressed();
+
                 }
             }
         });
@@ -207,7 +208,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
                     selectedTextView.setError(errorString);
 
                 } else {
-                    selectedTextView.setError("कार्यक्रमाचे नाव निवडा");
+                    selectedTextView.setError(null);
                 }
             }
         return response;

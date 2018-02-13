@@ -17,12 +17,6 @@
 
    </android.support.v7.widget.Toolbar>
 
-
-
-
-
-
-
    <Spinner
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -52,5 +46,28 @@
        android:layout_marginRight="20dp"
        android:layout_alignParentBottom="true"
        android:layout_alignParentRight="true"/>
+
+
+   <ImageView
+       android:src="@mipmap/no_list_image"
+       android:layout_width="250dp"
+       android:layout_height="250dp"
+       android:gravity="center"
+       android:visibility="gone"
+       android:layout_centerInParent="true"
+       android:id="@+id/image_no_list"/>
+
+   <TextView
+       android:layout_below="@id/image_no_list"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="बालकांची यादी उपलब्ध नाही!"
+       android:textSize="20dp"
+       android:id="@+id/txt_no_list"
+       android:textStyle="bold"
+       android:visibility="gone"
+       android:gravity="center"/>
+
+
 
 </RelativeLayout>
