@@ -201,6 +201,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
                 sweetAlertDialog.setTitleText("प्रतीक्षा करा ...")
                         .setContentText("सर्व डेटावर प्रक्रिया होत आहे!")
                         .show();
+                sweetAlertDialog.setCancelable(false);
                 int i=0;
 
                 ///insert all ans in ans table

@@ -31,11 +31,13 @@
             android:orientation="vertical"
             android:layout_marginTop="50dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/appicon"/>
+                android:src="@drawable/appicon"
+                app:border_width="1dp"
+                app:border_color="@color/colorPrimary"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,6 +74,25 @@
                 android:text="शनिवार - रविवार (दुपारी 12 - संध्याकाळी 4)"
                 android:layout_gravity="center"
                 android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="संपर्क क्रमांक"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:text="(240)2339866, (240)2331195, (240)2341849"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
 
             <LinearLayout
                 android:orientation="horizontal"

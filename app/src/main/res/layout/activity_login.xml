@@ -9,12 +9,14 @@
     android:background="@color/colorGray"
     android:gravity="center_vertical">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/logo"
         android:layout_gravity="center"
-        android:src="@drawable/appicon" />
+        android:src="@drawable/appicon"
+        app:border_color="@color/colorPrimary"
+        app:border_width="1dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -124,6 +126,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:text="लॉग इन"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"
                 android:drawablePadding="10dp"/>
