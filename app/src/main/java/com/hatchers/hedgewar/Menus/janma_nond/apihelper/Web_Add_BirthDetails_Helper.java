@@ -30,9 +30,6 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
 
-/**
- * Created by Ashwin on 20-Dec-17.
- */
 
 public class Web_Add_BirthDetails_Helper
 {
@@ -167,6 +164,8 @@ public class Web_Add_BirthDetails_Helper
             }
 
         };
+
+        
         MyApplication.getInstance().addToRequestQueue(strReq);
         return true;
     }
