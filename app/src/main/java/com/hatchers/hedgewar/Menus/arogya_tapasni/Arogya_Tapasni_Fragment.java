@@ -203,7 +203,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
                         .show();
                 sweetAlertDialog.setCancelable(false);
                 int i=0;
-
+/*
                 ///insert all ans in ans table
 
                 for (Answer_Table ans : answers)
@@ -240,15 +240,10 @@ public class Arogya_Tapasni_Fragment extends Fragment
 
                     }
 
-                }
+                }  */
 
 
-             /* sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("कृपया थांबा");
-                //sweetAlertDialog.setCancelable(false);
-                sweetAlertDialog.show();
 
-                int i=0;
               for (i =0;i<answers.size();i++)
               {
                   Answer_Table answerTable =answers.get(i);
@@ -276,7 +271,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
 
                   }
               }
-*/
+
 
             }
 

@@ -59,25 +59,6 @@ public class User_Details_Fragment extends Fragment {
         villageName=(TextView)view.findViewById(R.id.village_name);
     }
 
-   /* private void passwdClick()
-    {
-        visiblPasswd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(passwdTxt.getInputType()==InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                    passwdTxt.setInputType(InputType.TYPE_CLASS_TEXT);
-                    visiblPasswd.setImageResource(R.drawable.eye_hidden);
-                }
-                else
-                {
-                    passwdTxt.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    visiblPasswd.setImageResource(R.drawable.eye_show);
-
-                }
-            }
-        });
-    }
-*/
 
     private void setUserDetails()
     {
