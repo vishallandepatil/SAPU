@@ -9,7 +9,7 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        app:title="हेडगेवार सर्वेक्षण "
+        app:title="आरोग्य मित्र"
         app:titleTextColor="@color/white"
         android:background="@color/colorPrimary"
         android:id="@+id/menu_toolbar"

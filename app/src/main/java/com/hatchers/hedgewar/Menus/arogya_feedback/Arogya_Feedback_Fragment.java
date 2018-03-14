@@ -34,6 +34,8 @@ import java.util.Date;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
+
+
 public class Arogya_Feedback_Fragment extends Fragment
 {
 
@@ -187,6 +189,16 @@ public class Arogya_Feedback_Fragment extends Fragment
     {
         if (mIfCounter > 0) {
             final EditText et = (EditText) view;
+
+            et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+                        hideSoftKeyboard(v);
+                    }
+                }
+            });
+
             String a = et.getText().toString();
 
             try {
@@ -221,7 +233,8 @@ public class Arogya_Feedback_Fragment extends Fragment
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    hideSoftKeyboard(et);
+                   // hideSoftKeyboard(et);
+
                 }
             });
 
@@ -232,7 +245,7 @@ public class Arogya_Feedback_Fragment extends Fragment
                         .setContentText("सर्व डेटावर प्रक्रिया होत आहे!")
                         .show();
                 int i=0;
-                for(Answer_Table ans:answerTableArrayList)
+                /*for(Answer_Table ans:answerTableArrayList)
                 {
                     if(ans.getAnswer_countValue().equalsIgnoreCase(""))
                     {
@@ -244,6 +257,41 @@ public class Arogya_Feedback_Fragment extends Fragment
                         i++;
                         sweetAlertDialog.setContentText("सर्व डेटावर प्रक्रिया होत आहे!("+i+"/"+mIfCounter+")");
 
+                    }
+
+
+                    if(i++ == answerTableArrayList.size() - 1)
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("आरोग्य अभिप्राय समाप्त");
+                        sweetAlertDialog.setConfirmText("ठीक आहे");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                sweetAlertDialog.dismissWithAnimation();
+                                getActivity().onBackPressed();
+
+                            }
+                        });
+
+                    }
+                }
+            }
+
+        }*/
+
+
+           for(Answer_Table ans:answerTableArrayList)
+                {
+                    if(ans.getAnswer_countValue().equalsIgnoreCase(""))
+                    {
+                        ans.setAnswer_countValue("0");
+                    }
+
+                    else
+                    {
+                        Answer_Table_Helper.insertAnswer(getActivity(),ans);
                     }
 
 
@@ -324,7 +372,9 @@ public class Arogya_Feedback_Fragment extends Fragment
     {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
     }
 

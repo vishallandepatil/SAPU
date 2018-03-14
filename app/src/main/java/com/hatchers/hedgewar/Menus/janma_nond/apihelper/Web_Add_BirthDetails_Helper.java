@@ -30,15 +30,12 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.hatchers.hedgewar.database.Web_AnswerHelper.inserAnswers;
 
-/**
- * Created by Ashwin on 20-Dec-17.
- */
 
 public class Web_Add_BirthDetails_Helper
 {
     public static boolean addBirthToServer(final Activity activity, final SweetAlertDialog sweetAlertDialog)
     {
-         final Birth_Table birth_table =Birth_Table_Helper.getBirthdata(activity);
+        final Birth_Table birth_table =Birth_Table_Helper.getBirthdata(activity);
         if(birth_table==null)
         {
             inserAnswers(activity, sweetAlertDialog);
@@ -121,9 +118,7 @@ public class Web_Add_BirthDetails_Helper
                 params.put("name_of_mother", birth_table.getName_of_motherValue());
                 params.put("age", birth_table.getAgeValue());
                 params.put("delivery_count", birth_table.getdelivery_countValue());
-                                try {
-
-
+                try {
                     Date strDate= formatterin.parse(birth_table.getMonth_of_registrationValue());
                     params.put("month_of_registration", formatterout.format(strDate));
 
@@ -136,8 +131,6 @@ public class Web_Add_BirthDetails_Helper
                 params.put("blood_urine_test", birth_table.getBlood_urine_testValue());
 
                try {
-
-
                    Date strDate= formatterin.parse(birth_table.getDelivery_dateValue());
                    params.put("delivery_date", formatterout.format(strDate));
 
@@ -151,8 +144,6 @@ public class Web_Add_BirthDetails_Helper
                 params.put("birth_weight", birth_table.getBirth_weightValue());
 
                 try {
-
-
                     Date strDate= formatterin.parse(birth_table.getDate_of_period());
                     params.put("date_of_period", formatterout.format(strDate));
 
@@ -161,7 +152,6 @@ public class Web_Add_BirthDetails_Helper
                 {
 
                 }
-
 
                 params.put("user_id", new PrefManager(activity).getUserId());
                 params.put("village_id", new PrefManager(activity).getVillageId());
@@ -174,10 +164,10 @@ public class Web_Add_BirthDetails_Helper
             }
 
         };
+
+        
         MyApplication.getInstance().addToRequestQueue(strReq);
         return true;
-
-
     }
 
 }

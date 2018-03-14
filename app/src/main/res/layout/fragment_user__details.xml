@@ -13,7 +13,7 @@
         android:layout_height="54dp"
         app:contentInsetStart="4dp"
         app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
-        app:title="आपली माहिती"
+        app:title="आरोग्य मित्र "
         app:titleTextColor="@color/colorWhite"
         android:background="@color/colorPrimary"
         android:id="@+id/userDetailsToolbar">
@@ -22,124 +22,127 @@
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
+        android:layout_below="@id/userDetailsToolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <LinearLayout
+            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-    <FrameLayout
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginBottom="15dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_account_circle_black_24dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            app:border_color="@color/colorPrimary"
+            app:border_width="1dp"
+            android:src="@drawable/appicon"/>
 
 
             <TextView
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="नाव "
-                android:textSize="20dp"
                 android:gravity="center"
-                android:layout_marginBottom="5dp"
-                android:layout_gravity="center|bottom"
-                android:textColor="@color/colorWhite"
-                android:layout_marginTop="20dp"
-                android:id="@+id/name_Txt"/>
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:text="आरोग्य मित्र माहिती "/>
 
-    </FrameLayout>
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center">
 
-    <android.support.v7.widget.CardView
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="नाव "
+                    android:layout_gravity="center"
+                    android:textSize="16dp"
+                    android:id="@+id/name_Txt"/>
+
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="जन्मदिनांक  "
+                    android:textSize="16dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/date_of_birth"/>
+
+
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="संपर्क क्रमांक"
+                    android:textSize="15dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/mobile_number"/>
+
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="गावाचे नाव  "
+                    android:textSize="16dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/village_name"/>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="आरोग्य मित्र नेहेमीच तुमच्या सेवेत आहेत!"
+                    android:textSize="16dp"
+                    android:textColor="#000"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:background="@drawable/ic_smile"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
         app:cardElevation="1dp"
+        android:visibility="gone"
         android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp">
-
-
-            <TextView
-                android:drawableLeft="@drawable/date_of_birth"
-                android:drawablePadding="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="जन्मदिनांक  "
-                android:textSize="16dp"
-                android:id="@+id/date_of_birth"/>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/colorDarkgray"/>
-
-
-
-            <TextView
-                android:drawableLeft="@drawable/mobile_number"
-                android:drawablePadding="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="मोबाइल नंबर  "
-                android:textSize="15dp"
-                android:id="@+id/mobile_number"/>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/colorDarkgray"/>
-
-
-
-        <TextView
-                android:drawableLeft="@drawable/village_name"
-                android:drawablePadding="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="गावाचे नाव  "
-                android:textSize="16dp"
-                android:id="@+id/village_name"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/colorDarkgray"/>
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
