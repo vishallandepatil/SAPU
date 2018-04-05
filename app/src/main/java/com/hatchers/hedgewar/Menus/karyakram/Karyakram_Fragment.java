@@ -175,7 +175,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
         boolean response=true;
 
         if(program_holder_name.getText().toString().trim().length()==0) {
-            program_holder_name.setError("वक्त्याचे नाव टाका");
+            program_holder_name.setError("नाव टाका");
             response = false;
         }
         else
@@ -183,7 +183,7 @@ public class Karyakram_Fragment extends Fragment implements AdapterView.OnItemSe
             program_holder_name.setError(null);
         }
         if(present_people_count.getText().toString().trim().length()==0) {
-            present_people_count.setError("उपस्थित संख्या टाका");
+            present_people_count.setError("संख्या टाका");
             response = false;
         }
         else

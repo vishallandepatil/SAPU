@@ -2,6 +2,7 @@ package com.hatchers.hedgewar.Menus.arogya_tapasni;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
@@ -41,7 +42,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
     Question_Table question;
     View view;
     ArrayList<Answer_Table> answers;
-    private TextView tapasani_date;
+    private TextInputEditText etReportSubmissionDate;
     private DatePickerDialog dpd;
     private int year, day, month;
     private Toolbar arogya_toolbar;
@@ -83,7 +84,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
         }
 
         arogya_toolbar = (Toolbar) view.findViewById(R.id.arogya_toolbar);
-        tapasani_date = (TextView) view.findViewById(R.id.tapasani_date);
+        etReportSubmissionDate = (TextInputEditText) view.findViewById(R.id.report_submission_date);
         uniqueIdTxt = (TextView) view.findViewById(R.id.unique_id);
         nextBtn = (Button) view.findViewById(R.id.btn_next);
         questionTxt = (TextView) view.findViewById(R.id.question);
@@ -91,7 +92,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
         ansLayout = (LinearLayout) view.findViewById(R.id.ansLayout);
 
 
-        tapasani_date.setOnClickListener(new View.OnClickListener() {
+        etReportSubmissionDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayDatePicker();
@@ -113,11 +114,11 @@ public class Arogya_Tapasni_Fragment extends Fragment
     private boolean checkValidation() {
         boolean result = true;
 
-        if (tapasani_date.getText().toString().trim().length() == 0) {
-            tapasani_date.setError("तपासणीची तारीख टाका");
+        if (etReportSubmissionDate.getText().toString().trim().length() == 0) {
+            etReportSubmissionDate.setError("अहवाल सादर करण्याची तारीख टाका");
             result = false;
         } else {
-            tapasani_date.setError(null);
+            etReportSubmissionDate.setError(null);
         }
 
         return result;
@@ -133,8 +134,8 @@ public class Arogya_Tapasni_Fragment extends Fragment
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 monthOfYear = monthOfYear + 1;
-                tapasani_date.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
-                tapasani_date.setError(null);
+                etReportSubmissionDate.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+                etReportSubmissionDate.setError(null);
             }
         }, year, month, day);
         final Calendar calender1 = Calendar.getInstance();
@@ -184,7 +185,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
                 Answer_Table answer = new Answer_Table();
                 answer.setAnswer_countValue(a);
                 answer.setCategoryValue(question.getCATEGORY_ENGLISH_VALUE());
-                answer.setAns_dateValue(tapasani_date.getText().toString());
+                answer.setAns_dateValue(etReportSubmissionDate.getText().toString());
                 answer.setCurrent_datetimeValue(getCurrentDateTime());
                 answer.setQuestion_idValue(b);
                 answer.setLocal_servey_idValue(uniqueIdTxt.getText().toString());

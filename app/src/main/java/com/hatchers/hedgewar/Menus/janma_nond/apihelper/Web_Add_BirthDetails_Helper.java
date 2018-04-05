@@ -1,8 +1,6 @@
 package com.hatchers.hedgewar.Menus.janma_nond.apihelper;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -11,7 +9,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
-import com.hatchers.hedgewar.activity.MenuActivity;
 import com.hatchers.hedgewar.app.MyApplication;
 import com.hatchers.hedgewar.constants.WebServiceUrls;
 import com.hatchers.hedgewar.database.Birth_Table;
@@ -55,10 +52,21 @@ public class Web_Add_BirthDetails_Helper
                             JSONArray result = responce.getJSONArray("result");
                             JSONObject jsonObject = result.getJSONObject(0);
 
+                            //{"status":"success","count":1,"type":"addNewAns",
+                            // "result":[{"birth_id":"32",
+                            // "name_of_mother":"voiajaya",
+                            // "age":"25","delivery_count":"1","month_of_registration":"1",
+                            // "blood_urine_test":"Y","delivery_date":"2017-12-22",
+                            // "place":"abad","gender":"M","birth_weight":"2",
+                            // "date_of_period":"2017-12-22","user_id":"1","village_id":"1",
+                            // "upload_status":null,"sonography_test":"Y","iron_calcium":"Y",
+                            // "child_death":"Y","mother_death":"Y","critical_condition":"Y",
+                            // "pregnancy_death":"Y"}],"message":"Birth added successfully"}
+
                             //birth_table.setBirth_idValue(jsonObject.getString("birth_id"));
                             birth_table.setName_of_motherValue(jsonObject.getString("name_of_mother"));
                             birth_table.setAgeValue(jsonObject.getString("age"));
-                            birth_table.setdelivery_countValue(jsonObject.getString("delivery_count"));
+                            birth_table.setDelivery_countValue(jsonObject.getString("delivery_count"));
                             birth_table.setMonth_of_registrationValue(jsonObject.getString("month_of_registration"));
                             birth_table.setBlood_urine_testValue(jsonObject.getString("blood_urine_test"));
                             birth_table.setDelivery_dateValue(jsonObject.getString("delivery_date"));
@@ -69,6 +77,12 @@ public class Web_Add_BirthDetails_Helper
                             birth_table.setUserIdValue(jsonObject.getString("user_id"));
                             birth_table.setVillage_idValue(jsonObject.getString("village_id"));
                             birth_table.setUploadStatusValue("1");
+                            birth_table.setSonographyTestValue(jsonObject.getString("sonography_test"));
+                            birth_table.setIronCalciumValue(jsonObject.getString("iron_calcium"));
+                            birth_table.setCriticalConditionValue(jsonObject.getString("critical_condition"));
+                            birth_table.setChildDeathValue(jsonObject.getString("child_death"));
+                            birth_table.setMotherDeathValue(jsonObject.getString("mother_death"));
+                            birth_table.setPregnancyDeathValue(jsonObject.getString("pregnancy_death"));
 
                             if(Birth_Table_Helper.updateBirth(activity,birth_table))
                             {
@@ -115,9 +129,20 @@ public class Web_Add_BirthDetails_Helper
                 Map<String, String> params = new Hashtable<String, String>();
                 SimpleDateFormat formatterin = new SimpleDateFormat("dd/MM/yyyy");
                 SimpleDateFormat formatterout = new SimpleDateFormat("yyyy-MM-dd");
+
+                //http://hatchers.in/sapu/index.php/api/v1/addbirth?
+                // name_of_mother=voiajaya
+                // &age=25  &delivery_count=1
+                // &month_of_registration=1 &blood_urine_test=Y
+                // &delivery_date=2017-12-22 &place=abad&gender=M
+                // &birth_weight=2 &date_of_period=2017-12-22
+                // &user_id=1 &village_id=1 &mobile=9975294782
+                // &password=user@123 &format=json &sonography_test=Y
+                // &iron_calcium=Y&child_death=Y&mother_death=Y
+                // &critical_condition=Y&pregnancy_death=Y
                 params.put("name_of_mother", birth_table.getName_of_motherValue());
                 params.put("age", birth_table.getAgeValue());
-                params.put("delivery_count", birth_table.getdelivery_countValue());
+                params.put("delivery_count", birth_table.getDelivery_countValue());
                 try {
                     Date strDate= formatterin.parse(birth_table.getMonth_of_registrationValue());
                     params.put("month_of_registration", formatterout.format(strDate));
@@ -130,7 +155,8 @@ public class Web_Add_BirthDetails_Helper
 
                 params.put("blood_urine_test", birth_table.getBlood_urine_testValue());
 
-               try {
+
+                try {
                    Date strDate= formatterin.parse(birth_table.getDelivery_dateValue());
                    params.put("delivery_date", formatterout.format(strDate));
 
@@ -158,6 +184,12 @@ public class Web_Add_BirthDetails_Helper
                 params.put("mobile", new PrefManager(activity).getMobile());
                 params.put("password", new PrefManager(activity).getPassword());
                 params.put("format", "json");
+                params.put("sonography_test", birth_table.getSonographyTestValue());
+                params.put("iron_calcium", birth_table.getIronCalciumValue());
+                params.put("child_death", birth_table.getChildDeathValue());
+                params.put("mother_death", birth_table.getMotherDeathValue());
+                params.put("critical_condition", birth_table.getCriticalConditionValue());
+                params.put("pregnancy_death", birth_table.getPregnancyDeathValue());
 
                 //returning parameters
                 return params;
@@ -165,7 +197,6 @@ public class Web_Add_BirthDetails_Helper
 
         };
 
-        
         MyApplication.getInstance().addToRequestQueue(strReq);
         return true;
     }
