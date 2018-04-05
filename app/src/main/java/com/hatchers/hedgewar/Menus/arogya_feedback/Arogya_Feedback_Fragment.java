@@ -33,9 +33,6 @@ import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-
-
-
 public class Arogya_Feedback_Fragment extends Fragment
 {
 
@@ -189,16 +186,6 @@ public class Arogya_Feedback_Fragment extends Fragment
     {
         if (mIfCounter > 0) {
             final EditText et = (EditText) view;
-
-            et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) {
-                        hideSoftKeyboard(v);
-                    }
-                }
-            });
-
             String a = et.getText().toString();
 
             try {
@@ -233,8 +220,7 @@ public class Arogya_Feedback_Fragment extends Fragment
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                   // hideSoftKeyboard(et);
-
+                   hideSoftKeyboard(et);
                 }
             });
 
@@ -370,12 +356,28 @@ public class Arogya_Feedback_Fragment extends Fragment
 
     public void hideSoftKeyboard(View view)
     {
-        if (view != null) {
+        /*if (view != null) {
             InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
+        }*/
+
+        InputMethodManager inputManager =
+                (InputMethodManager)getActivity().
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputManager != null) {
+            inputManager.hideSoftInputFromWindow(
+                    getActivity().getCurrentFocus().getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
         }
+
     }
 
 }
+
+
+
+
+
+

@@ -6,6 +6,7 @@
 
     <color name="login_color">#C86B98</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="menu_background">#3271d4c0</color>
     <color name="status_color">#248471</color>
     <color name="all_status_color">#187c7c</color>

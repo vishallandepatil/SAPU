@@ -83,7 +83,8 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
 
@@ -288,7 +289,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/shape3"
-                android:layout_below="@id/consignment_layout"
+
               >
 
                 <android.support.design.widget.TextInputEditText
@@ -317,7 +318,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/shape3"
-                android:layout_below="@id/birthweight_layout">
+                >
 
              <CheckBox
                  style="@style/Widget.AppCompat.CompoundButton.CheckBox"
@@ -330,6 +331,138 @@
                  android:padding="12dp"
                  android:textSize="18dp"
                  android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sonography_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape3">
+
+                <CheckBox
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:buttonTint="#000"
+                    android:id="@+id/checkbox_sonography"
+                    android:text="सोनोग्राफी झालेल्या गर्भवती"
+                    android:padding="12dp"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/iron_calcium_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape3">
+
+                <CheckBox
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:buttonTint="#000"
+                    android:id="@+id/checkbox_iron_calcium_tablets"
+                    android:text="लोह व कॅल्शियम गोळ्या घेतलेल्या माता"
+                    android:padding="12dp"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mothers_with_danger_signs_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape3">
+
+                <CheckBox
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:buttonTint="#000"
+                    android:id="@+id/checkbox_mothers_with_danger_signs"
+                    android:text="गरोदरपणात धोक्याची लक्षणे असलेल्या माता"
+                    android:padding="12dp"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/newborn_death_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape3">
+
+                <CheckBox
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:buttonTint="#000"
+                    android:id="@+id/checkbox_newborn_death"
+                    android:text="नवजात मृत्यू"
+                    android:padding="12dp"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/early_death_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape3">
+
+                <CheckBox
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:buttonTint="#000"
+                    android:id="@+id/checkbox_early_death"
+                    android:text="उपजत मृत्यू"
+                    android:padding="12dp"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mother_death_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape3">
+
+                <CheckBox
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:buttonTint="#000"
+                    android:id="@+id/checkbox_mother_death"
+                    android:text="माता मृत्यू"
+                    android:padding="12dp"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -372,20 +505,19 @@
 
             <Button
                 android:layout_width="100dp"
-                android:layout_below="@id/radiogroup_layout"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape"
                 android:layout_marginTop="25dp"
-                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
                 android:text="सेव"
                 android:padding="10dp"
                 android:textStyle="bold"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:id="@+id/save"
                 android:textSize="18dp"/>
 
-        </RelativeLayout>
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

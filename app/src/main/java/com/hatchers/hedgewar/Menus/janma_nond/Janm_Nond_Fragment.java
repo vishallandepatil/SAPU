@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper;
+import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Birth_Table;
 import com.hatchers.hedgewar.database.Birth_Table_Helper;
@@ -40,7 +41,10 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
 
     private TextInputEditText mother_name, age, consignment,birthweight,delivery_date,
             registration_month, date_of_periods;
-    private CheckBox urine_blood_test;
+    private CheckBox urine_blood_test,checkboxSonography,checkboxIronCalciumTablets,checkboxMothersWithDangerSigns,
+            checkboxNewbornDeath,checkboxEarlyDeath,checkboxMotherDeath;
+    private String selected_gender = "", bloodUrineTest="",sonographyTest="",ironCalciumTest="",mothersSignsTests="",
+            newBornDeath="",earlyDeath="",motherDeath="";
     private RadioGroup gender_group;
     private RadioButton male,female;
     private Spinner place;
@@ -52,9 +56,6 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
     private Toolbar janmaNondToolbar;
     Birth_Table birth;
     Context context;
-    private String selected_gender = "", bloodUrineTest="";
-    private ProgressDialog progressDialog;
-
 
     public Janm_Nond_Fragment() {
         // Required empty public constructor
@@ -69,8 +70,8 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         context=getContext();
         initToolbar(view);
         initialization(view);
+        setGenderAndTests();
         onClickListners();
-        setGender();
 
         place.setOnItemSelectedListener(this);
 
@@ -111,12 +112,16 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         place = (Spinner)view. findViewById(R.id.place);
         birthweight=(TextInputEditText)view.findViewById(R.id.birthweight);
         urine_blood_test = (CheckBox)view. findViewById(R.id.urine_blood_test);
+        checkboxSonography= (CheckBox)view. findViewById(R.id.checkbox_sonography);
+        checkboxIronCalciumTablets= (CheckBox)view. findViewById(R.id.checkbox_iron_calcium_tablets);
+        checkboxMothersWithDangerSigns= (CheckBox)view. findViewById(R.id.checkbox_mothers_with_danger_signs);
+        checkboxNewbornDeath= (CheckBox)view. findViewById(R.id.checkbox_newborn_death);
+        checkboxEarlyDeath= (CheckBox)view. findViewById(R.id.checkbox_early_death);
+        checkboxMotherDeath= (CheckBox)view. findViewById(R.id.checkbox_mother_death);
         save = (Button)view. findViewById(R.id.save);
         gender_group=(RadioGroup)view.findViewById(R.id.gender_group);
         male=(RadioButton)view.findViewById(R.id.radiobtnmale);
         female=(RadioButton)view.findViewById(R.id.radiobtnfemale);
-
-
     }
 
     private void onClickListners() {
@@ -150,7 +155,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                 if(checkValidation())
                 {
                     SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                            .setTitleText(" थांबा  ");
+                            .setTitleText("थांबा");
                     sweetAlertDialog.show();
                     if(Birth_Table_Helper.insertBirth(getActivity(),birth))
                     {
@@ -260,7 +265,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         dpd.show();
     }
 
-    public void setGender()
+    public void setGenderAndTests()
     {
         gender_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -282,12 +287,114 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
                 if(isChecked)
                 {
                     bloodUrineTest="Y";
-                    urine_blood_test.setError(null);
+
                 }
                 else
                 {
                     bloodUrineTest="N";
-                    urine_blood_test.setError(null);
+
+                }
+            }
+        });
+
+        checkboxSonography.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    sonographyTest="Y";
+
+                }
+                else
+                {
+                    sonographyTest="N";
+
+                }
+            }
+        });
+
+
+
+        checkboxIronCalciumTablets.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    ironCalciumTest="Y";
+
+                }
+                else
+                {
+                    ironCalciumTest="N";
+
+                }
+            }
+        });
+
+
+        checkboxMothersWithDangerSigns.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    mothersSignsTests="Y";
+
+                }
+                else
+                {
+                    mothersSignsTests="N";
+
+                }
+            }
+        });
+
+
+        checkboxNewbornDeath.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    newBornDeath="Y";
+
+                }
+                else
+                {
+                    newBornDeath="N";
+
+                }
+            }
+        });
+
+
+        checkboxEarlyDeath.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    earlyDeath="Y";
+
+                }
+                else
+                {
+                    earlyDeath="N";
+
+                }
+            }
+        });
+
+
+        checkboxMotherDeath.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    motherDeath="Y";
+
+                }
+                else
+                {
+                    motherDeath="N";
+
                 }
             }
         });
@@ -369,7 +476,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         {
             // one of the radio buttons is checked
         }
-        if(!urine_blood_test.isChecked())
+        /*if(!urine_blood_test.isChecked())
         {
             urine_blood_test.setError("चाचणी निवडा");
             response=false;
@@ -378,7 +485,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         {
            urine_blood_test.setError(null);
         }
-
+*/
         if (place.getSelectedItem().toString().trim().equalsIgnoreCase("ठिकाण")) {
 
             View selectedView = place.getSelectedView();
@@ -401,22 +508,26 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         birth=new Birth_Table();
 
         birth.setName_of_motherValue(mother_name.getText().toString());
-        birth.setBlood_urine_testValue(urine_blood_test.getText().toString());
         birth.setAgeValue(age.getText().toString());
-        birth.setdelivery_countValue(consignment.getText().toString());
+        birth.setDelivery_countValue(consignment.getText().toString());
         birth.setBirth_weightValue(birthweight.getText().toString());
         birth.setMonth_of_registrationValue(registration_month.getText().toString());
         birth.setDate_of_period(date_of_periods.getText().toString());
         birth.setDelivery_dateValue(delivery_date.getText().toString());
+        birth.setPlaceValue(place.getSelectedItem().toString());
         birth.setGenderValue(selected_gender);
         birth.setBlood_urine_testValue(bloodUrineTest);
-        birth.setPlaceValue(place.getSelectedItem().toString());
+        birth.setSonographyTestValue((sonographyTest));
+        birth.setIronCalciumValue((ironCalciumTest));
+        birth.setCriticalConditionValue((mothersSignsTests));
+        birth.setChildDeathValue(newBornDeath);
+        birth.setMotherDeathValue(motherDeath);
+        birth.setPregnancyDeathValue(earlyDeath);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //String item = parent.getItemAtPosition(position).toString();
-        //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+
     }
 
     @Override

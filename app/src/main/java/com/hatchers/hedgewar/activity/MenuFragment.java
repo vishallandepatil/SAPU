@@ -242,7 +242,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
                 }
                 else
                 {
-
                     sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
                     sweetAlertDialog.setTitleText("माहिती समक्रमित नाही झाली");
                     sweetAlertDialog.setConfirmText("Ok");

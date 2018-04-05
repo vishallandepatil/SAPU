@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">सावित्रीबाई फुले महिला एकतमा समाज मंडळ</string>
+    <string name="app_name">सावित्रीबाई फुले महिला एकात्मता समाज मंडळ</string>
 
 
     <string-array name="menus_name">
@@ -8,10 +8,10 @@
         <item>नवजात बालक नोंदणी </item>
     </string-array>
 
-    <string name="arogya_tapasni">आरोग्य बँक तपासणी</string>
+    <string name="arogya_tapasni">आरोग्य तपासणी</string>
     <string name="karyakram">कार्यक्रम व्यवस्थापन</string>
     <string name="janma_nond">जन्म नोंद </string>
-    <string name="arogya_feedback">आरोग्य बँक अभिप्राय </string>
+    <string name="arogya_feedback">आरोग्य अभिप्राय </string>
     <string name="sahayta">सहायता </string>
     <string name="sampark">संपर्क</string>
     <string name="name_work">कार्यक्रमाचे नाव</string>
@@ -22,21 +22,19 @@
         <item>घरी</item>
         <item>दवाखाना</item>
         <item>खाजगी दवाखाना</item>
-
-
     </string-array>
 
     <string name="next">पुढे</string>
     <string name="skip">वगळा</string>
     <string name="start">थांबा </string>
 
-    <string name="slide_1_title">आरोग्य बँक तपासणी</string>
+    <string name="slide_1_title">आरोग्य तपासणी</string>
     <string name="slide_1_desc">इथे आपण आरोग्य बँकेतर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>
     <string name="slide_2_title">कार्यक्रम व्यवस्थापन</string>
     <string name="slide_2_desc">इथे आपण आरोग्य बँकेतर्फे आयोजित केलेल्या कार्यक्रमाची माहिती जतन करू शकता .तसेच त्यामध्ये कार्यक्रमाचे नाव ,वक्त्याचे नाव ,उपस्थित संख्या आणि दिनांक जतन  करू शकता.</string>
     <string name="slide_3_title">जन्म नोंद</string>
     <string name="slide_3_desc">इथे आपण  नजजात बालकांची जन्म नोंद जतन करू शकता. आणि जन्म नोंद केलेल्या बालकांची यादी पाहू शकता.</string>
-    <string name="slide_4_title">आरोग्य बँक अभिप्राय</string>
+    <string name="slide_4_title">आरोग्य अभिप्राय</string>
     <string name="slide_4_desc">इथे आपण आरोग्य बँके अंतर्गत केलेल्या कार्यांबद्दल आपला अभिप्राय नोंद करू शकता.</string>
     <string name="slide_5_title">संपर्क</string>
 

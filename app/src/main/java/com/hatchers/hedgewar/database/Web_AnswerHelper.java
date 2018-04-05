@@ -113,6 +113,13 @@ public class Web_AnswerHelper
                 SimpleDateFormat formain=new SimpleDateFormat("dd/MM/yyyy");
                 SimpleDateFormat formatout = new SimpleDateFormat("yyyy-MM-dd");
 
+
+                //http://hatchers.in/sapu/index.php/api/v1/inserAnswer?
+                // mobile=9975294782&password=user@123
+                // &question_id=1&answer_count=12&ans_date=2017-12-28%2000:00:00
+                // &local_servey_id=111111&program_topic=&program_topic=&
+                // user_id=1&village_id=1&category=E&profram_holder=&
+                // current_datetime=2017-12-28%2000:00:00&format=json&key
                 params.put("mobile", new PrefManager(activity).getMobile());
                 params.put("password", new PrefManager(activity).getPassword());
                 params.put("question_id", answer_table.getQuestion_idValue());
