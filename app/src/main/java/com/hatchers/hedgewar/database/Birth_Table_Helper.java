@@ -12,83 +12,72 @@ public class Birth_Table_Helper {
 
     public static boolean insertBirth(Context context, Birth_Table birthTable) {
 
-        // {"status":"success","count":1,"type":"addNewAns",
-        // "result":[{"birth_id":"32",
-        // "name_of_mother":"voiajaya",
-        // "age":"25",
-        // "delivery_count":"1",
-        // "month_of_registration":"1",
-        // "blood_urine_test":"Y","delivery_date":"2017-12-22",
-        // "place":"abad","gender":"M",
-        // "birth_weight":"2","date_of_period":"2017-12-22",
-        // "user_id":"1","village_id":"1","upload_status":null,
-        // "sonography_test":"Y","iron_calcium":"Y",
-        // "child_death":"Y","mother_death":"Y",
-        // "critical_condition":"Y","pregnancy_death":"Y"}],"message":"Birth added successfully"}
-
-
         try {
             SQLiteDatabase db = AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(Birth_Table.NAME_OF_MOTHER, birthTable.getName_of_motherValue());
+
+            //values.put(Birth_Table.BIRTH_ID, birthTable.getBirthIdValue());
+            values.put(Birth_Table.NAME_OF_MOTHER, birthTable.getNameOfMotherValue());
 
             try {
                 values.put(Birth_Table.AGE, Integer.parseInt(birthTable.getAgeValue()));
-                values.put(Birth_Table.DELIVERY_COUNT, Integer.parseInt(birthTable.getDelivery_countValue()));
+                values.put(Birth_Table.DELIVERY_COUNT, Integer.parseInt(birthTable.getDeliveryCountValue()));
             } catch (Exception e) {
 
             }
-            values.put(Birth_Table.MONTH_OF_REGISTRATION, birthTable.getMonth_of_registrationValue());
-            values.put(Birth_Table.BLOOD_URINE_TEST, birthTable.getBlood_urine_testValue());
+            values.put(Birth_Table.MONTH_OF_REGISTRATION, birthTable.getMonthOfRegistrationValue());
+            values.put(Birth_Table.BLOOD_URINE_TEST, birthTable.getBloodUrineTestValue());
 
-            try {
-                values.put(Birth_Table.BIRTH_WEIGHT, Integer.parseInt(birthTable.getBirth_weightValue()));
-            } catch (Exception e) {
 
-            }
+            values.put(Birth_Table.DELIVERY_DATE, birthTable.getDeliveryDateValue());
             values.put(Birth_Table.PLACE, birthTable.getPlaceValue());
             values.put(Birth_Table.GENDER, birthTable.getGenderValue());
-            values.put(Birth_Table.DATE_OF_PERIOD, birthTable.getDate_of_period());
-            values.put(Birth_Table.DELIVERY_DATE, birthTable.getDelivery_dateValue());
+
             try {
-                values.put(Birth_Table.VILLAGE_ID, Integer.parseInt(birthTable.getVillage_idValue()));
+                values.put(Birth_Table.BIRTH_WEIGHT, Integer.parseInt(birthTable.getBirthWeightValue()));
             } catch (Exception e) {
+
             }
+
+            values.put(Birth_Table.DATE_OF_PERIOD, birthTable.getDateOfPeriod());
 
             try {
                 values.put(Birth_Table.USER_ID, Integer.parseInt(birthTable.getUserIdValue()));
             } catch (Exception e) {
             }
 
+
+            try {
+                values.put(Birth_Table.VILLAGE_ID, Integer.parseInt(birthTable.getVillageIdValue()));
+            } catch (Exception e) {
+            }
+
+
             try {
                 values.put(Birth_Table.UPLOAD_STATUS, Integer.parseInt(birthTable.getUploadStatusValue()));
             } catch (Exception e) {
             }
 
-            try {
-                values.put(Birth_Table.SONOGRAPHY_TEST, birthTable.getSonographyTestValue());
-                values.put(Birth_Table.IRON_CALCIUM, birthTable.getIronCalciumValue());
-                values.put(Birth_Table.CRITICAL_CONDITION, birthTable.getCriticalConditionValue());
-                values.put(Birth_Table.CHILD_DEATH, birthTable.getChildDeathValue());
-                values.put(Birth_Table.MOTHER_DEATH, birthTable.getMotherDeathValue());
-                values.put(Birth_Table.PREGNANCY_DEATH, birthTable.getPregnancyDeathValue());
 
-            }
-            catch(Exception e)
-            {
 
-            }
+            values.put(Birth_Table.SONOGRAPHY_TEST, birthTable.getSonographyTestValue());
+            values.put(Birth_Table.IRON_CALCIUM, birthTable.getIronCalciumValue());
+            values.put(Birth_Table.CHILD_DEATH, birthTable.getChildDeathValue());
+            values.put(Birth_Table.MOTHER_DEATH, birthTable.getMotherDeathValue());
+            values.put(Birth_Table.CRITICAL_CONDITION, birthTable.getCriticalConditionValue());
+            values.put(Birth_Table.PREGNANCY_DEATH, birthTable.getPregnancyDeathValue());
 
-            if (db.insert(Birth_Table.BIRTH_TABLE, null, values) > 0) {
-                    //Toast.makeText(context,"Birth data inserted",Toast.LENGTH_LONG).show();
-                    db.close();
-                    return true;
-                } else {
-                    db.close();
-                    return false;
-                }
-            }
 
+
+        if (db.insert(Birth_Table.BIRTH_TABLE, null, values) > 0) {
+            //Toast.makeText(context,"Birth data inserted",Toast.LENGTH_LONG).show();
+            db.close();
+            return true;
+        } else {
+            db.close();
+            return false;
+        }
+    }
          catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -102,17 +91,17 @@ public class Birth_Table_Helper {
         try {
             SQLiteDatabase db =  AssetDatabaseHelper.getDataHelper(context).getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(Birth_Table.NAME_OF_MOTHER, birthTable.getName_of_motherValue());
+            values.put(Birth_Table.NAME_OF_MOTHER, birthTable.getNameOfMotherValue());
             values.put(Birth_Table.AGE, birthTable.getAgeValue());
-            values.put(Birth_Table.DELIVERY_COUNT, birthTable.getDelivery_countValue());
-            values.put(Birth_Table.MONTH_OF_REGISTRATION, birthTable.getMonth_of_registrationValue());
-            values.put(Birth_Table.BLOOD_URINE_TEST, birthTable.getBlood_urine_testValue());
-            values.put(Birth_Table.BIRTH_WEIGHT, birthTable.getBirth_weightValue());
+            values.put(Birth_Table.DELIVERY_COUNT, birthTable.getDeliveryCountValue());
+            values.put(Birth_Table.MONTH_OF_REGISTRATION, birthTable.getMonthOfRegistrationValue());
+            values.put(Birth_Table.BLOOD_URINE_TEST, birthTable.getBloodUrineTestValue());
+            values.put(Birth_Table.BIRTH_WEIGHT, birthTable.getBirthWeightValue());
             values.put(Birth_Table.PLACE, birthTable.getPlaceValue());
             values.put(Birth_Table.GENDER, birthTable.getGenderValue());
-            values.put(Birth_Table.DATE_OF_PERIOD, birthTable.getDate_of_period());
-            values.put(Birth_Table.DELIVERY_DATE, birthTable.getDelivery_dateValue());
-            values.put(Birth_Table.VILLAGE_ID, birthTable.getVillage_idValue());
+            values.put(Birth_Table.DATE_OF_PERIOD, birthTable.getDateOfPeriod());
+            values.put(Birth_Table.DELIVERY_DATE, birthTable.getDeliveryDateValue());
+            values.put(Birth_Table.VILLAGE_ID, birthTable.getVillageIdValue());
             values.put(Birth_Table.USER_ID, Integer.parseInt(birthTable.getUserIdValue()));
             values.put(Birth_Table.UPLOAD_STATUS, Integer.parseInt(birthTable.getUploadStatusValue()));
             values.put(Birth_Table.SONOGRAPHY_TEST, birthTable.getSonographyTestValue());
@@ -123,7 +112,7 @@ public class Birth_Table_Helper {
             values.put(Birth_Table.PREGNANCY_DEATH, birthTable.getPregnancyDeathValue());
 
             // upadating Row
-            if(db.update(Birth_Table.BIRTH_TABLE, values, Birth_Table.BIRTH_ID+"="+birthTable.getBirth_idValue(), null)>0)
+            if(db.update(Birth_Table.BIRTH_TABLE, values, Birth_Table.BIRTH_ID+"="+birthTable.getBirthIdValue(), null)>0)
             {
                 Toast.makeText(context,"Birth data updated",Toast.LENGTH_LONG).show();
                 db.close();
@@ -153,18 +142,18 @@ public class Birth_Table_Helper {
             {
                 Birth_Table birth = new Birth_Table();
 
-                birth.setBirth_idValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_ID)));
-                birth.setName_of_motherValue(cursor.getString(cursor.getColumnIndex(Birth_Table.NAME_OF_MOTHER)));
+                birth.setBirthIdValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_ID)));
+                birth.setNameOfMotherValue(cursor.getString(cursor.getColumnIndex(Birth_Table.NAME_OF_MOTHER)));
                 birth.setAgeValue(cursor.getString(cursor.getColumnIndex(Birth_Table.AGE)));
-                birth.setDelivery_countValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_COUNT)));
-                birth.setMonth_of_registrationValue(cursor.getString(cursor.getColumnIndex(Birth_Table.MONTH_OF_REGISTRATION)));
-                birth.setBlood_urine_testValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BLOOD_URINE_TEST)));
-                birth.setDelivery_dateValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_DATE)));
+                birth.setDeliveryCountValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_COUNT)));
+                birth.setMonthOfRegistrationValue(cursor.getString(cursor.getColumnIndex(Birth_Table.MONTH_OF_REGISTRATION)));
+                birth.setBloodUrineTestValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BLOOD_URINE_TEST)));
+                birth.setDeliveryDateValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_DATE)));
                 birth.setPlaceValue(cursor.getString(cursor.getColumnIndex(Birth_Table.PLACE)));
                 birth.setGenderValue(cursor.getString(cursor.getColumnIndex(Birth_Table.GENDER)));
-                birth.setBirth_weightValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_WEIGHT)));
-                birth.setDate_of_period(cursor.getString(cursor.getColumnIndex(Birth_Table.DATE_OF_PERIOD)));
-                birth.setVillage_idValue(cursor.getString(cursor.getColumnIndex(Birth_Table.VILLAGE_ID)));
+                birth.setBirthWeightValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_WEIGHT)));
+                birth.setDateOfPeriod(cursor.getString(cursor.getColumnIndex(Birth_Table.DATE_OF_PERIOD)));
+                birth.setVillageIdValue(cursor.getString(cursor.getColumnIndex(Birth_Table.VILLAGE_ID)));
                 birth.setUserIdValue(cursor.getString(cursor.getColumnIndex(Birth_Table.USER_ID)));
                 birth.setUploadStatusValue(cursor.getString(cursor.getColumnIndex(Birth_Table.UPLOAD_STATUS)));
                 birth.setSonographyTestValue(cursor.getString(cursor.getColumnIndex(Birth_Table.SONOGRAPHY_TEST)));
@@ -202,18 +191,18 @@ public class Birth_Table_Helper {
             while (cursor.isAfterLast() == false)
             {
                 Birth_Table birth = new Birth_Table();
-                birth.setBirth_idValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_ID)));
-                birth.setName_of_motherValue(cursor.getString(cursor.getColumnIndex(Birth_Table.NAME_OF_MOTHER)));
+                birth.setBirthIdValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_ID)));
+                birth.setNameOfMotherValue(cursor.getString(cursor.getColumnIndex(Birth_Table.NAME_OF_MOTHER)));
                 birth.setAgeValue(cursor.getString(cursor.getColumnIndex(Birth_Table.AGE)));
-                birth.setDelivery_countValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_COUNT)));
-                birth.setMonth_of_registrationValue(cursor.getString(cursor.getColumnIndex(Birth_Table.MONTH_OF_REGISTRATION)));
-                birth.setBlood_urine_testValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BLOOD_URINE_TEST)));
-                birth.setDelivery_dateValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_DATE)));
+                birth.setDeliveryCountValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_COUNT)));
+                birth.setMonthOfRegistrationValue(cursor.getString(cursor.getColumnIndex(Birth_Table.MONTH_OF_REGISTRATION)));
+                birth.setBloodUrineTestValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BLOOD_URINE_TEST)));
+                birth.setDeliveryDateValue(cursor.getString(cursor.getColumnIndex(Birth_Table.DELIVERY_DATE)));
                 birth.setPlaceValue(cursor.getString(cursor.getColumnIndex(Birth_Table.PLACE)));
                 birth.setGenderValue(cursor.getString(cursor.getColumnIndex(Birth_Table.GENDER)));
-                birth.setBirth_weightValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_WEIGHT)));
-                birth.setDate_of_period(cursor.getString(cursor.getColumnIndex(Birth_Table.DATE_OF_PERIOD)));
-                birth.setVillage_idValue(cursor.getString(cursor.getColumnIndex(Birth_Table.VILLAGE_ID)));
+                birth.setBirthWeightValue(cursor.getString(cursor.getColumnIndex(Birth_Table.BIRTH_WEIGHT)));
+                birth.setDateOfPeriod(cursor.getString(cursor.getColumnIndex(Birth_Table.DATE_OF_PERIOD)));
+                birth.setVillageIdValue(cursor.getString(cursor.getColumnIndex(Birth_Table.VILLAGE_ID)));
                 birth.setUserIdValue(cursor.getString(cursor.getColumnIndex(Birth_Table.USER_ID)));
                 birth.setUploadStatusValue(cursor.getString(cursor.getColumnIndex(Birth_Table.UPLOAD_STATUS)));
                 birth.setSonographyTestValue(cursor.getString(cursor.getColumnIndex(Birth_Table.SONOGRAPHY_TEST)));

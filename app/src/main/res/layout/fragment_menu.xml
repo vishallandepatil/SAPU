@@ -95,6 +95,7 @@
                     android:layout_marginRight="5dp"
                     android:gravity="center"
                     android:layout_weight="1"
+                    android:id="@+id/arogya_tapasani_linearlayout"
                     android:background="@color/colorPrimary">
 
                     <ImageView
@@ -121,6 +122,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/karyakram_linearlayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimary"
@@ -167,6 +169,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/janma_nond_linearlayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -199,6 +202,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/arogya_feedback_linearlayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -233,6 +237,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_marginBottom="5dp"
             android:layout_gravity="center"
             android:background="@color/menu_background"
@@ -245,6 +250,7 @@
 
 
                  <LinearLayout
+                     android:id="@+id/sahayta_linearlayout"
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:orientation="vertical"
@@ -277,17 +283,18 @@
 
 
                  <LinearLayout
+                     android:visibility="gone"
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:orientation="vertical"
                      android:gravity="center"
                      android:layout_weight="1"
+                     android:id="@+id/sampark_linearlayout"
                      android:background="@color/colorPrimary">
 
                      <ImageView
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
-                         android:id="@+id/sampark_image"
                          android:src="@drawable/sampark"
                          android:layout_gravity="center"
                          android:padding="30dp"
@@ -308,6 +315,260 @@
                  </LinearLayout>
 
          </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:background="@color/menu_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:weightSum="2">
+
+
+            <LinearLayout
+                android:id="@+id/sanjeevani_linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_plant"
+                    android:padding="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="संजीवनी "
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/ujjawal_bharat_linearlayout"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_ujjawal_bharat"
+                    android:layout_gravity="center"
+                    android:padding="30dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="उज्ज्वल भारत "
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:background="@color/menu_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:weightSum="2">
+
+
+            <LinearLayout
+                android:id="@+id/glsak_linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_glsak"
+                    android:padding="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GLSAK"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/srak_linearlayout"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_srak"
+                    android:layout_gravity="center"
+                    android:padding="30dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SRAK"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:background="@color/menu_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:weightSum="2">
+
+
+            <LinearLayout
+                android:id="@+id/sgak_linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_sgak"
+                    android:padding="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SGAK"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sahayta_linearlayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/help"
+                    android:padding="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sahayta"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/shree_guruji_linearlayout"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_ujjawal_bharat"
+                    android:layout_gravity="center"
+                    android:padding="30dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shree Guruji"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </GridLayout>
             </RelativeLayout>

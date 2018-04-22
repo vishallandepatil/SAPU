@@ -56,6 +56,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
     private Toolbar janmaNondToolbar;
     Birth_Table birth;
     Context context;
+    PrefManager prefManager;
 
     public Janm_Nond_Fragment() {
         // Required empty public constructor
@@ -92,6 +93,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
         ((AppCompatActivity)getActivity()).setSupportActionBar(janmaNondToolbar);
     }
 
+
     private void initialization(View view) {
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
@@ -100,7 +102,7 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.all_status_color));
         }
-
+        prefManager=new PrefManager(context);
         registration_month = (TextInputEditText) view.findViewById(R.id.registration_month);
         date_of_periods = (TextInputEditText)view. findViewById(R.id.date_of_periods);
         delivery_date = (TextInputEditText)view. findViewById(R.id.delivery_date);
@@ -151,41 +153,47 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
             @Override
             public void onClick(View v) {
 
-                setBirthData();
-                if(checkValidation())
+                try
                 {
-                    SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                            .setTitleText("थांबा");
-                    sweetAlertDialog.show();
-                    if(Birth_Table_Helper.insertBirth(getActivity(),birth))
-                    {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली");
-                        sweetAlertDialog.setConfirmText("ठीक आहे ");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                                getActivity().onBackPressed();
-                            }
-                        });
+                    setBirthData();
+                    if (checkValidation()) {
 
-                    }
-                    else
-                    {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        sweetAlertDialog.setTitleText(" जन्म नोंद झाली नाही  ");
-                        sweetAlertDialog.setConfirmText("ठीक आहे ");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                            }
-                        });
 
+                        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                                .setTitleText("थांबा");
+                        sweetAlertDialog.show();
+                        if (Birth_Table_Helper.insertBirth(getActivity(), birth)) {
+
+                            sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            sweetAlertDialog.setTitleText(" जन्म नोंद झाली");
+                            sweetAlertDialog.setConfirmText("ठीक आहे ");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                    getActivity().onBackPressed();
+                                }
+                            });
+
+                        } else {
+                            sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            sweetAlertDialog.setTitleText(" जन्म नोंद झाली नाही  ");
+                            sweetAlertDialog.setConfirmText("ठीक आहे ");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                }
+                            });
+
+                        }
                     }
+
                 }
+                catch(Exception exception)
+                {}
             }
+
         });
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -507,22 +515,23 @@ public class Janm_Nond_Fragment extends Fragment implements AdapterView.OnItemSe
     {
         birth=new Birth_Table();
 
-        birth.setName_of_motherValue(mother_name.getText().toString());
+        birth.setNameOfMotherValue(mother_name.getText().toString());
         birth.setAgeValue(age.getText().toString());
-        birth.setDelivery_countValue(consignment.getText().toString());
-        birth.setBirth_weightValue(birthweight.getText().toString());
-        birth.setMonth_of_registrationValue(registration_month.getText().toString());
-        birth.setDate_of_period(date_of_periods.getText().toString());
-        birth.setDelivery_dateValue(delivery_date.getText().toString());
+        birth.setDeliveryCountValue(consignment.getText().toString());
+        birth.setMonthOfRegistrationValue(registration_month.getText().toString());
+        birth.setBloodUrineTestValue(bloodUrineTest);
+        birth.setDeliveryDateValue(delivery_date.getText().toString());
         birth.setPlaceValue(place.getSelectedItem().toString());
         birth.setGenderValue(selected_gender);
-        birth.setBlood_urine_testValue(bloodUrineTest);
+        birth.setBirthWeightValue(birthweight.getText().toString());
+        birth.setDateOfPeriod(date_of_periods.getText().toString());
         birth.setSonographyTestValue((sonographyTest));
         birth.setIronCalciumValue((ironCalciumTest));
-        birth.setCriticalConditionValue((mothersSignsTests));
         birth.setChildDeathValue(newBornDeath);
         birth.setMotherDeathValue(motherDeath);
+        birth.setCriticalConditionValue((mothersSignsTests));
         birth.setPregnancyDeathValue(earlyDeath);
+
     }
 
     @Override

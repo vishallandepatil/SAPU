@@ -52,6 +52,7 @@ public class Web_AnswerHelper
                             JSONArray result = responce.getJSONArray("result");
                             JSONObject jsonObject = result.getJSONObject(0);
 
+
                             //birth_table.setBirth_idValue(jsonObject.getString("birth_id"));
                             answer_table.setAns_idValue(jsonObject.getString("ans_id"));
                             answer_table.setQuestion_idValue(jsonObject.getString("question_id"));
@@ -70,6 +71,7 @@ public class Web_AnswerHelper
                             {
                                 Toast.makeText(activity,"Data saved...", Toast.LENGTH_SHORT).show();
                                 inserAnswers( activity,sweetAlertDialog);
+                                sweetAlertDialog.dismissWithAnimation();
 
                             }
                             else

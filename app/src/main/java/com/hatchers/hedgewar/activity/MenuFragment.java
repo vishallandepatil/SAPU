@@ -2,14 +2,10 @@ package com.hatchers.hedgewar.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,41 +17,37 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
-
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.hatchers.hedgewar.Menus.arogya_feedback.Arogya_Feedback_Fragment;
 import com.hatchers.hedgewar.Menus.arogya_tapasni.Arogya_Tapasni_Fragment;
+import com.hatchers.hedgewar.Menus.glsak.GlsakFragment;
 import com.hatchers.hedgewar.Menus.janma_nond.BirthFragment;
 import com.hatchers.hedgewar.Menus.karyakram.Karyakram_Fragment;
 import com.hatchers.hedgewar.Menus.sahayyta.Sahayata_Fragment;
 import com.hatchers.hedgewar.Menus.sampark.Sampark_Fragment;
+import com.hatchers.hedgewar.Menus.sanjeevani.SanjeevaniFragment;
+import com.hatchers.hedgewar.Menus.sgak.SgakFragment;
+import com.hatchers.hedgewar.Menus.srak.SrakFragment;
+import com.hatchers.hedgewar.Menus.ujjawal_bharat.UjjawalBharatFragment;
 import com.hatchers.hedgewar.Pref_Manager.PrefManager;
 import com.hatchers.hedgewar.R;
-
 import com.hatchers.hedgewar.user_login.LoginActivity;
 import com.hatchers.hedgewar.user_login.User_Details_Fragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-
 import cn.pedant.SweetAlert.SweetAlertDialog;
-
 
 import static com.hatchers.hedgewar.Menus.janma_nond.apihelper.Web_Add_BirthDetails_Helper.addBirthToServer;
 
 
 public class MenuFragment extends Fragment implements View.OnClickListener,BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
-    private ImageView arogya,karyakram,birth,bank,help,contact;
+    private LinearLayout arogya_tapasani_linearlayout,karyakram_linearlayout,janma_nond_linearlayout,arogya_feedback_linearlayout,
+            sahayta_linearlayout1,sampark_linearlayout,sanjeevani_linearlayout,ujjawal_bharat_linearlayout,glsak_linearlayout,
+            srak_linearlayout,sgak_linearlayout;
     Toolbar menu_toolbar;
     PrefManager prefManager;
     private ViewFlipper simpleViewFlipper;
@@ -90,19 +82,32 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
 
         //sliderLayout = (SliderLayout)view.findViewById(R.id.slider);
 
-        arogya=(ImageView)view.findViewById(R.id.arogya_image);
-        karyakram=(ImageView)view.findViewById(R.id.karyakram_image);
-        birth=(ImageView)view.findViewById(R.id.janma_nond_image);
-        bank=(ImageView)view.findViewById(R.id.arogya_feedback_image);
-        help=(ImageView)view.findViewById(R.id.sahayta_image);
-        contact=(ImageView)view.findViewById(R.id.sampark_image);
+        arogya_tapasani_linearlayout=(LinearLayout) view.findViewById(R.id.arogya_tapasani_linearlayout);
+        karyakram_linearlayout=(LinearLayout)view.findViewById(R.id.karyakram_linearlayout);
+        janma_nond_linearlayout=(LinearLayout)view.findViewById(R.id.janma_nond_linearlayout);
+        arogya_feedback_linearlayout=(LinearLayout)view.findViewById(R.id.arogya_feedback_linearlayout);
+        sahayta_linearlayout1=(LinearLayout)view.findViewById(R.id.sahayta_linearlayout1);
+        sampark_linearlayout=(LinearLayout)view.findViewById(R.id.sampark_linearlayout);
+        sanjeevani_linearlayout=(LinearLayout)view.findViewById(R.id.sanjeevani_linearlayout);
+        ujjawal_bharat_linearlayout=(LinearLayout)view.findViewById(R.id.ujjawal_bharat_linearlayout);
+        glsak_linearlayout=(LinearLayout)view.findViewById(R.id.glsak_linearlayout);
+        srak_linearlayout=(LinearLayout)view.findViewById(R.id.srak_linearlayout);
+        sgak_linearlayout=(LinearLayout)view.findViewById(R.id.sgak_linearlayout);
 
-        arogya.setOnClickListener(this);
-        birth.setOnClickListener(this);
-        bank.setOnClickListener(this);
-        karyakram.setOnClickListener(this);
-        help.setOnClickListener(this);
-        contact.setOnClickListener(this);
+
+        arogya_tapasani_linearlayout.setOnClickListener(this);
+        karyakram_linearlayout.setOnClickListener(this);
+        janma_nond_linearlayout.setOnClickListener(this);
+        arogya_feedback_linearlayout.setOnClickListener(this);
+        sahayta_linearlayout1.setOnClickListener(this);
+        sanjeevani_linearlayout.setOnClickListener(this);
+        ujjawal_bharat_linearlayout.setOnClickListener(this);
+        glsak_linearlayout.setOnClickListener(this);
+        srak_linearlayout.setOnClickListener(this);
+        sgak_linearlayout.setOnClickListener(this);
+
+
+
 
         simpleViewFlipper = (ViewFlipper)view.findViewById(R.id.simpleViewFlipper);
 
@@ -174,35 +179,58 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
         switch (v.getId())
         {
 
-            case R.id.arogya_image:
+            case R.id.arogya_tapasani_linearlayout:
                 Arogya_Tapasni_Fragment arogyaFragment = new Arogya_Tapasni_Fragment();
                 fragmentTransaction.replace(R.id.frame_layout,arogyaFragment).addToBackStack(null).commit();
                 break;
 
-            case R.id.karyakram_image:
+            case R.id.karyakram_linearlayout:
                 Karyakram_Fragment karyakramFragment = new Karyakram_Fragment();
                 fragmentTransaction.replace(R.id.frame_layout,karyakramFragment).addToBackStack(null).commit();
                 break;
 
-            case R.id.janma_nond_image:
+            case R.id.janma_nond_linearlayout:
                 BirthFragment birthFragment= new BirthFragment();
                 fragmentTransaction.replace(R.id.frame_layout,birthFragment).addToBackStack(null).commit();
                 break;
 
-            case R.id.arogya_feedback_image:
+            case R.id.arogya_feedback_linearlayout:
                 Arogya_Feedback_Fragment arogyaBankFragment = new Arogya_Feedback_Fragment();
                 fragmentTransaction.replace(R.id.frame_layout,arogyaBankFragment).addToBackStack(null).commit();
                 break;
 
-            case R.id.sahayta_image:
+            case R.id.sahayta_linearlayout1:
                 Sahayata_Fragment sahayataFragment = new Sahayata_Fragment();
                 fragmentTransaction.replace(R.id.frame_layout,sahayataFragment).addToBackStack(null).commit();
                 break;
 
-            case R.id.sampark_image:
-                Sampark_Fragment sampark_fragment = new Sampark_Fragment();
-                fragmentTransaction.replace(R.id.frame_layout,sampark_fragment).addToBackStack(null).commit();
+
+            case R.id.sanjeevani_linearlayout:
+                SanjeevaniFragment sanjeevaniFragment = new SanjeevaniFragment();
+                fragmentTransaction.replace(R.id.frame_layout,sanjeevaniFragment).addToBackStack(null).commit();
                 break;
+
+
+            case R.id.ujjawal_bharat_linearlayout:
+                UjjawalBharatFragment ujjawalBharatFragment = new UjjawalBharatFragment();
+                fragmentTransaction.replace(R.id.frame_layout,ujjawalBharatFragment).addToBackStack(null).commit();
+                break;
+
+            case R.id.glsak_linearlayout:
+                GlsakFragment glsakFragment = new GlsakFragment();
+                fragmentTransaction.replace(R.id.frame_layout,glsakFragment).addToBackStack(null).commit();
+                break;
+
+            case R.id.srak_linearlayout:
+                SrakFragment srakFragment = new SrakFragment();
+                fragmentTransaction.replace(R.id.frame_layout,srakFragment).addToBackStack(null).commit();
+                break;
+
+            case R.id.sgak_linearlayout:
+                SgakFragment sgakFragment = new SgakFragment();
+                fragmentTransaction.replace(R.id.frame_layout,sgakFragment).addToBackStack(null).commit();
+                break;
+
         }
     }
 
@@ -260,6 +288,14 @@ public class MenuFragment extends Fragment implements View.OnClickListener,BaseS
                     startActivity(i);
                     getActivity().finish();
                     break;
+
+
+            case R.id.contact:
+                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Sampark_Fragment samparkFragment = new Sampark_Fragment();
+                fragmentTransaction.replace(R.id.frame_layout,samparkFragment).addToBackStack(null).commit();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -8,75 +8,111 @@ public class Birth_Table  {
     public static final String BIRTH_TABLE = "Birth_Table";
 
 
-    public static final String BIRTH_ID = "birth_id",VILLAGE_ID="village_id",
-            NAME_OF_MOTHER = "name_of_mother", AGE = "age", DELIVERY_COUNT = "delivery_count",
-            MONTH_OF_REGISTRATION = "month_of_registration",BLOOD_URINE_TEST ="blood_urine_test",
-            DELIVERY_DATE = "delivery_date", PLACE = "place", GENDER = "gender",
-            BIRTH_WEIGHT = "birth_weight", DATE_OF_PERIOD = "date_of_period",USER_ID="user_id",
-            UPLOAD_STATUS="upload_status",SONOGRAPHY_TEST="sonography_test",IRON_CALCIUM="iron_calcium",
-            CRITICAL_CONDITION="critical_condition",CHILD_DEATH="child_death",MOTHER_DEATH="mother_death",
-            PREGNANCY_DEATH="pregnancy_death";
+    //{"status":"success","count":1,"type":"addNewAns",
+    // "result":[{"birth_id":"35","name_of_mother":"voiajaya",
+    // "age":"25","delivery_count":"1","month_of_registration":"1",
+    // "blood_urine_test":"Y","delivery_date":"2017-12-22","place":"abad",
+    // "gender":"M","birth_weight":"2","date_of_period":"2017-12-22","user_id":"1",
+    // "village_id":"1","upload_status":null,"sonography_test":"Y",
+    // "iron_calcium":"Y","child_death":"Y","mother_death":"Y","critical_condition":"Y",
+    // "pregnancy_death":"Y"}],"message":"Birth added successfully"}
 
-    private String name_of_motherValue,blood_urine_testValue,placeValue,genderValue,
-            birth_idValue,ageValue,delivery_countValue,birth_weightValue,village_idValue,
-            month_of_registrationValue,date_of_period,delivery_dateValue,userIdValue,
-            uploadStatusValue,sonographyTestValue,ironCalciumValue,criticalConditionValue,
-            childDeathValue,motherDeathValue,pregnancyDeathValue;
+    public static final String BIRTH_ID = "birth_id", NAME_OF_MOTHER = "name_of_mother", AGE = "age",
+            DELIVERY_COUNT = "delivery_count",MONTH_OF_REGISTRATION = "month_of_registration",BLOOD_URINE_TEST ="blood_urine_test",
+            DELIVERY_DATE = "delivery_date",PLACE = "place",GENDER = "gender", BIRTH_WEIGHT = "birth_weight",
+            DATE_OF_PERIOD = "date_of_period",USER_ID="user_id",VILLAGE_ID="village_id",UPLOAD_STATUS="upload_status",
+            SONOGRAPHY_TEST="sonography_test",IRON_CALCIUM="iron_calcium",CHILD_DEATH="child_death",
+            MOTHER_DEATH="mother_death", CRITICAL_CONDITION="critical_condition" ,PREGNANCY_DEATH="pregnancy_death";
+
+    private String birthIdValue,nameOfMotherValue,ageValue,deliveryCountValue,monthOfRegistrationValue,
+            bloodUrineTestValue,deliveryDateValue,placeValue,genderValue,birthWeightValue,dateOfPeriod,userIdValue,
+            villageIdValue,uploadStatusValue,sonographyTestValue,ironCalciumValue,childDeathValue,motherDeathValue,
+            criticalConditionValue,pregnancyDeathValue;
 
 
     public Birth_Table() {
-
     }
 
-    public Birth_Table(String name_of_motherValue, String blood_urine_testValue,
-                       String placeValue, String genderValue, String birth_idValue,
-                       String ageValue, String delivery_countValue,
-                       String birth_weightValue, String village_idValue,
-                       String month_of_registrationValue, String date_of_period,
-                       String delivery_dateValue ,String userIdValue,String uploadStatusValue,
-                       String sonographyTestValue,String ironCalciumValue, String criticalConditionValue,
-                       String childDeathValue,String motherDeathValue,String pregnancyDeathValue)
-    {
-        this.name_of_motherValue = name_of_motherValue;
-        this.blood_urine_testValue = blood_urine_testValue;
+    public Birth_Table(String birthIdValue, String nameOfMotherValue, String ageValue, String deliveryCountValue, String monthOfRegistrationValue, String bloodUrineTestValue, String deliveryDateValue, String placeValue, String genderValue, String birthWeightValue, String dateOfPeriod, String userIdValue, String villageIdValue, String uploadStatusValue, String sonographyTestValue, String ironCalciumValue, String childDeathValue, String motherDeathValue, String criticalConditionValue, String pregnancyDeathValue) {
+        this.birthIdValue = birthIdValue;
+        this.nameOfMotherValue = nameOfMotherValue;
+        this.ageValue = ageValue;
+        this.deliveryCountValue = deliveryCountValue;
+        this.monthOfRegistrationValue = monthOfRegistrationValue;
+        this.bloodUrineTestValue = bloodUrineTestValue;
+        this.deliveryDateValue = deliveryDateValue;
         this.placeValue = placeValue;
         this.genderValue = genderValue;
-        this.birth_idValue = birth_idValue;
+        this.birthWeightValue = birthWeightValue;
+        this.dateOfPeriod = dateOfPeriod;
+        this.userIdValue = userIdValue;
+        this.villageIdValue = villageIdValue;
+        this.uploadStatusValue = uploadStatusValue;
+        this.sonographyTestValue = sonographyTestValue;
+        this.ironCalciumValue = ironCalciumValue;
+        this.childDeathValue = childDeathValue;
+        this.motherDeathValue = motherDeathValue;
+        this.criticalConditionValue = criticalConditionValue;
+        this.pregnancyDeathValue = pregnancyDeathValue;
+    }
+
+
+
+
+    public String getBirthIdValue() {
+        return birthIdValue;
+    }
+
+    public void setBirthIdValue(String birthIdValue) {
+        this.birthIdValue = birthIdValue;
+    }
+
+    public String getNameOfMotherValue() {
+        return nameOfMotherValue;
+    }
+
+    public void setNameOfMotherValue(String nameOfMotherValue) {
+        this.nameOfMotherValue = nameOfMotherValue;
+    }
+
+    public String getAgeValue() {
+        return ageValue;
+    }
+
+    public void setAgeValue(String ageValue) {
         this.ageValue = ageValue;
-        this.delivery_countValue = delivery_countValue;
-        this.birth_weightValue = birth_weightValue;
-        this.village_idValue = village_idValue;
-        this.month_of_registrationValue = month_of_registrationValue;
-        this.date_of_period = date_of_period;
-        this.delivery_dateValue = delivery_dateValue;
-        this.sonographyTestValue=sonographyTestValue;
-        this.ironCalciumValue=ironCalciumValue;
-        this.criticalConditionValue=criticalConditionValue;
-        this.childDeathValue=childDeathValue;
-        this.motherDeathValue=motherDeathValue;
-        this.pregnancyDeathValue=pregnancyDeathValue;
-        this.userIdValue=userIdValue;
-        this.uploadStatusValue=uploadStatusValue;
     }
 
-    public static String getBirthTable() {
-        return BIRTH_TABLE;
+    public String getDeliveryCountValue() {
+        return deliveryCountValue;
     }
 
-    public String getName_of_motherValue() {
-        return name_of_motherValue;
+    public void setDeliveryCountValue(String deliveryCountValue) {
+        this.deliveryCountValue = deliveryCountValue;
     }
 
-    public void setName_of_motherValue(String name_of_motherValue) {
-        this.name_of_motherValue = name_of_motherValue;
+    public String getMonthOfRegistrationValue() {
+        return monthOfRegistrationValue;
     }
 
-    public String getBlood_urine_testValue() {
-        return blood_urine_testValue;
+    public void setMonthOfRegistrationValue(String monthOfRegistrationValue) {
+        this.monthOfRegistrationValue = monthOfRegistrationValue;
     }
 
-    public void setBlood_urine_testValue(String blood_urine_testValue) {
-        this.blood_urine_testValue = blood_urine_testValue;
+    public String getBloodUrineTestValue() {
+        return bloodUrineTestValue;
+    }
+
+    public void setBloodUrineTestValue(String bloodUrineTestValue) {
+        this.bloodUrineTestValue = bloodUrineTestValue;
+    }
+
+    public String getDeliveryDateValue() {
+        return deliveryDateValue;
+    }
+
+    public void setDeliveryDateValue(String deliveryDateValue) {
+        this.deliveryDateValue = deliveryDateValue;
     }
 
     public String getPlaceValue() {
@@ -95,68 +131,20 @@ public class Birth_Table  {
         this.genderValue = genderValue;
     }
 
-    public String getBirth_idValue() {
-        return birth_idValue;
+    public String getBirthWeightValue() {
+        return birthWeightValue;
     }
 
-    public void setBirth_idValue(String birth_idValue) {
-        this.birth_idValue = birth_idValue;
+    public void setBirthWeightValue(String birthWeightValue) {
+        this.birthWeightValue = birthWeightValue;
     }
 
-    public String getAgeValue() {
-        return ageValue;
+    public String getDateOfPeriod() {
+        return dateOfPeriod;
     }
 
-    public void setAgeValue(String ageValue) {
-        this.ageValue = ageValue;
-    }
-
-    public String getDelivery_countValue() {
-        return delivery_countValue;
-    }
-
-    public void setDelivery_countValue(String delivery_countValue) {
-        this.delivery_countValue = delivery_countValue;
-    }
-
-    public String getBirth_weightValue() {
-        return birth_weightValue;
-    }
-
-    public void setBirth_weightValue(String birth_weightValue) {
-        this.birth_weightValue = birth_weightValue;
-    }
-
-    public String getVillage_idValue() {
-        return village_idValue;
-    }
-
-    public void setVillage_idValue(String village_idValue) {
-        this.village_idValue = village_idValue;
-    }
-
-    public String getMonth_of_registrationValue() {
-        return month_of_registrationValue;
-    }
-
-    public void setMonth_of_registrationValue(String month_of_registrationValue) {
-        this.month_of_registrationValue = month_of_registrationValue;
-    }
-
-    public String getDate_of_period() {
-        return date_of_period;
-    }
-
-    public void setDate_of_period(String date_of_period) {
-        this.date_of_period = date_of_period;
-    }
-
-    public String getDelivery_dateValue() {
-        return delivery_dateValue;
-    }
-
-    public void setDelivery_dateValue(String delivery_dateValue) {
-        this.delivery_dateValue = delivery_dateValue;
+    public void setDateOfPeriod(String dateOfPeriod) {
+        this.dateOfPeriod = dateOfPeriod;
     }
 
     public String getUserIdValue() {
@@ -165,6 +153,14 @@ public class Birth_Table  {
 
     public void setUserIdValue(String userIdValue) {
         this.userIdValue = userIdValue;
+    }
+
+    public String getVillageIdValue() {
+        return villageIdValue;
+    }
+
+    public void setVillageIdValue(String villageIdValue) {
+        this.villageIdValue = villageIdValue;
     }
 
     public String getUploadStatusValue() {
@@ -191,14 +187,6 @@ public class Birth_Table  {
         this.ironCalciumValue = ironCalciumValue;
     }
 
-    public String getCriticalConditionValue() {
-        return criticalConditionValue;
-    }
-
-    public void setCriticalConditionValue(String criticalConditionValue) {
-        this.criticalConditionValue = criticalConditionValue;
-    }
-
     public String getChildDeathValue() {
         return childDeathValue;
     }
@@ -215,6 +203,14 @@ public class Birth_Table  {
         this.motherDeathValue = motherDeathValue;
     }
 
+    public String getCriticalConditionValue() {
+        return criticalConditionValue;
+    }
+
+    public void setCriticalConditionValue(String criticalConditionValue) {
+        this.criticalConditionValue = criticalConditionValue;
+    }
+
     public String getPregnancyDeathValue() {
         return pregnancyDeathValue;
     }
@@ -222,5 +218,4 @@ public class Birth_Table  {
     public void setPregnancyDeathValue(String pregnancyDeathValue) {
         this.pregnancyDeathValue = pregnancyDeathValue;
     }
-
 }

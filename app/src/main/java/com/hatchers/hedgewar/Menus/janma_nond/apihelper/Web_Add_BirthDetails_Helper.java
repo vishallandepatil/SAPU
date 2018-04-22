@@ -64,18 +64,18 @@ public class Web_Add_BirthDetails_Helper
                             // "pregnancy_death":"Y"}],"message":"Birth added successfully"}
 
                             //birth_table.setBirth_idValue(jsonObject.getString("birth_id"));
-                            birth_table.setName_of_motherValue(jsonObject.getString("name_of_mother"));
+                            birth_table.setNameOfMotherValue(jsonObject.getString("name_of_mother"));
                             birth_table.setAgeValue(jsonObject.getString("age"));
-                            birth_table.setDelivery_countValue(jsonObject.getString("delivery_count"));
-                            birth_table.setMonth_of_registrationValue(jsonObject.getString("month_of_registration"));
-                            birth_table.setBlood_urine_testValue(jsonObject.getString("blood_urine_test"));
-                            birth_table.setDelivery_dateValue(jsonObject.getString("delivery_date"));
+                            birth_table.setDeliveryCountValue(jsonObject.getString("delivery_count"));
+                            birth_table.setMonthOfRegistrationValue(jsonObject.getString("month_of_registration"));
+                            birth_table.setBloodUrineTestValue(jsonObject.getString("blood_urine_test"));
+                            birth_table.setDeliveryDateValue(jsonObject.getString("delivery_date"));
                             birth_table.setPlaceValue(jsonObject.getString("place"));
                             birth_table.setGenderValue(jsonObject.getString("gender"));
-                            birth_table.setBirth_weightValue(jsonObject.getString("birth_weight"));
-                            birth_table.setDate_of_period(jsonObject.getString("date_of_period"));
+                            birth_table.setBirthWeightValue(jsonObject.getString("birth_weight"));
+                            birth_table.setDateOfPeriod(jsonObject.getString("date_of_period"));
                             birth_table.setUserIdValue(jsonObject.getString("user_id"));
-                            birth_table.setVillage_idValue(jsonObject.getString("village_id"));
+                            birth_table.setVillageIdValue(jsonObject.getString("village_id"));
                             birth_table.setUploadStatusValue("1");
                             birth_table.setSonographyTestValue(jsonObject.getString("sonography_test"));
                             birth_table.setIronCalciumValue(jsonObject.getString("iron_calcium"));
@@ -140,11 +140,11 @@ public class Web_Add_BirthDetails_Helper
                 // &password=user@123 &format=json &sonography_test=Y
                 // &iron_calcium=Y&child_death=Y&mother_death=Y
                 // &critical_condition=Y&pregnancy_death=Y
-                params.put("name_of_mother", birth_table.getName_of_motherValue());
+                params.put("name_of_mother", birth_table.getNameOfMotherValue());
                 params.put("age", birth_table.getAgeValue());
-                params.put("delivery_count", birth_table.getDelivery_countValue());
+                params.put("delivery_count", birth_table.getDeliveryCountValue());
                 try {
-                    Date strDate= formatterin.parse(birth_table.getMonth_of_registrationValue());
+                    Date strDate= formatterin.parse(birth_table.getMonthOfRegistrationValue());
                     params.put("month_of_registration", formatterout.format(strDate));
 
                 }
@@ -153,11 +153,11 @@ public class Web_Add_BirthDetails_Helper
 
                 }
 
-                params.put("blood_urine_test", birth_table.getBlood_urine_testValue());
+                params.put("blood_urine_test", birth_table.getBloodUrineTestValue());
 
 
                 try {
-                   Date strDate= formatterin.parse(birth_table.getDelivery_dateValue());
+                   Date strDate= formatterin.parse(birth_table.getDeliveryDateValue());
                    params.put("delivery_date", formatterout.format(strDate));
 
                }
@@ -167,10 +167,10 @@ public class Web_Add_BirthDetails_Helper
                }
                 params.put("place", birth_table.getPlaceValue());
                 params.put("gender", birth_table.getGenderValue());
-                params.put("birth_weight", birth_table.getBirth_weightValue());
+                params.put("birth_weight", birth_table.getBirthWeightValue());
 
                 try {
-                    Date strDate= formatterin.parse(birth_table.getDate_of_period());
+                    Date strDate= formatterin.parse(birth_table.getDateOfPeriod());
                     params.put("date_of_period", formatterout.format(strDate));
 
                 }
