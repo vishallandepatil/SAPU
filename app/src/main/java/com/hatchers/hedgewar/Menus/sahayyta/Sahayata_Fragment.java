@@ -43,7 +43,12 @@ public class Sahayata_Fragment extends Fragment {
         layouts = new int[]{R.layout.slide1,
                 R.layout.slide2,
                 R.layout.slide3,
-                R.layout.slide4};
+                R.layout.slide4,
+                R.layout.slide5,
+                R.layout.slide6,
+                R.layout.slide7,
+                R.layout.slide8,
+                R.layout.slide9};
         // adding bottom dots
         addBottomDots(0);
 
@@ -144,22 +149,26 @@ public class Sahayata_Fragment extends Fragment {
         }
     };
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        try {
+            dots = new TextView[layouts.length];
 
-        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
-        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
+            int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
+            int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
 
-        dotsLayout.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(getContext());
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(colorsInactive[currentPage]);
-            dotsLayout.addView(dots[i]);
+            dotsLayout.removeAllViews();
+            for (int i = 0; i < dots.length; i++) {
+                dots[i] = new TextView(getContext());
+                dots[i].setText(Html.fromHtml("&#8226;"));
+                dots[i].setTextSize(35);
+                dots[i].setTextColor(colorsInactive[currentPage]);
+                dotsLayout.addView(dots[i]);
+            }
+
+            if (dots.length > 0)
+                dots[currentPage].setTextColor(colorsActive[currentPage]);
         }
-
-        if (dots.length > 0)
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
+        catch(Exception e)
+        {}
     }
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;

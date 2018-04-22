@@ -172,8 +172,8 @@ public class BirthFragment extends Fragment {
                 holder = (ViewHolder) convertView.getTag();
             }
             Birth_Table birthTable=birthTableArrayList.get(position);
-            holder.mother_name.setText("मातेचे नाव: "+String.valueOf(birthTable.getName_of_motherValue() + ""));
-            holder.delivery_date.setText("बाळंतपणाची तारीख: "+String.valueOf(birthTable.getDelivery_dateValue()+" "));
+            holder.mother_name.setText("मातेचे नाव: "+String.valueOf(birthTable.getNameOfMotherValue() + ""));
+            holder.delivery_date.setText("बाळंतपणाची तारीख: "+String.valueOf(birthTable.getDeliveryDateValue()+" "));
             holder.place.setText("ठिकाण: "+String.valueOf(birthTable.getPlaceValue()+" "));
 
             if(birthTable.getGenderValue().equalsIgnoreCase("M")) {

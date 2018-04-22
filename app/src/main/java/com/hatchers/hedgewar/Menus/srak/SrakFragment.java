@@ -1,6 +1,8 @@
-package com.hatchers.hedgewar.Menus.arogya_tapasni;
+package com.hatchers.hedgewar.Menus.srak;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -16,7 +18,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hatchers.hedgewar.R;
 import com.hatchers.hedgewar.database.Answer_Table;
@@ -31,11 +32,8 @@ import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class Arogya_Tapasni_Fragment extends Fragment
-{
 
-
-    
+public class SrakFragment extends Fragment {
     private TextView uniqueIdTxt;
     private ArrayList<Question_Table> questionTableArrayList;
     private Button nextBtn;
@@ -51,8 +49,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
     private Toolbar arogya_toolbar;
     private SweetAlertDialog sweetAlertDialog;
 
-
-    public Arogya_Tapasni_Fragment() {
+    public SrakFragment() {
         // Required empty public constructor
     }
 
@@ -61,7 +58,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tapasni, container, false);
+        View view= inflater.inflate(R.layout.fragment_srak, container, false);
 
         initializations(view);
         setQuestionList();
@@ -76,7 +73,6 @@ public class Arogya_Tapasni_Fragment extends Fragment
         });
         return view;
     }
-
     private void initializations(View view) {
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
@@ -248,7 +244,7 @@ public class Arogya_Tapasni_Fragment extends Fragment
 
 
 
-              //for (i =0;i<answers.size();i++)
+                //for (i =0;i<answers.size();i++)
                 for(Answer_Table ans:answers)
                 {
                  /* Answer_Table answerTable =answers.get(i);
@@ -272,22 +268,22 @@ public class Arogya_Tapasni_Fragment extends Fragment
 
 
                     if(i++ == answers.size() - 1)
-                  {
-                      sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                      sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
-                      sweetAlertDialog.setConfirmText("ठीक आहे");
-                      sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                          @Override
-                          public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
+                        sweetAlertDialog.setConfirmText("ठीक आहे");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                              sweetAlertDialog.dismissWithAnimation();
-                              getActivity().onBackPressed();
+                                sweetAlertDialog.dismissWithAnimation();
+                                getActivity().onBackPressed();
 
-                          }
-                      });
+                            }
+                        });
 
-                  }
-              }
+                    }
+                }
 
 
             }
@@ -344,5 +340,3 @@ public class Arogya_Tapasni_Fragment extends Fragment
         }
     }
 }
-
-

@@ -1,0 +1,184 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context="com.hatchers.hedgewar.Menus.arogya_tapasni.Arogya_Tapasni_Fragment">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        app:title="SGAK"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:id="@+id/arogya_toolbar">
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/arogya_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/datelayout">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/registration_month_layout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/mothername_layout"
+            android:weightSum="2">
+
+            <android.support.design.widget.TextInputEditText
+                android:drawableLeft="@drawable/calendar"
+                android:layout_width="match_parent"
+                android:drawablePadding="20dp"
+                android:padding="10dp"
+                android:background="@android:color/transparent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="अहवाल सादर करण्याची तारीख"
+                android:focusable="false"
+                android:textSize="18dp"
+                android:imeOptions="actionNext"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textColorHint="@color/black"
+                android:id="@+id/report_submission_date"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/card1"
+        android:layout_below="@id/datelayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_gravity="center">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unique_idText"
+                android:textSize="18dp"
+                android:text="Unique Id:"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:id="@+id/unique_id"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/card1"
+        android:id="@+id/card2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginTop="10dp"
+                android:id="@+id/questin_layout"
+                android:paddingBottom="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:id="@+id/question_number"
+                    android:text="प्रश्न क्र.: १"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.50"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Question"
+                    android:textSize="18dp"
+                    android:maxLines="2"
+                    android:layout_gravity="center"
+                    android:id="@+id/question"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/view1"
+                android:background="#d4d3d3"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="10dp"
+                android:text="उत्तर : "
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:id="@+id/ansLayout"
+                android:orientation="vertical">
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/btn_next"
+        android:text="जतन करा आणि पुढे जा "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape"
+        android:layout_below="@id/card2"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

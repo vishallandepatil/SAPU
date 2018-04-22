@@ -35,6 +35,18 @@
     <string name="slide_3_title">जन्म नोंद</string>
     <string name="slide_3_desc">इथे आपण  नजजात बालकांची जन्म नोंद जतन करू शकता. आणि जन्म नोंद केलेल्या बालकांची यादी पाहू शकता.</string>
     <string name="slide_4_title">आरोग्य अभिप्राय</string>
+    <string name="slide_6_title">संजीवनी</string>
+    <string name="slide_6_desc">इथे आपण संजीवनी तर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>
+    <string name="slide_7_title">उज्ज्वल भारत</string>
+    <string name="slide_7_desc">इथे आपण उज्ज्वल भारत तर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>
+    <string name="slide_8_title">GLSAK</string>
+    <string name="slide_8_desc">इथे आपण GLSAK तर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>
+    <string name="slide_9_title">SRAK</string>
+    <string name="slide_9_desc">इथे आपण SRAK तर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>
+    <string name="slide_10_title">SGAK</string>
+    <string name="slide_10_desc">इथे आपण SGAK तर्फे तपासणी केलेल्या रुग्णांची माहिती जतन करू शकता तसेच हि माहिती सर्व्हरला अपलोड करू शकता. </string>
+
+
     <string name="slide_4_desc">इथे आपण आरोग्य बँके अंतर्गत केलेल्या कार्यांबद्दल आपला अभिप्राय नोंद करू शकता.</string>
     <string name="slide_5_title">संपर्क</string>
 
@@ -44,5 +56,8 @@
     <string name="slider4_title">महिला जनजागृती</string>
     <string name="slider5_title">कौशल्य विकास</string>
     <string name="slider6_title">महिला सशक्तीकरण</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

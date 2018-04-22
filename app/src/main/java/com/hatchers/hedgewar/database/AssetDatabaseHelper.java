@@ -12,6 +12,8 @@ import java.io.OutputStream;
 
 public class AssetDatabaseHelper extends SQLiteOpenHelper {
     //private static AssetDatabaseHelper sInstance;
+
+
     private String dbName;
     private String db_path;
     private Context context;
