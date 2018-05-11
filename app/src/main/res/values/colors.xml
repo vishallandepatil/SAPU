@@ -13,11 +13,17 @@
     <color name="colorGray">#F4F4F4</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDarkgray">#dddddd</color>
+
     <!-- dots active colors -->
     <color name="dot_light_screen1">#ffffff</color>
     <color name="dot_light_screen2">#ffffff</color>
     <color name="dot_light_screen3">#ffffff</color>
     <color name="dot_light_screen4">#ffffff</color>
+    <color name="dot_light_screen5">#ffffff</color>
+    <color name="dot_light_screen6">#ffffff</color>
+    <color name="dot_light_screen7">#ffffff</color>
+    <color name="dot_light_screen8">#ffffff</color>
+    <color name="dot_light_screen9">#ffffff</color>
 
 
     <array name="array_dot_active">
@@ -25,6 +31,11 @@
         <item>@color/dot_light_screen2</item>
         <item>@color/dot_light_screen3</item>
         <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen5</item>
+        <item>@color/dot_light_screen6</item>
+        <item>@color/dot_light_screen7</item>
+        <item>@color/dot_light_screen8</item>
+        <item>@color/dot_light_screen9</item>
     </array>
 
 
@@ -33,6 +44,11 @@
     <color name="dot_dark_screen2">#D3D3D3</color>
     <color name="dot_dark_screen3">#D3D3D3</color>
     <color name="dot_dark_screen4">#D3D3D3</color>
+    <color name="dot_dark_screen5">#D3D3D3</color>
+    <color name="dot_dark_screen6">#D3D3D3</color>
+    <color name="dot_dark_screen7">#D3D3D3</color>
+    <color name="dot_dark_screen8">#D3D3D3</color>
+    <color name="dot_dark_screen9">#D3D3D3</color>
 
 
     <array name="array_dot_inactive">
@@ -40,6 +56,11 @@
         <item>@color/dot_dark_screen2</item>
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen5</item>
+        <item>@color/dot_dark_screen6</item>
+        <item>@color/dot_dark_screen7</item>
+        <item>@color/dot_dark_screen8</item>
+        <item>@color/dot_dark_screen9</item>
     </array>
 
     <color name="grey">#FF8D8F8F</color>
