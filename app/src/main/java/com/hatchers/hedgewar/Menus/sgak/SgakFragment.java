@@ -274,7 +274,7 @@ public class SgakFragment extends Fragment {
                     if(i++ == answers.size() - 1)
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
+                        sweetAlertDialog.setTitleText("SGAK तपासणी समाप्त");
                         sweetAlertDialog.setConfirmText("ठीक आहे");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override

@@ -276,7 +276,7 @@ public class GlsakFragment extends Fragment {
                     if(i++ == answers.size() - 1)
                     {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText("आरोग्य तपासणी समाप्त");
+                        sweetAlertDialog.setTitleText("GLSAK तपासणी समाप्त");
                         sweetAlertDialog.setConfirmText("ठीक आहे");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
